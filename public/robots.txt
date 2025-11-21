@@ -56,4 +56,4 @@ Disallow: /
 
 # END Cloudflare Managed Content
 
-Sitemap: https://www.ulatowski.net/sitemap.xml
+Sitemap: https://ulatowski.net/sitemap.xml

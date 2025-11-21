@@ -16,14 +16,14 @@ export default function ResumePage() {
             <JsonLd data={{
                 "@context": "https://schema.org",
                 "@type": "ProfilePage",
-                "@id": "https://www.ulatowski.net/resume/#webpage",
-                "url": "https://www.ulatowski.net/resume",
+                "@id": "https://ulatowski.net/resume/#webpage",
+                "url": "https://ulatowski.net/resume",
                 "name": "Resume – Rafał Ulatowski",
                 "isPartOf": {
-                    "@id": "https://www.ulatowski.net/#website"
+                    "@id": "https://ulatowski.net/#website"
                 },
                 "about": {
-                    "@id": "https://www.ulatowski.net/#person"
+                    "@id": "https://ulatowski.net/#person"
                 },
                 "description": "Detailed resume of Rafał Ulatowski, Senior Azure Cloud Engineer & .NET Consultant."
             }} />

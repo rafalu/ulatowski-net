@@ -21,13 +21,13 @@ export default function ContactPage() {
                         "@type": "ListItem",
                         "position": 1,
                         "name": "Home",
-                        "item": "https://www.ulatowski.net/"
+                        "item": "https://ulatowski.net/"
                     },
                     {
                         "@type": "ListItem",
                         "position": 2,
                         "name": "Contact",
-                        "item": "https://www.ulatowski.net/contact"
+                        "item": "https://ulatowski.net/contact"
                     }
                 ]
             }} />

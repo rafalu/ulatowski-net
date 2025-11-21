@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.ulatowski.net"),
+  metadataBase: new URL("https://ulatowski.net"),
   title: "Senior Azure Cloud Engineer in Copenhagen | .NET Consultant",
   description: "Senior Azure Cloud Engineer and .NET consultant. Based in Copenhagen, Denmark – working remote across EU/UK/US. Azure cloud architecture, DevOps, Bicep IaC, CI/CD and modernization of legacy .NET systems for fintech and B2B.",
   keywords: "Azure Cloud Engineer, .NET Consultant, DevOps Engineer, Azure Bicep, IaC, Senior Cloud Engineer Denmark, Copenhagen, Azure Architect, Cloud Migration, Azure App Service, VNets, Private Endpoints, Key Vault, CI/CD, GitHub Actions, Azure DevOps",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Senior Azure Cloud Engineer in Copenhagen | .NET Consultant",
     description: "Senior Azure Cloud Engineer and .NET consultant. Based in Copenhagen, Denmark – working remote across EU/UK/US. Azure cloud architecture, DevOps, Bicep IaC, CI/CD and modernization of legacy .NET systems for fintech and B2B.",
-    url: "https://www.ulatowski.net",
+    url: "https://ulatowski.net",
     type: "website",
     locale: "en_US",
     siteName: "Rafał Ulatowski – Senior Azure Cloud Engineer",
@@ -76,8 +76,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         {/* Preconnect and DNS prefetch for performance */}
-        <link rel="preconnect" href="https://www.ulatowski.net" />
-        <link rel="dns-prefetch" href="https://www.ulatowski.net" />
+        <link rel="preconnect" href="https://ulatowski.net" />
+        <link rel="dns-prefetch" href="https://ulatowski.net" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {isProd && GA_ID && (
@@ -117,11 +117,11 @@ export default function RootLayout({
             "@graph": [
               {
                 "@type": "Person",
-                "@id": "https://www.ulatowski.net/#person",
+                "@id": "https://ulatowski.net/#person",
                 "name": "Rafal Ulatowski",
                 "alternateName": "Rafał Ulatowski",
-                "url": "https://www.ulatowski.net/",
-                "image": "https://www.ulatowski.net/images/profile.jpg",
+                "url": "https://ulatowski.net/",
+                "image": "https://ulatowski.net/images/profile.jpg",
                 "jobTitle": "Senior Azure Cloud Engineer & .NET Consultant",
                 "worksFor": {
                   "@type": "Organization",
@@ -162,23 +162,23 @@ export default function RootLayout({
               },
               {
                 "@type": "WebSite",
-                "@id": "https://www.ulatowski.net/#website",
-                "url": "https://www.ulatowski.net/",
+                "@id": "https://ulatowski.net/#website",
+                "url": "https://ulatowski.net/",
                 "name": "Rafał Ulatowski – Senior Azure Cloud Engineer",
                 "publisher": {
-                  "@id": "https://www.ulatowski.net/#person"
+                  "@id": "https://ulatowski.net/#person"
                 }
               },
               {
                 "@type": "WebPage",
-                "@id": "https://www.ulatowski.net/#webpage",
-                "url": "https://www.ulatowski.net/",
+                "@id": "https://ulatowski.net/#webpage",
+                "url": "https://ulatowski.net/",
                 "name": "Senior Azure Cloud Engineer & .NET Consultant",
                 "isPartOf": {
-                  "@id": "https://www.ulatowski.net/#website"
+                  "@id": "https://ulatowski.net/#website"
                 },
                 "about": {
-                  "@id": "https://www.ulatowski.net/#person"
+                  "@id": "https://ulatowski.net/#person"
                 }
               }
             ]

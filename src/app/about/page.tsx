@@ -15,14 +15,14 @@ export default function AboutPage() {
             <JsonLd data={{
                 "@context": "https://schema.org",
                 "@type": "AboutPage",
-                "@id": "https://www.ulatowski.net/about/#webpage",
-                "url": "https://www.ulatowski.net/about",
+                "@id": "https://ulatowski.net/about/#webpage",
+                "url": "https://ulatowski.net/about",
                 "name": "About Rafał Ulatowski – Senior Azure Cloud Engineer",
                 "isPartOf": {
-                    "@id": "https://www.ulatowski.net/#website"
+                    "@id": "https://ulatowski.net/#website"
                 },
                 "about": {
-                    "@id": "https://www.ulatowski.net/#person"
+                    "@id": "https://ulatowski.net/#person"
                 },
                 "description": "About page for Rafał Ulatowski, Senior Azure Cloud Engineer & .NET Consultant in Copenhagen."
             }} />
