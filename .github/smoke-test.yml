@@ -1,0 +1,73 @@
+mode: "agent"
+description: "Smoke-test a public jobs API endpoint for contract roles"
+
+# === Context / Why this exists ===
+# We expose a public read-only endpoint that returns deduped, scored contract roles
+# for a Denmark-first + remote-friendly EU/UK market. ChatGPT (or any consumer)
+# can read it with no authentication. All private scraping creds live server-side.
+
+inputs:
+  baseUrl: "https://contract-agent.vercel.app"  # Replace with your actual Vercel project URL
+  endpoint: "/api/jobs"
+  sinceISO: "2025-10-05T00:00:00Z"   # use 'now - 24h' in your runtime if you want
+
+success_criteria:
+  - HTTP 200
+  - JSON body has key "jobs" = array
+  - Each job has: id, title, company, location, onsite_remote, link, source, published_at (ISO)
+  - Array is sorted by internal score (most relevant first)
+  - Query param `?since=` filters out older results (monotonic decrease when you push since forward)
+  - Healthcheck `/api/health` returns { ok: true }
+
+steps:
+  - name: GET /api/health
+    action: http.get
+    url: "${baseUrl}/api/health"
+    expect:
+      status: 200
+      json:
+        ok: true
+
+  - name: GET /api/jobs without since
+    action: http.get
+    url: "${baseUrl}${endpoint}"
+    expect:
+      status: 200
+      json:
+        has_keys: ["jobs"]
+    validate:
+      - assert: "Array.isArray($.jobs)"
+      - assert: "$.jobs.every(j => j.id && j.title && j.company && j.link && j.source && j.published_at)"
+      - assert: "$.jobs.every(j => ['remote','hybrid','onsite'].includes(j.onsite_remote))"
+
+  - name: GET /api/jobs with since
+    action: http.get
+    url: "${baseUrl}${endpoint}?since=${sinceISO}"
+    expect:
+      status: 200
+      json:
+        has_keys: ["jobs"]
+    validate:
+      - assert: "Array.isArray($.jobs)"
+      - note: "Optionally compare length vs previous response; should be <=, not >"
+
+  - name: Schema sample
+    action: transform
+    input_json_path: "$.jobs[0]"
+    expect_shape:
+      id: "string"
+      title: "string"
+      company: "string"
+      location: "string"
+      onsite_remote: "string"
+      rate_per_day: "string|null|undefined"
+      start: "string|null|undefined"
+      duration: "string|null|undefined"
+      link: "string"
+      source: "string"
+      published_at: "string"  # ISO
+
+  - name: Report
+    action: output.markdown_table
+    columns: ["title","company","location","onsite_remote","rate_per_day","start","duration","link","source"]
+    rows_json_path: "$.jobs"
