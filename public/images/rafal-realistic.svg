@@ -1,0 +1,80 @@
+<svg width="400" height="500" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="faceGradient" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" style="stop-color:#F5DEB3;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#DEB887;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D2B48C;stop-opacity:1" />
+    </radialGradient>
+    <linearGradient id="hairGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C3E50;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#34495E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2C3E50;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="shirtGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#BDC3C7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#95A5A6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="500" fill="#1a1a2e"/>
+
+  <!-- Face - more realistic proportions -->
+  <ellipse cx="200" cy="170" rx="48" ry="58" fill="url(#faceGradient)"/>
+  <ellipse cx="200" cy="175" rx="45" ry="55" fill="url(#faceGradient)" opacity="0.9"/>
+
+  <!-- Hair - more natural styling -->
+  <path d="M152 125 Q200 105 248 125 Q245 145 235 155 Q200 150 165 155 Q155 145 152 125 Z" fill="url(#hairGradient)"/>
+  <ellipse cx="200" cy="120" rx="52" ry="28" fill="url(#hairGradient)"/>
+  <ellipse cx="200" cy="125" rx="48" ry="25" fill="url(#hairGradient)"/>
+
+  <!-- Sideburns -->
+  <rect x="148" y="140" width="8" height="25" rx="4" fill="url(#hairGradient)"/>
+  <rect x="244" y="140" width="8" height="25" rx="4" fill="url(#hairGradient)"/>
+
+  <!-- Eyes - more detailed -->
+  <ellipse cx="182" cy="165" rx="6" ry="4" fill="#2C3E50"/>
+  <ellipse cx="218" cy="165" rx="6" ry="4" fill="#2C3E50"/>
+  <circle cx="184" cy="163" r="1.5" fill="#FFFFFF"/>
+  <circle cx="220" cy="163" r="1.5" fill="#FFFFFF"/>
+  <circle cx="185" cy="162" r="0.8" fill="#FFFFFF"/>
+  <circle cx="221" cy="162" r="0.8" fill="#FFFFFF"/>
+
+  <!-- Eyebrows -->
+  <path d="M175 155 Q182 152 189 155" stroke="#2C3E50" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M211 155 Q218 152 225 155" stroke="#2C3E50" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Nose - more defined -->
+  <path d="M200 175 Q195 185 200 190 Q205 185 200 175" fill="#D2B48C" opacity="0.6"/>
+  <ellipse cx="200" cy="180" rx="1.5" ry="2" fill="#8B4513"/>
+
+  <!-- Mouth - natural smile -->
+  <path d="M185 200 Q200 205 215 200" stroke="#8B4513" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M190 202 Q200 204 210 202" stroke="#DC143C" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Chin and jawline -->
+  <ellipse cx="200" cy="210" rx="35" ry="15" fill="url(#faceGradient)" opacity="0.8"/>
+
+  <!-- Shirt collar -->
+  <path d="M160 235 L240 235 L230 280 L170 280 Z" fill="url(#shirtGradient)"/>
+  <path d="M160 235 L170 250 L180 235" fill="#7F8C8D"/>
+  <path d="M240 235 L230 250 L220 235" fill="#7F8C8D"/>
+
+  <!-- Shirt details -->
+  <rect x="180" y="250" width="40" height="3" rx="1.5" fill="#34495E"/>
+  <circle cx="190" cy="265" r="2" fill="#34495E"/>
+  <circle cx="210" cy="265" r="2" fill="#34495E"/>
+
+  <!-- Professional overlay -->
+  <rect x="40" y="320" width="320" height="160" rx="12" fill="#16213e" opacity="0.9"/>
+  <rect x="40" y="320" width="320" height="160" rx="12" fill="none" stroke="#0f3460" stroke-width="2" opacity="0.5"/>
+
+  <text x="200" y="350" text-anchor="middle" fill="#e94560" font-family="Arial, sans-serif" font-size="20" font-weight="bold">Rafał Ulatowski</text>
+  <text x="200" y="375" text-anchor="middle" fill="#a8dadc" font-family="Arial, sans-serif" font-size="16">Senior Cloud Engineer</text>
+  <text x="200" y="395" text-anchor="middle" fill="#f1faee" font-family="Arial, sans-serif" font-size="13">Azure • .NET • DevOps</text>
+  <text x="200" y="415" text-anchor="middle" fill="#a8dadc" font-family="Arial, sans-serif" font-size="12">Copenhagen, Denmark</text>
+  <text x="200" y="435" text-anchor="middle" fill="#e94560" font-family="Arial, sans-serif" font-size="11">Available for projects</text>
+
+  <!-- Subtle shadow -->
+  <ellipse cx="200" cy="490" rx="180" ry="8" fill="#000000" opacity="0.3"/>
+</svg>
