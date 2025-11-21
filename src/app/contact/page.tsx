@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Contact Rafał Ulatowski | Senior Azure Cloud Engineer",
-    description: "Get in touch for Azure cloud consulting, .NET modernization projects, or DevOps engineering. Available for B2B contracts in EU/UK/US.",
+    description: "Get in touch for Azure cloud consulting, .NET modernization projects, or DevOps engineering. Available for B2B contracts across EU/UK/US.",
     alternates: {
         canonical: '/contact',
     },
