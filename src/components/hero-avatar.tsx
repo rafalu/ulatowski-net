@@ -28,13 +28,13 @@ export default function HeroAvatarReplaceable() {
           {avatarUrl.startsWith('blob:') ? (
             <img
               src={avatarUrl}
-              alt="Rafał Ulatowski - Senior Azure Cloud Engineer & .NET Consultant in Copenhagen, specializing in Cloud Migration and DevOps"
+              alt="Rafał Ulatowski - Senior Azure Cloud Architect & .NET Consultant in Copenhagen, specializing in Cloud Migration and DevOps"
               className="h-full w-full object-cover object-center"
             />
           ) : (
             <Image
               src={avatarUrl}
-              alt="Rafał Ulatowski - Senior Azure Cloud Engineer & .NET Consultant in Copenhagen, specializing in Cloud Migration and DevOps"
+              alt="Rafał Ulatowski - Senior Azure Cloud Architect & .NET Consultant in Copenhagen, specializing in Cloud Migration and DevOps"
               width={320}
               height={320}
               className="h-full w-full object-cover object-center"

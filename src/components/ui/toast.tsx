@@ -12,16 +12,16 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
       <div
         ref={ref}
         className={cn(
-          "group pointer-events-auto relative flex w-full items-center justify-between space-x-4 overflow-hidden rounded-lg border border-white/20 bg-slate-900/95 p-4 pr-8 shadow-lg backdrop-blur-xl transition-all",
+          "group pointer-events-auto relative flex w-full items-center justify-between space-x-4 overflow-hidden rounded-lg border border-border bg-popover/95 p-4 pr-8 shadow-lg backdrop-blur-xl transition-all",
           className
         )}
         {...props}
       >
-        <div className="flex-1 text-sm text-slate-100">{children}</div>
+        <div className="flex-1 text-sm text-foreground">{children}</div>
         {onClose && (
           <button
             onClick={onClose}
-            className="absolute right-2 top-2 rounded-md p-1 text-slate-400 opacity-0 transition-opacity hover:text-slate-100 focus:opacity-100 group-hover:opacity-100"
+            className="absolute right-2 top-2 rounded-md p-1 text-muted-foreground opacity-0 transition-opacity hover:text-foreground focus:opacity-100 group-hover:opacity-100"
           >
             <X className="h-4 w-4" />
           </button>

@@ -18,7 +18,7 @@ export function ComingSoonScreen() {
                 <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
                     Coming Soon
                 </h1>
-                <p className="mb-8 max-w-lg text-lg text-slate-400 sm:text-xl">
+                <p className="mb-8 max-w-lg text-lg text-muted-foreground sm:text-xl">
                     I&apos;m currently building my new portfolio. 
                     Check back soon for updates on my latest work and projects.
                 </p>

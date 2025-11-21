@@ -2,8 +2,8 @@ import { JsonLd } from "@/components/json-ld";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "About | Senior Azure Cloud Engineer & .NET Consultant",
-    description: "Senior Azure Cloud Engineer & .NET Developer with 15+ years of experience designing and delivering secure, scalable, cloud-native systems.",
+    title: "About | Senior Azure Cloud Architect & .NET Consultant",
+    description: "Senior Azure Cloud Architect & .NET Developer with 15+ years of experience designing and delivering secure, scalable, cloud-native systems.",
     alternates: {
         canonical: '/about',
     },
@@ -17,14 +17,14 @@ export default function AboutPage() {
                 "@type": "AboutPage",
                 "@id": "https://ulatowski.net/about/#webpage",
                 "url": "https://ulatowski.net/about",
-                "name": "About Rafał Ulatowski – Senior Azure Cloud Engineer",
+                "name": "About Rafał Ulatowski – Senior Azure Cloud Architect",
                 "isPartOf": {
                     "@id": "https://ulatowski.net/#website"
                 },
                 "about": {
                     "@id": "https://ulatowski.net/#person"
                 },
-                "description": "About page for Rafał Ulatowski, Senior Azure Cloud Engineer & .NET Consultant in Copenhagen."
+                "description": "About page for Rafał Ulatowski, Senior Azure Cloud Architect & .NET Consultant in Copenhagen."
             }} />
             <div className="mx-auto max-w-3xl px-4 py-12 md:py-20">
                 <div className="space-y-12">
@@ -34,7 +34,7 @@ export default function AboutPage() {
                             About Me
                         </h1>
                         <p className="text-xl leading-relaxed text-slate-300">
-                            Senior Azure Cloud Engineer & .NET Developer with 15+ years of experience designing and delivering secure, scalable, cloud-native systems. Specialized in Azure architecture, Infrastructure-as-Code (Bicep/Terraform), DevOps automation, and enterprise-grade backend development.
+                            Senior Azure Cloud Architect & .NET Developer with 15+ years of experience designing and delivering secure, scalable, cloud-native systems. Specialized in Azure architecture, Infrastructure-as-Code (Bicep/Terraform), DevOps automation, and enterprise-grade backend development.
                         </p>
                     </div>
 

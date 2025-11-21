@@ -24,7 +24,7 @@ export function GallerySection() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.1 }}
                 >
-                    System architecture, team work and daily challenges of a cloud engineer.
+                    System architecture, team work and daily challenges of a cloud architect & cloud engineer.
                 </motion.p>
 
                 <motion.div
@@ -44,7 +44,7 @@ export function GallerySection() {
                     >
                         <Image
                             src="/images/architecture-work.svg"
-                            alt="Azure cloud architecture design by Senior Cloud Engineer - system diagrams, Bicep IaC templates, and cloud-native infrastructure planning"
+                            alt="Azure cloud architecture design by Senior Cloud Architect & Cloud Engineer - system diagrams, Bicep IaC templates, and cloud-native infrastructure planning"
                             width={400}
                             height={192}
                             className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"

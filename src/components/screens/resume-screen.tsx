@@ -18,7 +18,7 @@ type WorkTimelineProps = {
 
 const defaultItems: WorkTimelineItem[] = [
     {
-        role: "Senior Cloud Engineer",
+        role: "Senior Cloud Architect",
         company: "Dawn Health",
         location: "Capital Region of Denmark",
         period: "September 2024 – Present",
@@ -148,10 +148,10 @@ const skillCards = [
 
 function SkillsSection() {
     return (
-        <div className="mx-auto max-w-6xl px-4 py-8 text-slate-100">
+        <div className="mx-auto max-w-6xl px-4 py-8 text-foreground">
             <div className="mb-6 md:mb-8">
                 <h2 className="text-xl font-semibold md:text-2xl">Skills</h2>
-                <p className="text-sm text-slate-300 mt-2">Discover the proficiencies that allow me to bring imagination to life through design and engineering.</p>
+                <p className="text-sm text-muted-foreground mt-2">Discover the proficiencies that allow me to bring imagination to life through design and engineering.</p>
             </div>
 
             <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-8 md:gap-y-10 mt-6">
@@ -164,8 +164,8 @@ function SkillsSection() {
 
                             <div>
                                 <h3 className="text-xl font-bold md:text-2xl">{card.label}</h3>
-                                <p className="text-sm text-slate-300 mt-1">{card.tagline}</p>
-                                <div className="mt-2 text-sm leading-relaxed text-slate-300 md:text-[15px]">
+                                <p className="text-sm text-muted-foreground mt-1">{card.tagline}</p>
+                                <div className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
                                     {card.points.map((p, idx) => (
                                         <p key={idx} className="mt-1 first:mt-0">{p}</p>
                                     ))}
@@ -181,16 +181,16 @@ function SkillsSection() {
 
 function CTASection() {
     return (
-        <div className="mx-auto px-4 relative lg:py-8 md:px-6 md:py-8 py-8 text-default max-w-6xl">
-            <div className="mx-auto max-w-3xl dark:border dark:border-slate-600 dark:shadow-none p-6 rounded-md shadow-xl text-center">
+        <div className="mx-auto px-4 relative lg:py-8 md:px-6 md:py-8 py-8 text-foreground max-w-6xl">
+            <div className="mx-auto max-w-3xl border border-border p-6 rounded-md shadow-xl text-center bg-card">
                 <div className="md:mx-auto text-center mb-0 md:mb-0">
-                    <h2 className="font-bold font-heading leading-tighter tracking-tighter text-heading md:text-4xl mb-4 text-4xl">Let's create together</h2>
-                    <p className="text-muted dark:text-slate-400 mt-4 text-xl">Ready to transform your vision into captivating designs?</p>
+                    <h2 className="font-bold font-heading leading-tighter tracking-tighter md:text-4xl mb-4 text-4xl">Let's create together</h2>
+                    <p className="text-muted-foreground mt-4 text-xl">Ready to transform your vision into captivating designs?</p>
                 </div>
 
                 <div className="flex flex-col flex-nowrap gap-4 m-auto max-w-xs sm:flex-row sm:justify-center sm:max-w-md mt-6">
                     <div className="flex w-full sm:w-auto">
-                        <Link href="/contact" className="w-full inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold bg-[#ff6b3d] hover:bg-[#ff825d] transition shadow-lg shadow-[#ff6b3d]/30">
+                        <Link href="/contact" className="w-full inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold bg-[#ff6b3d] hover:bg-[#ff825d] transition shadow-lg shadow-[#ff6b3d]/30 text-white">
                             Hire me
                         </Link>
                     </div>
@@ -206,9 +206,9 @@ function WorkExperienceTimeline({
 }: WorkTimelineProps) {
     return (
         <section className="relative">
-            <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <div className="h-px w-full bg-gradient-to-r from-transparent via-border to-transparent" />
             <div className="mx-auto max-w-6xl px-4 py-16">
-                <div className="w-full rounded-3xl bg-[#050816] px-6 py-8 text-slate-100 shadow-xl shadow-black/40 md:px-10 md:py-10">
+                <div className="w-full rounded-3xl bg-card px-6 py-8 text-foreground shadow-xl dark:shadow-black/40 md:px-10 md:py-10 border border-border">
                     <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">{title}</h2>
 
                     <ol className="mt-8 space-y-8 md:space-y-10">
@@ -301,7 +301,7 @@ export function ResumeScreen() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
                 >
-                    Professional background of a Senior Azure Cloud Engineer & .NET Consultant. Experience with Azure, .NET, DevOps, and cloud migrations.
+                    Professional background of a Senior Azure Cloud Architect & .NET Consultant. Experience with Azure, .NET, DevOps, and cloud migrations.
                 </motion.p>
                 <div className="mt-6 flex gap-3">
                     <a href="/files/cv.pdf" download="Rafal_Ulatowski_CV.pdf" aria-label="Download CV (PDF)" className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-transparent text-white px-5 py-2.5 font-medium hover:bg-white/10 hover:text-sky-300 transition-colors w-full justify-center max-w-xs">

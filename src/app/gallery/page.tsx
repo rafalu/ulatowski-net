@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Gallery & Behind the Scenes | Rafał Ulatowski",
-    description: "A glimpse into the daily work of a Senior Azure Cloud Engineer. Architecture diagrams, team collaboration, and development environment setups.",
+    description: "A glimpse into the daily work of a Senior Azure Cloud Architect & Cloud Engineer. Architecture diagrams, team collaboration, and development environment setups.",
     alternates: {
         canonical: '/gallery',
     },

@@ -3,8 +3,8 @@ import { ResumeScreen } from "@/components/screens/resume-screen";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Resume | Senior Azure Cloud Engineer & .NET Consultant",
-    description: "Resume of Rafał Ulatowski – Senior Azure Cloud Engineer & .NET Consultant with experience in Azure, .NET, DevOps and distributed systems.",
+    title: "Resume | Senior Azure Cloud Architect & .NET Consultant",
+    description: "Resume of Rafał Ulatowski – Senior Azure Cloud Architect & .NET Consultant with experience in Azure, .NET, DevOps and distributed systems.",
     alternates: {
         canonical: '/resume',
     },
@@ -25,7 +25,7 @@ export default function ResumePage() {
                 "about": {
                     "@id": "https://ulatowski.net/#person"
                 },
-                "description": "Detailed resume of Rafał Ulatowski, Senior Azure Cloud Engineer & .NET Consultant."
+                "description": "Detailed resume of Rafał Ulatowski, Senior Azure Cloud Architect & .NET Consultant."
             }} />
             <ResumeScreen />
         </>

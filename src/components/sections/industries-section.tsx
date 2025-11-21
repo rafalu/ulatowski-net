@@ -39,17 +39,17 @@ export function IndustriesSection() {
                     {industries.map((item, index) => (
                         <motion.div
                             key={item.label}
-                            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8 hover:border-white/20 transition-colors"
+                            className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 hover:border-primary/20 transition-colors"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
-                            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-sky-500/10 text-sky-400 group-hover:bg-sky-500/20 group-hover:text-sky-300 transition-colors">
+                            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-sky-500/10 text-sky-600 dark:text-sky-400 group-hover:bg-sky-500/20 group-hover:text-sky-500 dark:group-hover:text-sky-300 transition-colors">
                                 <item.icon className="h-6 w-6" />
                             </div>
-                            <h3 className="mb-2 text-xl font-semibold text-slate-100">{item.label}</h3>
-                            <p className="text-slate-400">{item.description}</p>
+                            <h3 className="mb-2 text-xl font-semibold text-foreground">{item.label}</h3>
+                            <p className="text-muted-foreground">{item.description}</p>
                         </motion.div>
                     ))}
                 </div>

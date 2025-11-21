@@ -16,12 +16,12 @@ export function GalleryScreen() {
                     Behind the Scenes of Work
                 </motion.h1>
                 <motion.p
-                    className="text-lg text-slate-300 max-w-3xl"
+                    className="text-lg text-muted-foreground max-w-3xl"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
                 >
-                    A glimpse into the daily life of a cloud engineer: architecture planning, team collaboration, and the tools of the trade.
+                    A glimpse into the daily life of a cloud architect & cloud engineer: architecture planning, team collaboration, and the tools of the trade.
                 </motion.p>
             </div>
 

@@ -43,31 +43,31 @@ export function ContactScreen() {
                     transition={{ duration: 0.6 }}
                 >
                     <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-                        Contact – Work With an Azure Cloud Engineer & .NET Consultant
+                        Contact – Work With an Azure Cloud Architect & .NET Consultant
                     </h1>
-                    <p className="text-lg text-slate-300 max-w-2xl mb-10">
+                    <p className="text-lg text-muted-foreground max-w-2xl mb-10">
                         I am currently available for new opportunities. Whether you need help with a cloud migration, setting up a robust CI/CD pipeline, or modernizing your .NET stack, I'd love to hear from you.
                     </p>
 
                     <div className="grid md:grid-cols-12 gap-8">
                         <div className="md:col-span-7 space-y-4">
                             {/* Email Card */}
-                            <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:border-sky-500/50 hover:bg-sky-500/5 hover:shadow-[0_0_40px_-10px_rgba(14,165,233,0.3)]">
+                            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-sky-500/50 hover:bg-sky-500/5 hover:shadow-[0_0_40px_-10px_rgba(14,165,233,0.3)]">
                                 <div className="flex items-start gap-5">
                                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sky-500/10 text-sky-400 group-hover:bg-sky-500/20 group-hover:scale-110 transition-all duration-300">
                                         <Mail className="size-6" />
                                     </div>
                                     <div className="flex-1 space-y-1">
-                                        <h3 className="font-semibold text-white text-lg">Email</h3>
-                                        <p className="text-sm text-slate-400">Best for project inquiries and details.</p>
+                                        <h3 className="font-semibold text-foreground text-lg">Email</h3>
+                                        <p className="text-sm text-muted-foreground">Best for project inquiries and details.</p>
                                         <div className="pt-2 flex flex-wrap items-center gap-3">
                                             <ObfuscatedMail 
                                                 email={email} 
-                                                className="text-base font-medium text-sky-300 hover:text-sky-200 transition-colors"
+                                                className="text-base font-medium text-sky-500 dark:text-sky-300 hover:text-sky-400 dark:hover:text-sky-200 transition-colors"
                                             />
                                             <button
                                                 onClick={handleCopy}
-                                                className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-2.5 py-1.5 text-xs font-medium text-slate-300 hover:bg-white/10 hover:text-white transition-colors min-w-[70px] justify-center"
+                                                className="inline-flex items-center gap-1.5 rounded-md bg-secondary px-2.5 py-1.5 text-xs font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors min-w-[70px] justify-center"
                                                 aria-label="Copy email to clipboard"
                                             >
                                                 {isCopied ? (
@@ -92,7 +92,7 @@ export function ContactScreen() {
                                 href={LINKEDIN_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="block group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-500/5 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.3)]"
+                                className="block group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-500/5 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.3)]"
                             >
                                 <div className="absolute top-6 right-6 opacity-0 -translate-y-2 translate-x-2 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300">
                                     <ArrowUpRight className="size-5 text-blue-400" />
@@ -102,10 +102,10 @@ export function ContactScreen() {
                                         <Linkedin className="size-6" />
                                     </div>
                                     <div className="flex-1 space-y-1">
-                                        <h3 className="font-semibold text-white text-lg">LinkedIn</h3>
-                                        <p className="text-sm text-slate-400">Connect for professional networking.</p>
+                                        <h3 className="font-semibold text-foreground text-lg">LinkedIn</h3>
+                                        <p className="text-sm text-muted-foreground">Connect for professional networking.</p>
                                         <div className="pt-2">
-                                            <span className="text-base font-medium text-blue-400 group-hover:text-blue-300 transition-colors">
+                                            <span className="text-base font-medium text-blue-500 dark:text-blue-400 group-hover:text-blue-400 dark:group-hover:text-blue-300 transition-colors">
                                                 Connect on LinkedIn
                                             </span>
                                         </div>
@@ -118,7 +118,7 @@ export function ContactScreen() {
                                 href={GITHUB_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="block group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:border-purple-500/50 hover:bg-purple-500/5 hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.3)]"
+                                className="block group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-purple-500/50 hover:bg-purple-500/5 hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.3)]"
                             >
                                 <div className="absolute top-6 right-6 opacity-0 -translate-y-2 translate-x-2 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300">
                                     <ArrowUpRight className="size-5 text-purple-400" />
@@ -128,10 +128,10 @@ export function ContactScreen() {
                                         <Github className="size-6" />
                                     </div>
                                     <div className="flex-1 space-y-1">
-                                        <h3 className="font-semibold text-white text-lg">GitHub</h3>
-                                        <p className="text-sm text-slate-400">Check my open source contributions.</p>
+                                        <h3 className="font-semibold text-foreground text-lg">GitHub</h3>
+                                        <p className="text-sm text-muted-foreground">Check my open source contributions.</p>
                                         <div className="pt-2">
-                                            <span className="text-base font-medium text-purple-400 group-hover:text-purple-300 transition-colors">
+                                            <span className="text-base font-medium text-purple-500 dark:text-purple-400 group-hover:text-purple-400 dark:group-hover:text-purple-300 transition-colors">
                                                 View Profile
                                             </span>
                                         </div>
@@ -141,9 +141,9 @@ export function ContactScreen() {
                         </div>
 
                         <div className="md:col-span-5">
-                            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl h-full">
+                            <div className="rounded-3xl border border-border bg-card p-8 backdrop-blur-xl h-full">
                                 <h3 className="text-xl font-semibold mb-6">Availability & Focus</h3>
-                                <ul className="space-y-4 text-slate-300">
+                                <ul className="space-y-4 text-muted-foreground">
                                     <li className="flex items-start gap-3">
                                         <span className="mt-1.5 size-2 rounded-full bg-emerald-400 shrink-0 shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
                                         <span>Open for B2B contracts (EU/UK/US)</span>
@@ -162,8 +162,8 @@ export function ContactScreen() {
                                     </li>
                                 </ul>
 
-                                <div className="mt-8 pt-8 border-t border-white/10">
-                                    <p className="text-sm text-slate-400 leading-relaxed">
+                                <div className="mt-8 pt-8 border-t border-border">
+                                    <p className="text-sm text-muted-foreground leading-relaxed">
                                         I typically respond within 24 hours. For urgent matters, please mark your email subject as "Urgent".
                                     </p>
                                 </div>

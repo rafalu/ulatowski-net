@@ -10,8 +10,8 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
     const services = [
         {
             id: "architecture",
-            label: "Azure Cloud Consulting for B2B & Fintech",
-            tagline: "Modernize legacy .NET and migrate to Azure.",
+            label: "Azure Cloud Architecture & Consulting for B2B & Fintech",
+            tagline: "Design secure Azure platforms and modernize legacy .NET.",
             accent: "from-sky-500/30 via-violet-500/30 to-fuchsia-500/30",
             icon: "☁️",
             points: [
@@ -79,7 +79,9 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    {variant === "full" ? "" : "Azure Cloud and .NET Consulting Services"}
+                    {variant === "full"
+                      ? ""
+                      : "Azure Cloud Architecture, DevOps & .NET Modernization"}
                 </motion.h2>
 
                 {variant === "summary" && (

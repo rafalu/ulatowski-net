@@ -2,7 +2,7 @@ import siteConfig from "@/config/site-config.json";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
     // Check if maintenance mode is enabled via config or env var
     // Env var takes precedence if set to 'true' or 'false'
     const envMaintenance = process.env.MAINTENANCE_MODE;

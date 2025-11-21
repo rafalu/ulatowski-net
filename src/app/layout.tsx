@@ -19,9 +19,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ulatowski.net"),
-  title: "Senior Azure Cloud Engineer in Copenhagen | .NET Consultant",
-  description: "Senior Azure Cloud Engineer and .NET consultant. Based in Copenhagen, Denmark – working remote across EU/UK/US. Azure cloud architecture, DevOps, Bicep IaC, CI/CD and modernization of legacy .NET systems for fintech and B2B.",
-  keywords: "Azure Cloud Engineer, .NET Consultant, DevOps Engineer, Azure Bicep, IaC, Senior Cloud Engineer Denmark, Copenhagen, Azure Architect, Cloud Migration, Azure App Service, VNets, Private Endpoints, Key Vault, CI/CD, GitHub Actions, Azure DevOps",
+  title: "Senior Azure Cloud Architect in Copenhagen | Cloud & .NET Consultant",
+  description:
+    "Senior Azure Cloud Architect and cloud & .NET consultant. Based in Copenhagen, Denmark – working remote across EU/UK/US. Azure landing zones, cloud architecture, DevOps, Bicep IaC, CI/CD and modernization of legacy .NET systems for fintech and B2B.",
+  keywords:
+    "Azure Cloud Architect, Azure Cloud Architect, Cloud & .NET Consultant, Azure Bicep, IaC, Senior Cloud Architect Denmark, Copenhagen, Azure Architect, Cloud Migration, Azure App Service, VNets, Private Endpoints, Key Vault, CI/CD, GitHub Actions, Azure DevOps",
   authors: [{ name: "Rafał Ulatowski" }],
   creator: "Rafał Ulatowski",
   publisher: "Rafał Ulatowski",
@@ -29,26 +31,30 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Senior Azure Cloud Engineer in Copenhagen | .NET Consultant",
-    description: "Senior Azure Cloud Engineer and .NET consultant. Based in Copenhagen, Denmark – working remote across EU/UK/US. Azure cloud architecture, DevOps, Bicep IaC, CI/CD and modernization of legacy .NET systems for fintech and B2B.",
+    title:
+      "Senior Azure Cloud Architect in Copenhagen | Cloud & .NET Consultant",
+    description:
+      "Senior Azure Cloud Architect and cloud & .NET consultant. Based in Copenhagen, Denmark – working remote across EU/UK/US. Azure landing zones, cloud architecture, DevOps, Bicep IaC, CI/CD and modernization of legacy .NET systems for fintech and B2B.",
     url: "https://ulatowski.net",
     type: "website",
     locale: "en_US",
-    siteName: "Rafał Ulatowski – Senior Azure Cloud Engineer",
+    siteName: "Rafał Ulatowski – Senior Azure Cloud Architect",
     images: [
       {
-        url: "/og/azure-cloud-engineer.webp",
+        url: "/og/azure-cloud-architect.webp",
         width: 1200,
         height: 630,
-        alt: "Rafał Ulatowski – Senior Azure Cloud Engineer in Copenhagen",
+        alt: "Rafał Ulatowski – Senior Azure Cloud Architect in Copenhagen",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Senior Azure Cloud Engineer in Copenhagen | .NET Consultant",
-    description: "Senior Azure Cloud Engineer and .NET consultant. Based in Copenhagen, Denmark – working remote across EU/UK/US. Azure cloud architecture, DevOps, Bicep IaC, CI/CD and modernization of legacy .NET systems for fintech and B2B.",
-    images: ["/og/azure-cloud-engineer.webp"],
+    title:
+      "Senior Azure Cloud Architect in Copenhagen | Cloud & .NET Consultant",
+    description:
+      "Senior Azure Cloud Architect and cloud & .NET consultant. Based in Copenhagen, Denmark – working remote across EU/UK/US. Azure landing zones, cloud architecture, DevOps, Bicep IaC, CI/CD and modernization of legacy .NET systems for fintech and B2B.",
+    images: ["/og/azure-cloud-architect.webp"],
   },
   robots: {
     index: true,
@@ -62,6 +68,7 @@ export const metadata: Metadata = {
     },
   },
 };
+
 
 export default function RootLayout({
   children,
@@ -122,7 +129,7 @@ export default function RootLayout({
                 "alternateName": "Rafał Ulatowski",
                 "url": "https://ulatowski.net/",
                 "image": "https://ulatowski.net/images/profile.jpg",
-                "jobTitle": "Senior Azure Cloud Engineer & .NET Consultant",
+                  "jobTitle": "Senior Azure Cloud Architect & .NET Consultant",
                 "worksFor": {
                   "@type": "Organization",
                   "name": "Dawn Health"
@@ -164,7 +171,7 @@ export default function RootLayout({
                 "@type": "WebSite",
                 "@id": "https://ulatowski.net/#website",
                 "url": "https://ulatowski.net/",
-                "name": "Rafał Ulatowski – Senior Azure Cloud Engineer",
+                "name": "Rafał Ulatowski – Senior Azure Cloud Architect",
                 "publisher": {
                   "@id": "https://ulatowski.net/#person"
                 }
@@ -173,7 +180,7 @@ export default function RootLayout({
                 "@type": "WebPage",
                 "@id": "https://ulatowski.net/#webpage",
                 "url": "https://ulatowski.net/",
-                "name": "Senior Azure Cloud Engineer & .NET Consultant",
+                "name": "Senior Azure Cloud Architect & .NET Consultant",
                 "isPartOf": {
                   "@id": "https://ulatowski.net/#website"
                 },

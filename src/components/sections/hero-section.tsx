@@ -53,7 +53,7 @@ export function HeroSection() {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            Senior Azure Cloud Engineer & .NET Architect in Copenhagen
+                            Senior Azure Cloud Architect & Cloud Engineer in Copenhagen
                         </motion.h1>
 
                         <motion.div
@@ -62,14 +62,14 @@ export function HeroSection() {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.8, delay: 0.3 }}
                         >
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-300 via-indigo-200 to-fuchsia-200">
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-600 via-indigo-500 to-fuchsia-500 dark:from-sky-300 dark:via-indigo-200 dark:to-fuchsia-200">
                                 {displayText}
                             </span>
                             {showCursor && (
                                 <motion.span
                                     animate={{ opacity: [1, 0, 1] }}
                                     transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-                                    className="ml-1 text-sky-400"
+                                    className="ml-1 text-sky-600 dark:text-sky-400"
                                 >
                                     |
                                 </motion.span>
@@ -77,16 +77,16 @@ export function HeroSection() {
                         </motion.div>
 
                         <motion.p
-                            className="mt-5 text-base md:text-lg text-slate-300 max-w-prose"
+                            className="mt-5 text-base md:text-lg text-muted-foreground max-w-prose"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.4 }}
                         >
-                            As an <strong>Azure consultant in Copenhagen / Denmark</strong>, I help companies migrate to Azure, modernize legacy .NET systems, and implement robust CI/CD pipelines. Specializing in <strong>Azure cloud architecture & cost optimization</strong> for high-throughput B2B and fintech sectors.
+                            As a <strong>Senior Azure Cloud Architect in Copenhagen</strong>, I help companies design secure Azure platforms, modernize legacy .NET systems, and implement robust CI/CD pipelines. Specializing in <strong>Azure landing zones, cloud architecture & cost optimization</strong> for high-throughput B2B and fintech systems.
                         </motion.p>
 
                         <motion.p
-                            className="mt-4 text-sm text-slate-300"
+                            className="mt-4 text-sm text-muted-foreground"
                             initial={{ opacity: 0, y: 12 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.45 }}
@@ -95,7 +95,7 @@ export function HeroSection() {
                         </motion.p>
 
                         <motion.div
-                            className="mt-4 flex items-center gap-2 text-sm text-slate-400"
+                            className="mt-4 flex items-center gap-2 text-sm text-muted-foreground"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.5 }}
