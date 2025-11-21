@@ -3,8 +3,8 @@ import { ContactScreen } from "@/components/screens/contact-screen";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Contact Rafał Ulatowski | Senior Azure Cloud Architect",
-    description: "Get in touch for Azure cloud architecture, .NET modernization projects, or DevOps engineering. Available for B2B contracts across EU/UK/US.",
+    title: "Contact – Hire Someone Who Actually Delivers | Rafał Ulatowski",
+    description: "Available for projects where you need someone who builds and ships complete solutions — not just plans, but working systems running in production. .NET code, Azure infrastructure, CI/CD pipelines.",
     alternates: {
         canonical: '/contact',
     },

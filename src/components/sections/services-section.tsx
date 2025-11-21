@@ -11,7 +11,7 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
         {
             id: "architecture",
             label: "Azure Cloud Architecture & Consulting for B2B & Fintech",
-            tagline: "Design secure Azure platforms and modernize legacy .NET.",
+            tagline: "I build secure Azure platforms end-to-end and deliver modernized .NET systems to production.",
             accent: "from-sky-500/30 via-violet-500/30 to-fuchsia-500/30",
             icon: "☁️",
             points: [
@@ -24,7 +24,7 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
         {
             id: "devops",
             label: "CI/CD & DevOps on Azure (Azure DevOps, GitHub Actions)",
-            tagline: "Reliable pipelines and ephemeral environments.",
+            tagline: "CI/CD pipelines that ship code reliably — built and maintained by me.",
             accent: "from-cyan-500/25 via-sky-500/25 to-emerald-500/25",
             icon: "🚀",
             points: [
@@ -37,7 +37,7 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
         {
             id: "migration",
             label: "Azure Migration & Legacy .NET Modernization",
-            tagline: "Reproducible, versioned cloud infrastructure.",
+            tagline: "I migrate systems to Azure and deliver working IaC in production.",
             accent: "from-amber-500/25 via-orange-500/25 to-rose-500/25",
             icon: "🏗️",
             points: [
@@ -50,7 +50,7 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
         {
             id: "performance",
             label: "Performance & Reliability for Trading and Payment Systems",
-            tagline: "High-stakes systems that don't fail.",
+            tagline: "I build and optimize high-performance systems that handle millions of transactions.",
             accent: "from-indigo-500/25 via-blue-500/25 to-sky-500/25",
             icon: "⚡",
             points: [
@@ -69,24 +69,24 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
     const visibleServices = variant === "summary" ? services.slice(0, 2) : services;
 
     return (
-        <section id="services" className="relative bg-slate-950/80">
+        <section id="services" className="relative bg-white/5 dark:bg-slate-950/80">
             <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <div className="mx-auto max-w-6xl px-4 py-16">
                 <motion.h2
-                    className="text-2xl font-semibold tracking-tight"
+                    className="text-2xl font-semibold tracking-tight text-text-heading"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
                     {variant === "full"
-                      ? ""
-                      : "Azure Cloud Architecture, DevOps & .NET Modernization"}
+                        ? ""
+                        : "Azure Cloud Architecture, DevOps & .NET Modernization"}
                 </motion.h2>
 
                 {variant === "summary" && (
                     <motion.p
-                        className="mt-3 text-sm text-slate-300 max-w-2xl"
+                        className="mt-3 text-sm text-text-secondary max-w-2xl"
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -106,7 +106,7 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
                     {visibleServices.map((card, idx) => (
                         <motion.article
                             key={card.id}
-                            className="relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 p-5 pb-6 backdrop-blur-xl flex flex-col"
+                            className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 dark:bg-slate-900/70 p-5 pb-6 backdrop-blur-xl flex flex-col"
                             initial={{ opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -130,12 +130,12 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
                                     <span aria-hidden="true">{card.icon}</span>
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold text-slate-50 md:text-xl">{card.label}</h3>
-                                    <p className="text-sm text-slate-400 mt-1">{card.tagline}</p>
+                                    <h3 className="text-lg font-bold text-text-heading md:text-xl">{card.label}</h3>
+                                    <p className="text-sm text-text-tertiary mt-1">{card.tagline}</p>
                                 </div>
                             </div>
 
-                            <ul className="relative mt-6 space-y-3 text-sm text-slate-300 md:text-[15px]">
+                            <ul className="relative mt-6 space-y-3 text-sm text-text-secondary md:text-[15px]">
                                 {card.points.map((p) => (
                                     <li key={p.text} className="flex gap-3 items-start">
                                         <span className="mt-1 inline-block flex-none text-base">{p.icon}</span>

@@ -15,8 +15,8 @@ export function PortfolioScreen() {
                             </svg>
                         </div>
                     </div>
-                    <h1 className="text-4xl font-bold tracking-tight">GitHub Copilot</h1>
-                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    <h1 className="text-4xl font-bold tracking-tight text-text-heading">GitHub Copilot</h1>
+                    <p className="text-xl text-text-body max-w-2xl mx-auto">
                         Your AI pair programmer. I help developers write better code, faster.
                     </p>
                 </div>
@@ -68,7 +68,7 @@ export function PortfolioScreen() {
 
                 {/* Interactive Demo Section */}
                 <div className="bg-card rounded-lg border p-8">
-                    <h2 className="text-2xl font-bold mb-6">What I Can Help You Build</h2>
+                    <h2 className="text-2xl font-bold mb-6 text-text-heading">What I Can Help You Build</h2>
                     <div className="grid gap-4 md:grid-cols-2">
                         <DemoCard
                             title="Full-Stack Applications"
@@ -95,7 +95,7 @@ export function PortfolioScreen() {
 
                 {/* Stats Section */}
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 rounded-lg p-8">
-                    <h2 className="text-2xl font-bold mb-6 text-center">Impact & Reach</h2>
+                    <h2 className="text-2xl font-bold mb-6 text-center text-text-heading">Impact & Reach</h2>
                     <div className="grid gap-6 md:grid-cols-3 text-center">
                         <StatCard number="50M+" label="Developers Assisted" />
                         <StatCard number="20+" label="Languages Supported" />
@@ -105,8 +105,8 @@ export function PortfolioScreen() {
 
                 {/* Call to Action */}
                 <div className="text-center space-y-4">
-                    <h2 className="text-2xl font-bold">Ready to Code Together?</h2>
-                    <p className="text-muted-foreground max-w-md mx-auto">
+                    <h2 className="text-2xl font-bold text-text-heading">Ready to Code Together?</h2>
+                    <p className="text-text-secondary max-w-md mx-auto">
                         Start using GitHub Copilot today and experience the future of software development.
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
@@ -132,8 +132,8 @@ function CapabilityCard({ icon, title, description, examples }: {
     return (
         <div className="bg-card rounded-lg border p-6 hover:shadow-md transition-shadow">
             <div className="text-3xl mb-4">{icon}</div>
-            <h3 className="font-semibold mb-2">{title}</h3>
-            <p className="text-sm text-muted-foreground mb-4">{description}</p>
+            <h3 className="font-semibold mb-2 text-text-heading">{title}</h3>
+            <p className="text-sm text-text-secondary mb-4">{description}</p>
             <ul className="text-xs space-y-1">
                 {examples.map((example, i) => (
                     <li key={i} className="flex items-center gap-2">
@@ -153,8 +153,8 @@ function DemoCard({ title, description, tech }: {
 }) {
     return (
         <div className="border rounded-lg p-4 hover:border-primary/50 transition-colors">
-            <h3 className="font-semibold mb-2">{title}</h3>
-            <p className="text-sm text-muted-foreground mb-3">{description}</p>
+            <h3 className="font-semibold mb-2 text-text-heading">{title}</h3>
+            <p className="text-sm text-text-secondary mb-3">{description}</p>
             <div className="flex flex-wrap gap-2">
                 {tech.map((t) => (
                     <span key={t} className="bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs">
@@ -170,7 +170,7 @@ function StatCard({ number, label }: { number: string; label: string }) {
     return (
         <div>
             <div className="text-3xl font-bold text-primary mb-2">{number}</div>
-            <div className="text-sm text-muted-foreground">{label}</div>
+            <div className="text-sm text-text-secondary">{label}</div>
         </div>
     )
 }

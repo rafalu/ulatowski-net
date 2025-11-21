@@ -19,9 +19,9 @@ export function ContactScreen() {
             await navigator.clipboard.writeText(email);
             setIsCopied(true);
             show("Email copied to clipboard!");
-            
+
             setTimeout(() => setIsCopied(false), 2000);
-            
+
             // GA4 event tracking (only if gtag is available)
             if (typeof window !== 'undefined' && (window as any).gtag) {
                 (window as any).gtag('event', 'email_copy', {
@@ -42,11 +42,11 @@ export function ContactScreen() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-                        Contact – Work With an Azure Cloud Architect & .NET Consultant
+                    <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-text-heading">
+                        Contact – Hire Someone Who Actually Delivers
                     </h1>
-                    <p className="text-lg text-muted-foreground max-w-2xl mb-10">
-                        I am currently available for new opportunities. Whether you need help with a cloud migration, setting up a robust CI/CD pipeline, or modernizing your .NET stack, I'd love to hear from you.
+                    <p className="text-lg text-text-body max-w-2xl mb-10">
+                        I'm available for projects where you need someone who builds and ships complete solutions — not just plans or designs, but working systems running in production. If you need .NET code written, Azure infrastructure built, and CI/CD pipelines delivering reliably, let's talk.
                     </p>
 
                     <div className="grid md:grid-cols-12 gap-8">
@@ -59,10 +59,10 @@ export function ContactScreen() {
                                     </div>
                                     <div className="flex-1 space-y-1">
                                         <h3 className="font-semibold text-foreground text-lg">Email</h3>
-                                        <p className="text-sm text-muted-foreground">Best for project inquiries and details.</p>
+                                        <p className="text-sm text-text-secondary">Best for project inquiries and details.</p>
                                         <div className="pt-2 flex flex-wrap items-center gap-3">
-                                            <ObfuscatedMail 
-                                                email={email} 
+                                            <ObfuscatedMail
+                                                email={email}
                                                 className="text-base font-medium text-sky-500 dark:text-sky-300 hover:text-sky-400 dark:hover:text-sky-200 transition-colors"
                                             />
                                             <button
@@ -88,7 +88,7 @@ export function ContactScreen() {
                             </div>
 
                             {/* LinkedIn Card */}
-                            <a 
+                            <a
                                 href={LINKEDIN_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -103,7 +103,7 @@ export function ContactScreen() {
                                     </div>
                                     <div className="flex-1 space-y-1">
                                         <h3 className="font-semibold text-foreground text-lg">LinkedIn</h3>
-                                        <p className="text-sm text-muted-foreground">Connect for professional networking.</p>
+                                        <p className="text-sm text-text-secondary">Connect for professional networking.</p>
                                         <div className="pt-2">
                                             <span className="text-base font-medium text-blue-500 dark:text-blue-400 group-hover:text-blue-400 dark:group-hover:text-blue-300 transition-colors">
                                                 Connect on LinkedIn
@@ -114,7 +114,7 @@ export function ContactScreen() {
                             </a>
 
                             {/* GitHub Card */}
-                            <a 
+                            <a
                                 href={GITHUB_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -129,7 +129,7 @@ export function ContactScreen() {
                                     </div>
                                     <div className="flex-1 space-y-1">
                                         <h3 className="font-semibold text-foreground text-lg">GitHub</h3>
-                                        <p className="text-sm text-muted-foreground">Check my open source contributions.</p>
+                                        <p className="text-sm text-text-secondary">Check my open source contributions.</p>
                                         <div className="pt-2">
                                             <span className="text-base font-medium text-purple-500 dark:text-purple-400 group-hover:text-purple-400 dark:group-hover:text-purple-300 transition-colors">
                                                 View Profile
@@ -143,7 +143,7 @@ export function ContactScreen() {
                         <div className="md:col-span-5">
                             <div className="rounded-3xl border border-border bg-card p-8 backdrop-blur-xl h-full">
                                 <h3 className="text-xl font-semibold mb-6">Availability & Focus</h3>
-                                <ul className="space-y-4 text-muted-foreground">
+                                <ul className="space-y-4 text-text-secondary">
                                     <li className="flex items-start gap-3">
                                         <span className="mt-1.5 size-2 rounded-full bg-emerald-400 shrink-0 shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
                                         <span>Open for B2B contracts (EU/UK/US)</span>
@@ -163,7 +163,7 @@ export function ContactScreen() {
                                 </ul>
 
                                 <div className="mt-8 pt-8 border-t border-border">
-                                    <p className="text-sm text-muted-foreground leading-relaxed">
+                                    <p className="text-sm text-text-secondary leading-relaxed">
                                         I typically respond within 24 hours. For urgent matters, please mark your email subject as "Urgent".
                                     </p>
                                 </div>

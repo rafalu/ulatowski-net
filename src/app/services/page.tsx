@@ -3,8 +3,8 @@ import { ServicesScreen } from "@/components/screens/services-screen";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Azure Cloud & .NET Consulting Services | Rafał Ulatowski",
-    description: "Azure cloud architecture, DevOps, IaC with Bicep/Terraform, CI/CD and legacy .NET modernization services.",
+    title: "How I Deliver Complete Cloud Solutions | Rafał Ulatowski",
+    description: "I build and ship complete Azure cloud systems from start to finish — writing .NET code, building infrastructure, setting up CI/CD. Production-ready delivery, not PowerPoint architectures.",
     alternates: {
         canonical: '/services',
     },
@@ -20,30 +20,32 @@ export default function ServicesPage() {
                         "@type": "WebPage",
                         "@id": "https://ulatowski.net/services/#webpage",
                         "url": "https://ulatowski.net/services",
-                        "name": "Azure Consulting & .NET Services",
+                        "name": "How I Deliver Complete Cloud Solutions",
                         "isPartOf": {
                             "@id": "https://ulatowski.net/#website"
                         },
                         "about": {
                             "@id": "https://ulatowski.net/#person"
                         },
-                        "description": "Consulting services for Azure cloud, DevOps, IaC, CI/CD and .NET modernization."
+                        "description": "I build and ship complete Azure cloud systems — from .NET code to production infrastructure."
                     },
                     {
                         "@type": "ItemList",
                         "@id": "https://ulatowski.net/services/#services",
-                        "name": "Azure & .NET Consulting Services",
+                        "name": "Cloud Delivery Services",
                         "itemListElement": [
                             {
                                 "@type": "Service",
-                                "name": "Azure cloud architecture & landing zones",
+                                "name": "End-to-end Azure cloud platform delivery",
+                                "description": "I build secure Azure platforms and deliver modernized .NET systems to production",
                                 "provider": {
                                     "@id": "https://ulatowski.net/#person"
                                 }
                             },
                             {
                                 "@type": "Service",
-                                "name": "Infrastructure as Code with Azure Bicep & Terraform",
+                                "name": "CI/CD pipelines that ship code reliably",
+                                "description": "Built and maintained CI/CD pipelines using Azure DevOps and GitHub Actions",
                                 "provider": {
                                     "@id": "https://ulatowski.net/#person"
                                 }

@@ -21,10 +21,10 @@ export default function HeroAvatarReplaceable() {
     <div className="space-y-6">
       <div className="relative flex items-center justify-center">
         {/* Outer glow circle */}
-        <div className="absolute h-72 w-72 sm:h-80 sm:w-80 rounded-full border border-[#ff6b3d]/50 shadow-[0_0_80px_rgba(255,107,61,0.6)]" />
+        <div className="absolute h-72 w-72 sm:h-80 sm:w-80 rounded-full border border-[var(--avatar-border)] shadow-[0_0_80px_var(--avatar-glow)]" />
 
         {/* Inner circle */}
-        <div className="relative h-64 w-64 sm:h-72 sm:w-72 rounded-full bg-gradient-to-b from-[#ff6b3d] to-[#f53c6b] flex items-center justify-center overflow-hidden">
+        <div className="relative h-64 w-64 sm:h-72 sm:w-72 rounded-full bg-gradient-to-b from-[var(--avatar-gradient-from)] to-[var(--avatar-gradient-to)] flex items-center justify-center overflow-hidden">
           {avatarUrl.startsWith('blob:') ? (
             <img
               src={avatarUrl}
@@ -79,9 +79,9 @@ export default function HeroAvatarReplaceable() {
                   transform: "translate(-50%, -50%)",
                 }}
               >
-                <div className="backdrop-blur-md bg-white/10 border border-white/15 rounded-2xl px-4 py-2 text-xs shadow-lg text-center max-w-[10rem] transition-transform duration-300 hover:scale-110 cursor-default">
-                  <p className="text-lg font-semibold leading-none">{b.value}</p>
-                  <p className="text-[10px] text-slate-200 mt-1">{b.label}</p>
+                <div className="backdrop-blur-md bg-[var(--badge-bg)] border border-[var(--badge-border)] rounded-2xl px-4 py-2 text-xs shadow-lg text-center max-w-[10rem] transition-transform duration-300 hover:scale-110 cursor-default">
+                  <p className="text-lg font-semibold leading-none text-[var(--badge-text)]">{b.value}</p>
+                  <p className="text-[10px] text-[var(--badge-subtext)] mt-1">{b.label}</p>
                 </div>
               </div>
             );

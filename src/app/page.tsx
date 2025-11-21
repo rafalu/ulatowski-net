@@ -3,9 +3,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title:
-        "Senior Azure Cloud Architect in Copenhagen | Cloud & .NET Consultant",
+        "Rafał Ulatowski | I Build .NET Systems That Run Reliably in the Cloud",
     description:
-        "Senior Azure Cloud Architect and cloud & .NET consultant. Based in Copenhagen, Denmark – working remote across EU/UK/US. Azure landing zones, cloud architecture, DevOps, Bicep IaC, CI/CD and modernization of legacy .NET systems for fintech and B2B.",
+        "I build and ship production-ready .NET systems on Azure — from writing solid code to deploying complete cloud infrastructure. End-to-end delivery: code, cloud, CI/CD. Based in Copenhagen, available across EU/UK/US.",
     alternates: {
         canonical: "/",
     },

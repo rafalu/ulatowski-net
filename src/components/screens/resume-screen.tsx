@@ -108,7 +108,7 @@ const skillCards = [
     {
         id: "cloud-devops",
         label: "Azure cloud & DevOps platform",
-        tagline: "Cloud-native systems that actually ship.",
+        tagline: "Complete Azure delivery — built, deployed, running.",
         accent: "from-cyan-500/25 via-sky-500/25 to-emerald-500/25",
         icon: "☁️",
         points: [
@@ -121,7 +121,7 @@ const skillCards = [
     {
         id: "backend",
         label: "Backend engineering (.NET)",
-        tagline: "Low-friction, high-reliability backend services.",
+        tagline: ".NET services I build, deploy, and maintain in production.",
         accent: "from-amber-500/25 via-orange-500/25 to-rose-500/25",
         icon: "🧠",
         points: [
@@ -134,7 +134,7 @@ const skillCards = [
     {
         id: "frontend",
         label: "Frontend & integration",
-        tagline: "Enough UI skills to keep the whole system coherent.",
+        tagline: "Full-stack capability — I deliver complete solutions, not just backend.",
         accent: "from-indigo-500/25 via-blue-500/25 to-sky-500/25",
         icon: "🖥️",
         points: [
@@ -150,8 +150,8 @@ function SkillsSection() {
     return (
         <div className="mx-auto max-w-6xl px-4 py-8 text-foreground">
             <div className="mb-6 md:mb-8">
-                <h2 className="text-xl font-semibold md:text-2xl">Skills</h2>
-                <p className="text-sm text-muted-foreground mt-2">Discover the proficiencies that allow me to bring imagination to life through design and engineering.</p>
+                <h2 className="text-xl font-semibold md:text-2xl text-text-heading">Skills</h2>
+                <p className="text-sm text-text-secondary mt-2">The technical skills I use to deliver complete, production-ready systems.</p>
             </div>
 
             <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-8 md:gap-y-10 mt-6">
@@ -163,9 +163,9 @@ function SkillsSection() {
                             </div>
 
                             <div>
-                                <h3 className="text-xl font-bold md:text-2xl">{card.label}</h3>
-                                <p className="text-sm text-muted-foreground mt-1">{card.tagline}</p>
-                                <div className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                                <h3 className="text-xl font-bold md:text-2xl text-text-heading">{card.label}</h3>
+                                <p className="text-sm text-text-secondary mt-1">{card.tagline}</p>
+                                <div className="mt-2 text-sm leading-relaxed text-text-secondary md:text-[15px]">
                                     {card.points.map((p, idx) => (
                                         <p key={idx} className="mt-1 first:mt-0">{p}</p>
                                     ))}
@@ -184,8 +184,8 @@ function CTASection() {
         <div className="mx-auto px-4 relative lg:py-8 md:px-6 md:py-8 py-8 text-foreground max-w-6xl">
             <div className="mx-auto max-w-3xl border border-border p-6 rounded-md shadow-xl text-center bg-card">
                 <div className="md:mx-auto text-center mb-0 md:mb-0">
-                    <h2 className="font-bold font-heading leading-tighter tracking-tighter md:text-4xl mb-4 text-4xl">Let's create together</h2>
-                    <p className="text-muted-foreground mt-4 text-xl">Ready to transform your vision into captivating designs?</p>
+                    <h2 className="font-bold font-heading leading-tighter tracking-tighter md:text-4xl mb-4 text-4xl text-text-heading">Let's build something that ships</h2>
+                    <p className="text-text-secondary mt-4 text-xl">Need someone who delivers complete, production-ready systems?</p>
                 </div>
 
                 <div className="flex flex-col flex-nowrap gap-4 m-auto max-w-xs sm:flex-row sm:justify-center sm:max-w-md mt-6">
@@ -209,7 +209,7 @@ function WorkExperienceTimeline({
             <div className="h-px w-full bg-gradient-to-r from-transparent via-border to-transparent" />
             <div className="mx-auto max-w-6xl px-4 py-16">
                 <div className="w-full rounded-3xl bg-card px-6 py-8 text-foreground shadow-xl dark:shadow-black/40 md:px-10 md:py-10 border border-border">
-                    <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">{title}</h2>
+                    <h2 className="text-2xl font-semibold tracking-tight md:text-3xl text-text-heading">{title}</h2>
 
                     <ol className="mt-8 space-y-8 md:space-y-10">
                         {items.map((item, idx) => (
@@ -239,12 +239,12 @@ function WorkExperienceTimeline({
                                             {item.location ? `, ${item.location}` : null}
                                         </span>
                                         <br />
-                                        <span className="text-sm font-normal text-slate-300">
+                                        <span className="text-sm font-normal text-text-secondary">
                                             {item.period}
                                         </span>
                                     </h3>
 
-                                    <div className="mt-2 text-sm leading-relaxed text-slate-300 md:text-[15px]">
+                                    <div className="mt-2 text-sm leading-relaxed text-text-secondary md:text-[15px]">
                                         {item.bullets.map((bullet, idx2) => (
                                             <p key={idx2} className="mt-1 first:mt-0">
                                                 {bullet}
@@ -258,7 +258,7 @@ function WorkExperienceTimeline({
 
                     {/* EDUCATION */}
                     <div className="mt-12">
-                        <h3 className="text-xl font-semibold md:text-2xl">Education</h3>
+                        <h3 className="text-xl font-semibold md:text-2xl text-text-heading">Education</h3>
                         <ul className="mt-6 space-y-6">
                             <li className="flex items-start">
                                 <div className="mr-4 flex items-start">
@@ -267,9 +267,9 @@ function WorkExperienceTimeline({
                                     </div>
                                 </div>
                                 <div>
-                                    <h4 className="text-lg font-semibold">Master of Science, Distributed System</h4>
-                                    <p className="text-sm text-slate-300">Gdańsk University of Technology</p>
-                                    <p className="text-sm text-slate-400 mt-1">1999 - 2004</p>
+                                    <h4 className="text-lg font-semibold text-text-heading">Master of Science, Distributed System</h4>
+                                    <p className="text-sm text-text-secondary">Gdańsk University of Technology</p>
+                                    <p className="text-sm text-text-tertiary mt-1">1999 - 2004</p>
                                 </div>
                             </li>
                         </ul>
@@ -288,20 +288,20 @@ export function ResumeScreen() {
         <div className="pt-24 pb-16">
             <div className="mx-auto max-w-6xl px-4 mb-12">
                 <motion.h1
-                    className="text-3xl md:text-5xl font-bold tracking-tight mb-6"
+                    className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-text-heading"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    Resume & Experience
+                    Track Record: Systems I've Built & Shipped
                 </motion.h1>
                 <motion.p
-                    className="text-lg text-slate-300 max-w-3xl"
+                    className="text-lg text-text-body max-w-3xl"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
                 >
-                    Professional background of a Senior Azure Cloud Architect & .NET Consultant. Experience with Azure, .NET, DevOps, and cloud migrations.
+                    15+ years of building and shipping production systems — from .NET backends to complete Azure cloud platforms. Here's what I've actually delivered.
                 </motion.p>
                 <div className="mt-6 flex gap-3">
                     <a href="/files/cv.pdf" download="Rafal_Ulatowski_CV.pdf" aria-label="Download CV (PDF)" className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-transparent text-white px-5 py-2.5 font-medium hover:bg-white/10 hover:text-sky-300 transition-colors w-full justify-center max-w-xs">

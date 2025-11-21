@@ -14,7 +14,7 @@ export function HeroSection() {
     // Smooth typing effect with consistent width
     const [displayText, setDisplayText] = useState("");
     const [showCursor, setShowCursor] = useState(true);
-    const fullText = "Elegant, scalable systems in Azure & .NET";
+    const fullText = "End-to-end delivery: code, cloud, CI/CD — production-ready.";
 
     useEffect(() => {
         let i = 0;
@@ -48,12 +48,12 @@ export function HeroSection() {
                     <div className="md:col-span-7">
                         <div className="mb-4" />
                         <motion.h1
-                            className="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] mb-6"
+                            className="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] mb-6 text-text-heading"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            Senior Azure Cloud Architect & Cloud Engineer in Copenhagen
+                            I build .NET systems that run reliably in the cloud.
                         </motion.h1>
 
                         <motion.div
@@ -77,16 +77,16 @@ export function HeroSection() {
                         </motion.div>
 
                         <motion.p
-                            className="mt-5 text-base md:text-lg text-muted-foreground max-w-prose"
+                            className="mt-5 text-base md:text-lg text-text-body max-w-prose"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.4 }}
                         >
-                            As a <strong>Senior Azure Cloud Architect in Copenhagen</strong>, I help companies design secure Azure platforms, modernize legacy .NET systems, and implement robust CI/CD pipelines. Specializing in <strong>Azure landing zones, cloud architecture & cost optimization</strong> for high-throughput B2B and fintech systems.
+                            If you need someone who actually knows how to build software end-to-end — from writing solid .NET code to shipping reliable, production-ready cloud systems — that's exactly where I deliver the most impact. I don't just design architectures; I build them, deploy them, and make sure they run in production.
                         </motion.p>
 
                         <motion.p
-                            className="mt-4 text-sm text-muted-foreground"
+                            className="mt-4 text-sm text-text-secondary"
                             initial={{ opacity: 0, y: 12 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.45 }}
@@ -95,13 +95,13 @@ export function HeroSection() {
                         </motion.p>
 
                         <motion.div
-                            className="mt-4 flex items-center gap-2 text-sm text-muted-foreground"
+                            className="mt-4 flex items-center gap-2 text-sm text-text-secondary"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.5 }}
                         >
                             <span className="inline-block w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
-                            <span>Building scalable systems with passion since 2005</span>
+                            <span>Shipping production systems since 2005</span>
                         </motion.div>
 
                         <motion.div
@@ -112,7 +112,7 @@ export function HeroSection() {
                         >
                             <MotionLink
                                 href="/contact"
-                                className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold bg-[#ff6b3d] hover:bg-[#ff825d] transition shadow-lg shadow-[#ff6b3d]/30"
+                                className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold bg-[#2da44e] hover:bg-[#2c974b] text-white transition shadow-lg shadow-[#2da44e]/30 dark:bg-[#2da44e] dark:hover:bg-[#268341]"
                                 whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.95 }}
                             >
@@ -134,7 +134,7 @@ export function HeroSection() {
                         </motion.div>
 
                         <motion.p
-                            className="mt-3 text-xs text-slate-400"
+                            className="mt-3 text-xs text-text-tertiary"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.6, delay: 0.8 }}
@@ -160,22 +160,22 @@ export function HeroSection() {
 
                             {/* Services Card - kept as visual element in hero */}
                             <motion.div
-                                className="mt-12 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset,0_10px_40px_rgba(0,0,0,0.45)]"
+                                className="mt-12 rounded-3xl border border-slate-200 bg-white/50 dark:border-white/10 dark:bg-white/5 p-6 backdrop-blur-xl shadow-sm dark:shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset,0_10px_40px_rgba(0,0,0,0.45)]"
                                 whileHover={{ scale: 1.01 }}
                                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
                             >
-                                <ul className="space-y-3 text-sm text-slate-200">
+                                <ul className="space-y-3 text-sm text-text-secondary">
                                     <li className="flex items-center gap-2">
-                                        <span className="size-4 text-emerald-400">🛡️</span> Azure cloud architecture & cost optimization
+                                        <span className="size-4 text-emerald-400">🛡️</span> End-to-end Azure cloud delivery & optimization
                                     </li>
                                     <li className="flex items-center gap-2">
-                                        <span className="size-4 text-blue-400">🚀</span> CI/CD with Azure DevOps & GitHub Actions
+                                        <span className="size-4 text-blue-400">🚀</span> CI/CD pipelines that actually ship code
                                     </li>
                                     <li className="flex items-center gap-2">
-                                        <span className="size-4 text-purple-400">⚡</span> Azure Bicep IaC & ARM templates
+                                        <span className="size-4 text-purple-400">⚡</span> Infrastructure as Code that runs in production
                                     </li>
                                     <li className="flex items-center gap-2">
-                                        <span className="size-4 text-cyan-400">☁️</span> Azure App Service, VNets, Key Vault
+                                        <span className="size-4 text-cyan-400">☁️</span> Complete Azure solutions — built, deployed, working
                                     </li>
                                 </ul>
                             </motion.div>

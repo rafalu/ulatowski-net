@@ -1,7 +1,9 @@
 import { JsonLd } from "@/components/json-ld";
 import { Footer, Header } from "@/components/layout-components";
+import { ComingSoonScreen } from "@/components/screens/coming-soon-screen";
 import { SiteShell } from "@/components/site-shell";
 import { ThemeProvider } from "@/components/theme-provider";
+import siteConfig from "@/config/site-config.json";
 import { GITHUB_URL, LINKEDIN_URL } from "@/lib/social";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -19,11 +21,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ulatowski.net"),
-  title: "Senior Azure Cloud Architect in Copenhagen | Cloud & .NET Consultant",
+  title: "Rafał Ulatowski | I Build .NET Systems That Run Reliably in the Cloud",
   description:
-    "Senior Azure Cloud Architect and cloud & .NET consultant. Based in Copenhagen, Denmark – working remote across EU/UK/US. Azure landing zones, cloud architecture, DevOps, Bicep IaC, CI/CD and modernization of legacy .NET systems for fintech and B2B.",
+    "I build and ship production-ready .NET systems on Azure — from writing solid code to deploying complete cloud infrastructure. End-to-end delivery: code, cloud, CI/CD. Based in Copenhagen, available across EU/UK/US.",
   keywords:
-    "Azure Cloud Architect, Azure Cloud Architect, Cloud & .NET Consultant, Azure Bicep, IaC, Senior Cloud Architect Denmark, Copenhagen, Azure Architect, Cloud Migration, Azure App Service, VNets, Private Endpoints, Key Vault, CI/CD, GitHub Actions, Azure DevOps",
+    "Azure Cloud Architect, .NET Developer, Azure Developer, Cloud Developer Copenhagen, End-to-end Cloud Delivery, Azure Bicep, IaC, CI/CD, Production Systems, Azure DevOps, GitHub Actions, .NET 8, C# Developer, Cloud Migration, Azure Infrastructure",
   authors: [{ name: "Rafał Ulatowski" }],
   creator: "Rafał Ulatowski",
   publisher: "Rafał Ulatowski",
@@ -32,28 +34,28 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      "Senior Azure Cloud Architect in Copenhagen | Cloud & .NET Consultant",
+      "Rafał Ulatowski | I Build .NET Systems That Run Reliably in the Cloud",
     description:
-      "Senior Azure Cloud Architect and cloud & .NET consultant. Based in Copenhagen, Denmark – working remote across EU/UK/US. Azure landing zones, cloud architecture, DevOps, Bicep IaC, CI/CD and modernization of legacy .NET systems for fintech and B2B.",
+      "I build and ship production-ready .NET systems on Azure — from writing solid code to deploying complete cloud infrastructure. End-to-end delivery: code, cloud, CI/CD.",
     url: "https://ulatowski.net",
     type: "website",
     locale: "en_US",
-    siteName: "Rafał Ulatowski – Senior Azure Cloud Architect",
+    siteName: "Rafał Ulatowski – Azure & .NET Developer",
     images: [
       {
         url: "/og/azure-cloud-architect.webp",
         width: 1200,
         height: 630,
-        alt: "Rafał Ulatowski – Senior Azure Cloud Architect in Copenhagen",
+        alt: "Rafał Ulatowski – Building Production-Ready Cloud Systems",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "Senior Azure Cloud Architect in Copenhagen | Cloud & .NET Consultant",
+      "Rafał Ulatowski | I Build .NET Systems That Run Reliably in the Cloud",
     description:
-      "Senior Azure Cloud Architect and cloud & .NET consultant. Based in Copenhagen, Denmark – working remote across EU/UK/US. Azure landing zones, cloud architecture, DevOps, Bicep IaC, CI/CD and modernization of legacy .NET systems for fintech and B2B.",
+      "I build and ship production-ready .NET systems on Azure — from writing solid code to deploying complete cloud infrastructure. End-to-end delivery: code, cloud, CI/CD.",
     images: ["/og/azure-cloud-architect.webp"],
   },
   robots: {
@@ -129,7 +131,8 @@ export default function RootLayout({
                 "alternateName": "Rafał Ulatowski",
                 "url": "https://ulatowski.net/",
                 "image": "https://ulatowski.net/images/profile.jpg",
-                  "jobTitle": "Senior Azure Cloud Architect & .NET Consultant",
+                "jobTitle": "Senior Azure Cloud Architect & .NET Developer",
+                "description": "I build and ship production-ready .NET systems on Azure. Developer by heart, architect by experience.",
                 "worksFor": {
                   "@type": "Organization",
                   "name": "Dawn Health"
@@ -146,20 +149,21 @@ export default function RootLayout({
                 ],
                 "knowsAbout": [
                   "Microsoft Azure",
-                  "Azure cloud architecture",
-                  ".NET 8",
-                  "C# backend development",
+                  ".NET 8 Development",
+                  "C# Backend Development",
+                  "Azure Cloud Infrastructure",
+                  "Production System Delivery",
                   "Azure DevOps",
-                  "CI/CD",
+                  "CI/CD Pipelines",
                   "Infrastructure as Code",
                   "Azure Bicep",
-                  "Terraform on Azure",
-                  "Event-driven architectures",
-                  "Distributed systems",
-                  "High-throughput trading systems",
-                  "Payment platforms",
+                  "Terraform",
+                  "Distributed Systems",
+                  "High-Performance Systems",
+                  "Trading Platforms",
+                  "Payment Systems",
                   "Cloud Migration",
-                  "Microservices Architecture"
+                  "Microservices"
                 ],
                 "address": {
                   "@type": "PostalAddress",
@@ -171,7 +175,7 @@ export default function RootLayout({
                 "@type": "WebSite",
                 "@id": "https://ulatowski.net/#website",
                 "url": "https://ulatowski.net/",
-                "name": "Rafał Ulatowski – Senior Azure Cloud Architect",
+                "name": "Rafał Ulatowski – Azure & .NET Developer",
                 "publisher": {
                   "@id": "https://ulatowski.net/#person"
                 }
@@ -180,7 +184,7 @@ export default function RootLayout({
                 "@type": "WebPage",
                 "@id": "https://ulatowski.net/#webpage",
                 "url": "https://ulatowski.net/",
-                "name": "Senior Azure Cloud Architect & .NET Consultant",
+                "name": "I Build .NET Systems That Run Reliably in the Cloud",
                 "isPartOf": {
                   "@id": "https://ulatowski.net/#website"
                 },
@@ -201,13 +205,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SiteShell>
-            <Header />
-            <main className="min-h-[calc(100vh-14rem)]">
-              {children}
-            </main>
-            <Footer />
-          </SiteShell>
+          {siteConfig.comingSoon ? (
+            <ComingSoonScreen />
+          ) : (
+            <SiteShell>
+              <Header />
+              <main className="min-h-[calc(100vh-14rem)]">
+                {children}
+              </main>
+              <Footer />
+            </SiteShell>
+          )}
         </ThemeProvider>
       </body>
     </html>

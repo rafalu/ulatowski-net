@@ -45,23 +45,23 @@ export function ProjectsSection() {
             <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <div className="mx-auto max-w-6xl px-4 py-16">
                 <motion.h2
-                    className="text-2xl font-semibold tracking-tight"
+                    className="text-2xl font-semibold tracking-tight text-text-heading"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    Azure Cloud Projects: CI/CD Platforms and High-Throughput Systems
+                    Real Projects: Systems I Built and Shipped to Production
                 </motion.h2>
 
                 <motion.p
-                    className="text-slate-400 mt-1 text-sm"
+                    className="text-text-secondary mt-1 text-sm"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.1 }}
                 >
-                    Briefly about how I solve specific problems.
+                    How I deliver complete solutions — from code to production.
                 </motion.p>
 
                 <motion.div
@@ -89,7 +89,7 @@ export function ProjectsSection() {
                                 rotateX: -2,
                                 transition: { duration: 0.3 }
                             }}
-                            className="group rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl hover:bg-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset,0_8px_30px_rgba(0,0,0,0.35)] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.12)_inset,0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden"
+                            className="group rounded-3xl border border-slate-200 bg-white/50 dark:border-white/10 dark:bg-white/5 p-5 backdrop-blur-xl hover:bg-slate-50 dark:hover:bg-white/10 shadow-sm dark:shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset,0_8px_30px_rgba(0,0,0,0.35)] dark:hover:shadow-[0_0_0_1px_rgba(255,255,255,0.12)_inset,0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden"
                         >
                             <motion.div
                                 className="absolute inset-0 bg-gradient-to-br from-sky-400/5 to-indigo-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -97,7 +97,7 @@ export function ProjectsSection() {
                             />
 
                             <motion.div
-                                className="text-[11px] uppercase tracking-wider text-sky-200/90 mb-2"
+                                className="text-[11px] uppercase tracking-wider text-sky-600 dark:text-sky-200/90 mb-2 font-medium"
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 transition={{ delay: i * 0.15 + 0.2 }}
@@ -106,7 +106,7 @@ export function ProjectsSection() {
                             </motion.div>
 
                             <motion.h3
-                                className="text-lg font-semibold text-slate-50 mb-3"
+                                className="text-lg font-semibold text-text-heading mb-3"
                                 initial={{ opacity: 0, x: -10 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ delay: i * 0.15 + 0.3 }}
@@ -115,7 +115,7 @@ export function ProjectsSection() {
                             </motion.h3>
 
                             <motion.ul
-                                className="space-y-2 text-sm text-slate-200 list-disc list-inside"
+                                className="space-y-2 text-sm text-text-secondary list-disc list-inside"
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 transition={{ delay: i * 0.15 + 0.4 }}
@@ -134,7 +134,7 @@ export function ProjectsSection() {
 
                             <Link
                                 href="/resume"
-                                className="mt-4 inline-flex items-center gap-1 text-sm text-sky-200/90 group-hover:text-sky-300 transition-colors"
+                                className="mt-4 inline-flex items-center gap-1 text-sm text-sky-600 dark:text-sky-200/90 group-hover:text-sky-700 dark:group-hover:text-sky-300 transition-colors font-medium"
                             >
                                 Details in conversation
                                 <span className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity">→</span>

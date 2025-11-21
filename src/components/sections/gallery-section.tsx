@@ -9,7 +9,7 @@ export function GallerySection() {
             <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <div className="mx-auto max-w-6xl px-4 py-16">
                 <motion.h2
-                    className="text-2xl font-semibold tracking-tight mb-2"
+                    className="text-2xl font-semibold tracking-tight mb-2 text-text-heading"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -18,7 +18,7 @@ export function GallerySection() {
                     Behind the scenes of work
                 </motion.h2>
                 <motion.p
-                    className="text-slate-400 mt-1 text-sm mb-8"
+                    className="text-text-secondary mt-1 text-sm mb-8"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}

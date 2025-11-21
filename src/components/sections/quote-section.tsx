@@ -13,10 +13,10 @@ export function QuoteSection() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <blockquote className="text-lg md:text-xl text-slate-300 italic mb-4">
-                        I’ve always believed every problem has a solution. With AI, finding that solution just stopped being a problem.
+                    <blockquote className="text-lg md:text-xl text-text-secondary italic mb-4">
+                        I don't just architect systems — I build them, ship them, and make them work in production. That's where real value lives.
                     </blockquote>
-                    <cite className="text-slate-400 text-sm">— Rafał Ulatowski</cite>
+                    <cite className="text-text-tertiary text-sm">— Rafał Ulatowski</cite>
                 </motion.div>
             </div>
         </section>
