@@ -1,4 +1,3 @@
-import { JsonLd } from "@/components/json-ld";
 import { HomeScreen } from "@/components/screens/home-screen";
 import { Metadata } from "next";
 
@@ -13,15 +12,6 @@ export const metadata: Metadata = {
 export default function Home() {
     return (
         <>
-            <JsonLd data={{
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                "name": "Rafał Ulatowski - Senior Azure Cloud Engineer",
-                "url": "https://rafalulatowski.com/",
-                "author": {
-                    "@id": "https://rafalulatowski.com/#person"
-                }
-            }} />
             <HomeScreen />
         </>
     );

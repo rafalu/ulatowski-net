@@ -21,12 +21,6 @@ export function Topbar() {
                             Home
                         </Link>
                         <Link
-                            href="/buy-coffee"
-                            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                        >
-                            Buy Coffee
-                        </Link>
-                        <Link
                             href="/portfolio"
                             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                         >

@@ -53,7 +53,7 @@ export function HeroSection() {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            Senior .NET Developer & Azure Architect
+                            Senior Azure Cloud Engineer & .NET Architect in Copenhagen
                         </motion.h1>
 
                         <motion.div
@@ -82,7 +82,7 @@ export function HeroSection() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.4 }}
                         >
-                            Senior .NET Developer & Azure Architect from Copenhagen. I help companies migrate to Azure, modernize legacy .NET systems, and implement robust CI/CD pipelines. Specializing in high-throughput platforms for B2B and fintech sectors.
+                            As an <strong>Azure consultant in Copenhagen / Denmark</strong>, I help companies migrate to Azure, modernize legacy .NET systems, and implement robust CI/CD pipelines. Specializing in <strong>Azure cloud architecture & cost optimization</strong> for high-throughput B2B and fintech sectors.
                         </motion.p>
 
                         <motion.p

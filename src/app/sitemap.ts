@@ -12,7 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/resume',
     '/gallery',
     '/contact',
-    '/buy-coffee',
   ]
 
   return routes.map((route) => ({

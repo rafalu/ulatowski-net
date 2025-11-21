@@ -2,7 +2,6 @@ import { JsonLd } from "@/components/json-ld";
 import { Footer, Header } from "@/components/layout-components";
 import { SiteShell } from "@/components/site-shell";
 import { ThemeProvider } from "@/components/theme-provider";
-import siteConfig from "@/config/site-config.json";
 import { GITHUB_URL, LINKEDIN_URL } from "@/lib/social";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -19,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rafalulatowski.com"),
-  title: "Senior Azure Cloud Engineer & .NET Consultant | Copenhagen (Remote)",
+  metadataBase: new URL("https://www.ulatowski.net"),
+  title: "Senior Azure Cloud Engineer in Copenhagen | .NET Consultant",
   description: "Senior Azure Cloud Engineer and .NET consultant. Based in Copenhagen, Denmark – working remote across EU/UK/US. Azure cloud architecture, DevOps, Bicep IaC, CI/CD and modernization of legacy .NET systems for fintech and B2B.",
   keywords: "Azure Cloud Engineer, .NET Consultant, DevOps Engineer, Azure Bicep, IaC, Senior Cloud Engineer Denmark, Copenhagen, Azure Architect, Cloud Migration, Azure App Service, VNets, Private Endpoints, Key Vault, CI/CD, GitHub Actions, Azure DevOps",
   authors: [{ name: "Rafał Ulatowski" }],
@@ -30,15 +29,15 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Senior Azure Cloud Engineer & .NET Consultant | Copenhagen (Remote)",
+    title: "Senior Azure Cloud Engineer in Copenhagen | .NET Consultant",
     description: "Senior Azure Cloud Engineer and .NET consultant. Based in Copenhagen, Denmark – working remote across EU/UK/US. Azure cloud architecture, DevOps, Bicep IaC, CI/CD and modernization of legacy .NET systems for fintech and B2B.",
-    url: "https://rafalulatowski.com",
+    url: "https://www.ulatowski.net",
     type: "website",
     locale: "en_US",
     siteName: "Rafał Ulatowski – Senior Azure Cloud Engineer",
     images: [
       {
-        url: "/og/rafal-ulatowski-azure-cloud-engineer.png",
+        url: "/og/azure-cloud-engineer.webp",
         width: 1200,
         height: 630,
         alt: "Rafał Ulatowski – Senior Azure Cloud Engineer in Copenhagen",
@@ -47,9 +46,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Senior Azure Cloud Engineer & .NET Consultant | Copenhagen (Remote)",
+    title: "Senior Azure Cloud Engineer in Copenhagen | .NET Consultant",
     description: "Senior Azure Cloud Engineer and .NET consultant. Based in Copenhagen, Denmark – working remote across EU/UK/US. Azure cloud architecture, DevOps, Bicep IaC, CI/CD and modernization of legacy .NET systems for fintech and B2B.",
-    images: ["/og/rafal-ulatowski-azure-cloud-engineer.png"],
+    images: ["/og/azure-cloud-engineer.webp"],
   },
   robots: {
     index: true,
@@ -76,6 +75,23 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Preconnect and DNS prefetch for performance */}
+        <link rel="preconnect" href="https://www.ulatowski.net" />
+        <link rel="dns-prefetch" href="https://www.ulatowski.net" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {isProd && GA_ID && (
+          <>
+            <link rel="preconnect" href="https://www.googletagmanager.com" />
+            <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+          </>
+        )}
+        {isProd && HOTJAR_ID && (
+          <>
+            <link rel="preconnect" href="https://static.hotjar.com" />
+            <link rel="dns-prefetch" href="https://static.hotjar.com" />
+          </>
+        )}
         {/* Google Analytics (only in production when NEXT_PUBLIC_GA_ID is set) */}
         {isProd && GA_ID && (
           <>
@@ -87,12 +103,6 @@ export default function RootLayout({
             />
           </>
         )}
-        {/* Inject a small runtime config object for non-sensitive values so client code can read them at runtime */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.__SITE_CONFIG = ${JSON.stringify(siteConfig)};`
-          }}
-        />
         {/* Hotjar Tracking Code (only in production when NEXT_PUBLIC_HOTJAR_ID is set) */}
         {isProd && HOTJAR_ID && (
           <script
@@ -104,53 +114,74 @@ export default function RootLayout({
         <JsonLd
           data={{
             "@context": "https://schema.org",
-            "@type": "Person",
-            "@id": "https://rafalulatowski.com/#person",
-            "name": "Rafal Ulatowski",
-            "alternateName": "Rafał Ulatowski",
-            "url": "https://rafalulatowski.com/",
-            "image": "https://rafalulatowski.com/images/profile.jpg",
-            "jobTitle": "Senior Azure Cloud Engineer & .NET Consultant",
-            "worksFor": {
-              "@type": "Organization",
-              "name": "Dawn Health"
-            },
-            "nationality": "Polish",
-            "knowsLanguage": [
-              "English",
-              "Polish",
-              "Danish"
-            ],
-            "homeLocation": {
-              "@type": "Place",
-              "name": "Copenhagen, Denmark"
-            },
-            "sameAs": [
-              LINKEDIN_URL,
-              GITHUB_URL
-            ],
-            "knowsAbout": [
-              "Microsoft Azure",
-              "Azure cloud architecture",
-              ".NET 8",
-              "C# backend development",
-              "Azure DevOps",
-              "CI/CD",
-              "Infrastructure as Code",
-              "Azure Bicep",
-              "Terraform on Azure",
-              "Event-driven architectures",
-              "Distributed systems",
-              "High-throughput trading systems",
-              "Payment platforms",
-              "Cloud Migration",
-              "Microservices Architecture"
-            ],
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Copenhagen",
-              "addressCountry": "Denmark"
-            }
+            "@graph": [
+              {
+                "@type": "Person",
+                "@id": "https://www.ulatowski.net/#person",
+                "name": "Rafal Ulatowski",
+                "alternateName": "Rafał Ulatowski",
+                "url": "https://www.ulatowski.net/",
+                "image": "https://www.ulatowski.net/images/profile.jpg",
+                "jobTitle": "Senior Azure Cloud Engineer & .NET Consultant",
+                "worksFor": {
+                  "@type": "Organization",
+                  "name": "Dawn Health"
+                },
+                "nationality": "Polish",
+                "knowsLanguage": ["English", "Polish", "Danish"],
+                "homeLocation": {
+                  "@type": "Place",
+                  "name": "Copenhagen, Denmark"
+                },
+                "sameAs": [
+                  LINKEDIN_URL,
+                  GITHUB_URL
+                ],
+                "knowsAbout": [
+                  "Microsoft Azure",
+                  "Azure cloud architecture",
+                  ".NET 8",
+                  "C# backend development",
+                  "Azure DevOps",
+                  "CI/CD",
+                  "Infrastructure as Code",
+                  "Azure Bicep",
+                  "Terraform on Azure",
+                  "Event-driven architectures",
+                  "Distributed systems",
+                  "High-throughput trading systems",
+                  "Payment platforms",
+                  "Cloud Migration",
+                  "Microservices Architecture"
+                ],
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Copenhagen",
+                  "addressCountry": "Denmark"
+                }
+              },
+              {
+                "@type": "WebSite",
+                "@id": "https://www.ulatowski.net/#website",
+                "url": "https://www.ulatowski.net/",
+                "name": "Rafał Ulatowski – Senior Azure Cloud Engineer",
+                "publisher": {
+                  "@id": "https://www.ulatowski.net/#person"
+                }
+              },
+              {
+                "@type": "WebPage",
+                "@id": "https://www.ulatowski.net/#webpage",
+                "url": "https://www.ulatowski.net/",
+                "name": "Senior Azure Cloud Engineer & .NET Consultant",
+                "isPartOf": {
+                  "@id": "https://www.ulatowski.net/#website"
+                },
+                "about": {
+                  "@id": "https://www.ulatowski.net/#person"
+                }
+              }
+            ]
           }}
         />
       </head>

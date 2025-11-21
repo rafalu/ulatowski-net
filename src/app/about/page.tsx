@@ -14,22 +14,18 @@ export default function AboutPage() {
         <>
             <JsonLd data={{
                 "@context": "https://schema.org",
-                "@type": "ProfilePage",
-                "mainEntity": {
-                    "@type": "Person",
-                    "name": "Rafał Ulatowski",
-                    "jobTitle": "Senior Azure Cloud Engineer & .NET Developer",
-                    "description": "Senior Azure Cloud Engineer & .NET Developer with 15+ years of experience designing and delivering secure, scalable, cloud-native systems.",
-                    "knowsAbout": [
-                        "Azure", "App Service", "Functions", "AKS", "ACR", "Cosmos DB", "SQL", "Storage", "VNets", "Private Links", "Key Vault",
-                        "Bicep", "Terraform",
-                        "GitHub Actions", "Azure DevOps", "Docker",
-                        ".NET 6–10", "REST APIs", "clean architecture", "domain-driven design",
-                        "identity", "RBAC", "secrets", "zero-trust patterns"
-                    ]
-                }
+                "@type": "AboutPage",
+                "@id": "https://www.ulatowski.net/about/#webpage",
+                "url": "https://www.ulatowski.net/about",
+                "name": "About Rafał Ulatowski – Senior Azure Cloud Engineer",
+                "isPartOf": {
+                    "@id": "https://www.ulatowski.net/#website"
+                },
+                "about": {
+                    "@id": "https://www.ulatowski.net/#person"
+                },
+                "description": "About page for Rafał Ulatowski, Senior Azure Cloud Engineer & .NET Consultant in Copenhagen."
             }} />
-
             <div className="mx-auto max-w-3xl px-4 py-12 md:py-20">
                 <div className="space-y-12">
                     {/* Header Section */}

@@ -10,12 +10,12 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
     const services = [
         {
             id: "architecture",
-            label: "Azure Cloud Architecture & Modernization",
+            label: "Azure Cloud Consulting for B2B & Fintech",
             tagline: "Modernize legacy .NET and migrate to Azure.",
             accent: "from-sky-500/30 via-violet-500/30 to-fuchsia-500/30",
             icon: "☁️",
             points: [
-                { icon: "🏗️", text: "Azure cloud architecture design & strategy" },
+                { icon: "🏗️", text: "Azure cloud architecture & cost optimization" },
                 { icon: "🔄", text: "Modernize legacy .NET to cloud-native" },
                 { icon: "🚀", text: "Migrate to Azure with minimal downtime" },
                 { icon: "📡", text: "Event-driven systems & microservices" }
@@ -23,26 +23,26 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
         },
         {
             id: "devops",
-            label: "CI/CD and DevOps on Azure",
+            label: "CI/CD & DevOps on Azure (Azure DevOps, GitHub Actions)",
             tagline: "Reliable pipelines and ephemeral environments.",
             accent: "from-cyan-500/25 via-sky-500/25 to-emerald-500/25",
             icon: "🚀",
             points: [
-                { icon: "⚙️", text: "Azure DevOps Pipelines & GitHub Actions" },
+                { icon: "⚙️", text: "DevOps & CI/CD for .NET on Azure" },
                 { icon: "📦", text: "Advanced CI/CD for .NET applications" },
                 { icon: "🧪", text: "Ephemeral environments for testing" },
                 { icon: "✅", text: "Automated releases & quality gates" }
             ]
         },
         {
-            id: "iac",
-            label: "Infrastructure as Code (Bicep & Terraform)",
+            id: "migration",
+            label: "Azure Migration & Legacy .NET Modernization",
             tagline: "Reproducible, versioned cloud infrastructure.",
             accent: "from-amber-500/25 via-orange-500/25 to-rose-500/25",
             icon: "🏗️",
             points: [
-                { icon: "📄", text: "Azure Bicep & Terraform development" },
-                { icon: "👨‍💻", text: "Infrastructure as Code consultant services" },
+                { icon: "📄", text: "Azure Bicep IaC consultant services" },
+                { icon: "👨‍💻", text: "Infrastructure as Code (Terraform/Bicep)" },
                 { icon: "🔐", text: "Reproducible, secure cloud environments" },
                 { icon: "📜", text: "Policy as Code & compliance" }
             ]

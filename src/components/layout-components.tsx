@@ -7,10 +7,13 @@ import siteConfig from "@/config/site-config.json";
 import { GITHUB_URL, LINKEDIN_URL } from "@/lib/social";
 import { Github, Globe, Linkedin, Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const pathname = usePathname();
+    const isComingSoon = pathname === "/coming-soon";
 
     return (
         <>
@@ -25,17 +28,19 @@ export function Header() {
 
                         {/* Desktop Nav */}
                         <div className="hidden md:flex items-center gap-6">
-                            <nav className="flex items-center gap-6 text-sm text-slate-300">
-                                <Link className="hover:text-white" href="/about">About</Link>
-                                <Link className="hover:text-white" href="/resume">Resume</Link>
-                                <Link className="hover:text-white" href="/services">Services</Link>
-                                <Link className="hover:text-white" href="/gallery">Gallery</Link>
-                                <Link className="hover:text-white" href="/contact">Contact</Link>
-                            </nav>
+                            {!isComingSoon && (
+                                <nav className="flex items-center gap-6 text-sm text-slate-300">
+                                    <Link className="hover:text-white" href="/about">About</Link>
+                                    <Link className="hover:text-white" href="/resume">Resume</Link>
+                                    <Link className="hover:text-white" href="/services">Services</Link>
+                                    <Link className="hover:text-white" href="/gallery">Gallery</Link>
+                                    <Link className="hover:text-white" href="/contact">Contact</Link>
+                                </nav>
+                            )}
 
                             {/* Hire Me Button */}
                             <Button asChild variant="outline" className="bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white">
-                                <Link href="/contact">
+                                <Link href={isComingSoon ? "mailto:contact@ulatowski.net" : "/contact"}>
                                     Hire me
                                 </Link>
                             </Button>
@@ -45,25 +50,27 @@ export function Header() {
                         {/* Mobile Menu Toggle */}
                         <div className="flex items-center gap-4 md:hidden">
                             <Button asChild variant="outline" size="sm" className="bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white">
-                                <Link href="/contact">
+                                <Link href={isComingSoon ? "mailto:contact@ulatowski.net" : "/contact"}>
                                     Hire me
                                 </Link>
                             </Button>
                             <ThemeToggle className="bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white" />
-                            <button
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="text-slate-300 hover:text-white"
-                                aria-label="Toggle menu"
-                            >
-                                {isMenuOpen ? <X className="size-6" /> : <Menu className="size-6" />}
-                            </button>
+                            {!isComingSoon && (
+                                <button
+                                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                    className="text-slate-300 hover:text-white"
+                                    aria-label="Toggle menu"
+                                >
+                                    {isMenuOpen ? <X className="size-6" /> : <Menu className="size-6" />}
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>
                 <div className="h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent" />
 
                 {/* Mobile Menu Overlay */}
-                {isMenuOpen && (
+                {isMenuOpen && !isComingSoon && (
                     <div className="md:hidden absolute top-14 left-0 right-0 bg-[#050816] border-b border-white/10 p-4 shadow-2xl animate-in slide-in-from-top-5">
                         <nav className="flex flex-col space-y-4 text-center">
                             <Link
