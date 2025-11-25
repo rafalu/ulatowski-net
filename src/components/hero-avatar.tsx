@@ -41,47 +41,49 @@ export default function HeroAvatarReplaceable() {
         </div>
 
         {/* Stat badges - evenly spaced on a circle around the avatar */}
-        {(() => {
-          const badges = [
-            { value: "15+", label: "years professional experience" },
-            { value: "10+", label: "Enterprise projects delivered" },
-            { value: "5+", label: "years in Azure & cloud-native systems" },
-            { value: "1M+", label: "daily transactions supported" },
-            { value: "100M+", label: "systems handling daily transactions" },
-          ];
-          const n = badges.length;
+        <div className="hidden md:block">
+          {(() => {
+            const badges = [
+              { value: "16+", label: "years professional experience" },
+              { value: "10+", label: "Enterprise projects delivered" },
+              { value: "5+", label: "years in Azure & cloud-native systems" },
+              { value: "1M+", label: "daily transactions supported" },
+              { value: "100M+", label: "systems handling daily transactions" },
+            ];
+            const n = badges.length;
 
-          // responsive radius: larger screens place badges further out so labels sit outside the avatar circle
-          const innerWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
-          // choose radius by breakpoint
-          let radius = 170;
-          if (innerWidth < 640) radius = 110; // small screens
-          else if (innerWidth < 1024) radius = 150; // medium
-          else radius = 180; // large
+            // responsive radius: larger screens place badges further out so labels sit outside the avatar circle
+            const innerWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
+            // choose radius by breakpoint
+            let radius = 170;
+            if (innerWidth < 640) radius = 110; // small screens
+            else if (innerWidth < 1024) radius = 150; // medium
+            else radius = 180; // large
 
-          return badges.map((b, i) => {
-            const angle = (i * (2 * Math.PI) / n) - Math.PI / 2; // start at top
-            const x = Math.round(radius * Math.cos(angle));
-            const y = Math.round(radius * Math.sin(angle));
+            return badges.map((b, i) => {
+              const angle = (i * (2 * Math.PI) / n) - Math.PI / 2; // start at top
+              const x = Math.round(radius * Math.cos(angle));
+              const y = Math.round(radius * Math.sin(angle));
 
-            return (
-              <div
-                key={b.value}
-                className="absolute"
-                style={{
-                  left: `calc(50% + ${x}px)`,
-                  top: `calc(50% + ${y}px)`,
-                  transform: "translate(-50%, -50%)",
-                }}
-              >
-                <div className="backdrop-blur-md bg-[var(--badge-bg)] border border-[var(--badge-border)] rounded-2xl px-4 py-2 text-xs shadow-lg text-center max-w-[10rem] transition-transform duration-300 hover:scale-110 cursor-default">
-                  <p className="text-lg font-semibold leading-none text-[var(--badge-text)]">{b.value}</p>
-                  <p className="text-[10px] text-[var(--badge-subtext)] mt-1">{b.label}</p>
+              return (
+                <div
+                  key={b.value}
+                  className="absolute"
+                  style={{
+                    left: `calc(50% + ${x}px)`,
+                    top: `calc(50% + ${y}px)`,
+                    transform: "translate(-50%, -50%)",
+                  }}
+                >
+                  <div className="backdrop-blur-md bg-[var(--badge-bg)] border border-[var(--badge-border)] rounded-2xl px-4 py-2 text-xs shadow-lg text-center max-w-[10rem] transition-transform duration-300 hover:scale-110 cursor-default">
+                    <p className="text-lg font-semibold leading-none text-[var(--badge-text)]">{b.value}</p>
+                    <p className="text-[10px] text-[var(--badge-subtext)] mt-1">{b.label}</p>
+                  </div>
                 </div>
-              </div>
-            );
-          });
-        })()}
+              );
+            });
+          })()}
+        </div>
       </div>
     </div>
   );

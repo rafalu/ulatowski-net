@@ -220,7 +220,7 @@ export default function RootLayout({
           ) : (
             <SiteShell>
               <Header />
-              <main className="min-h-[calc(100vh-14rem)] pt-24">
+              <main className="min-h-[calc(100vh-14rem)]">
                 {children}
               </main>
               <Footer />
