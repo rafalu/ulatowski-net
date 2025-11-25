@@ -1,23 +1,13 @@
 "use client"
 
 import Image from "next/image";
-import { ChangeEvent, useState } from "react";
 
-const defaultAvatarPng = "/images/rafal-ulatowski-profile-photo.png";
 const defaultAvatarWebp = "/images/rafal-ulatowski-profile-photo.webp";
 
 export default function HeroAvatarReplaceable() {
   // Use WebP by default (modern browsers support WebP). Keep PNG fallback available but
   // default to the pre-converted WebP to reduce client-side control flow and early swap.
-  const [avatarUrl, setAvatarUrl] = useState<string>(defaultAvatarWebp);
-
-  const handleAvatarChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    const objectUrl = URL.createObjectURL(file);
-    setAvatarUrl(objectUrl);
-  };
+  const avatarUrl = defaultAvatarWebp;
 
   return (
     <div className="space-y-6">
@@ -28,6 +18,7 @@ export default function HeroAvatarReplaceable() {
         {/* Inner circle */}
         <div className="relative h-64 w-64 sm:h-72 sm:w-72 rounded-full bg-gradient-to-b from-[var(--avatar-gradient-from)] to-[var(--avatar-gradient-to)] flex items-center justify-center overflow-hidden">
           {avatarUrl.startsWith('blob:') ? (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={avatarUrl}
               alt="Rafał Ulatowski - Senior Azure Cloud Architect & .NET Consultant in Copenhagen, specializing in Cloud Migration and DevOps"

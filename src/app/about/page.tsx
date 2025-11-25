@@ -37,14 +37,14 @@ export default function AboutPage() {
                             About Me
                         </h1>
                         <p className="text-xl leading-relaxed text-text-body">
-                            I'm a developer by heart, architect by experience. Senior Azure Cloud Architect & .NET Developer with 15+ years of building and shipping secure, scalable, production systems. I write the code, build the infrastructure, set up the pipelines, and ensure it all runs reliably in production. End-to-end delivery is what I do.
+                            I&apos;m a developer by heart, architect by experience. Senior Azure Cloud Architect & .NET Developer with 15+ years of building and shipping secure, scalable, production systems. I write the code, build the infrastructure, set up the pipelines, and ensure it all runs reliably in production. End-to-end delivery is what I do.
                         </p>
                     </div>
 
                     {/* Main Content */}
                     <div className="prose prose-invert prose-lg max-w-none text-text-secondary">
                         <p>
-                            I build and ship production systems for healthcare, fintech, and high-traffic SaaS platforms. I don't stop at architecture diagrams — I write the .NET code, build the Azure infrastructure with Bicep/Terraform, implement the CI/CD pipelines, and make sure everything runs reliably in production. From distributed messaging to performance optimization, I <Link href="/services" className="text-sky-600 dark:text-sky-300 hover:underline">deliver complete solutions</Link>.
+                            I build and ship production systems for healthcare, fintech, and high-traffic SaaS platforms. I don&apos;t stop at architecture diagrams — I write the .NET code, build the Azure infrastructure with Bicep/Terraform, implement the CI/CD pipelines, and make sure everything runs reliably in production. From distributed messaging to performance optimization, I <Link href="/services" className="text-sky-600 dark:text-sky-300 hover:underline">deliver complete solutions</Link>.
                         </p>
                     </div>
 
@@ -64,7 +64,7 @@ export default function AboutPage() {
                                 <h3 className="font-medium text-primary">Full-Stack</h3>
                                 <p className="text-sm text-text-secondary leading-relaxed">Blazor (Server/WebAssembly)</p>
                                 <p className="text-sm text-text-secondary leading-relaxed">Razor Pages (ASP.NET Core)</p>
-                                <p className="text-sm text-text-secondary leading-relaxed">React & Next.js (projektowo / non-commercial)</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">React &amp; Next.js (&quot;projektowo / non-commercial&quot;)</p>
                                 <p className="text-sm text-text-secondary leading-relaxed">TypeScript</p>
                                 <p className="text-sm text-text-secondary leading-relaxed">Component-driven development</p>
                                 <p className="text-sm text-text-secondary leading-relaxed">Rapid prototyping & internal tools with GitHub Copilot</p>
@@ -99,7 +99,7 @@ export default function AboutPage() {
                     {/* Closing Statement */}
                     <div className="border-l-4 border-sky-500 pl-6 py-2">
                         <p className="text-lg text-text-body italic">
-                            "I build systems that ship. From writing .NET code to deploying Azure infrastructure, I own the complete delivery cycle. If you need someone who doesn't just design but actually builds, deploys, and maintains production systems — that's where I deliver the most value."
+                            &quot;I build systems that ship. From writing .NET code to deploying Azure infrastructure, I own the complete delivery cycle. If you need someone who doesn&apos;t just design but actually builds, deploys, and maintains production systems — that&apos;s where I deliver the most value.&quot;
                         </p>
                     </div>
 

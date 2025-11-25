@@ -3,6 +3,7 @@
   Converts selected PNG/JPG images in public/images to WebP using sharp.
   Usage: node scripts/convert-images-to-webp.js
 */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');

@@ -1,5 +1,6 @@
 "use client";
 
+import LocalTime from "@/components/local-time";
 import { ObfuscatedMail } from "@/components/obfuscated-mail";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
@@ -113,14 +114,13 @@ export function Header() {
 
 export function Footer() {
     const year = new Date().getFullYear();
-    const timeString = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     return (
         <section id="footer" className="relative">
             <div className="h-px w-full bg-gradient-to-r from-transparent via-border to-transparent" />
             <footer className="mx-auto max-w-6xl px-4 py-10 text-sm text-muted-foreground flex flex-col md:flex-row items-center justify-between gap-3">
                 <div className="flex flex-col items-center md:items-start gap-2">
                     <p>© {year} Rafał Ulatowski – Senior Cloud Architect</p>
-                    <p className="text-xs">Based in Copenhagen, Denmark · {timeString} (local time)</p>
+                    <p className="text-xs">Based in Copenhagen, Denmark · <LocalTime className="inline" /> (local time)</p>
                 </div>
                 <div className="flex items-center gap-6">
                     <ObfuscatedMail email={siteConfig.email} className="hover:text-foreground transition-colors" />

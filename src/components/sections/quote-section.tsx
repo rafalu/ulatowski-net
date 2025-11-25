@@ -14,7 +14,7 @@ export function QuoteSection() {
                     transition={{ duration: 0.6 }}
                 >
                     <blockquote className="text-lg md:text-xl text-text-secondary italic mb-4">
-                        I don't just architect systems — I build them, ship them, and make them work in production. That's where real value lives.
+                        I don&apos;t just architect systems — I build them, ship them, and make them work in production. That&apos;s where real value lives.
                     </blockquote>
                     <cite className="text-text-tertiary text-sm">— Rafał Ulatowski</cite>
                 </motion.div>

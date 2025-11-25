@@ -10,6 +10,16 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Check, Copy, Github, Linkedin, Mail } from "lucide-react";
 import { useState } from "react";
 
+declare global {
+  interface Window {
+    gtag?: (
+      command: string,
+      targetId: string,
+      config?: Record<string, unknown>
+    ) => void;
+  }
+}
+
 export function ContactScreen() {
     const { message, show, hide } = useToast();
     const [isCopied, setIsCopied] = useState(false);
@@ -24,13 +34,13 @@ export function ContactScreen() {
             setTimeout(() => setIsCopied(false), 2000);
 
             // GA4 event tracking (only if gtag is available)
-            if (typeof window !== 'undefined' && (window as any).gtag) {
-                (window as any).gtag('event', 'email_copy', {
+            if (typeof window !== 'undefined' && window.gtag) {
+                window.gtag('event', 'email_copy', {
                     event_category: 'engagement',
                     event_label: 'contact_page',
                 });
             }
-        } catch (err) {
+        } catch {
             show("Failed to copy email");
         }
     };
@@ -48,7 +58,7 @@ export function ContactScreen() {
                         Contact – Hire Someone Who Actually Delivers
                     </h1>
                     <p className="text-lg text-text-body max-w-2xl mb-10">
-                        I'm available for projects where you need someone who builds and ships complete solutions — not just plans or designs, but working systems running in production. If you need .NET code written, Azure infrastructure built, and CI/CD pipelines delivering reliably, let's talk.
+                        I&apos;m available for projects where you need someone who builds and ships complete solutions — not just plans or designs, but working systems running in production. If you need .NET code written, Azure infrastructure built, and CI/CD pipelines delivering reliably, let&apos;s talk.
                     </p>
 
                     <div className="grid md:grid-cols-12 gap-8">
@@ -166,7 +176,7 @@ export function ContactScreen() {
 
                                 <div className="mt-8 pt-8 border-t border-border">
                                     <p className="text-sm text-text-secondary leading-relaxed">
-                                        I typically respond within 24 hours. For urgent matters, please mark your email subject as "Urgent".
+                                        I typically respond within 24 hours. For urgent matters, please mark your email subject as &quot;Urgent&quot;.
                                     </p>
                                 </div>
                             </div>
