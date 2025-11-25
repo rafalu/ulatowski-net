@@ -1,0 +1,527 @@
+[
+    {
+        "consultantCompetenceId": 474153,
+        "competenceId": 2492,
+        "competenceName": "Frontend",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "TenPlus"
+    },
+    {
+        "consultantCompetenceId": 474155,
+        "competenceId": 2804,
+        "competenceName": "Agile",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "SevenPlus"
+    },
+    {
+        "consultantCompetenceId": 474156,
+        "competenceId": 1698,
+        "competenceName": "IT Architecture",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "SevenPlus"
+    },
+    {
+        "consultantCompetenceId": 474157,
+        "competenceId": 2390,
+        "competenceName": "Business Analysis",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "TwoPlus"
+    },
+    {
+        "consultantCompetenceId": 474158,
+        "competenceId": 87,
+        "competenceName": "System Analysis",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "TenPlus"
+    },
+    {
+        "consultantCompetenceId": 474159,
+        "competenceId": 88,
+        "competenceName": "System Design",
+        "competenceLevel": "Expert",
+        "yearsOfExperience": "FifteenPlus"
+    },
+    {
+        "consultantCompetenceId": 474160,
+        "competenceId": 2430,
+        "competenceName": "Performance Optimization",
+        "competenceLevel": "Expert",
+        "yearsOfExperience": "FifteenPlus"
+    },
+    {
+        "consultantCompetenceId": 474161,
+        "competenceId": 5049,
+        "competenceName": "Scrum Product Owner",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "OnePlus"
+    },
+    {
+        "consultantCompetenceId": 474162,
+        "competenceId": 6243,
+        "competenceName": "Software Development",
+        "competenceLevel": "Expert",
+        "yearsOfExperience": "TenPlus"
+    },
+    {
+        "consultantCompetenceId": 474163,
+        "competenceId": 2519,
+        "competenceName": "Scrum",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "SevenPlus"
+    },
+    {
+        "consultantCompetenceId": 474164,
+        "competenceId": 2221,
+        "competenceName": "SOA",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "ThreePlus"
+    },
+    {
+        "consultantCompetenceId": 474165,
+        "competenceId": 2437,
+        "competenceName": "Team Lead",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "OnePlus"
+    },
+    {
+        "consultantCompetenceId": 474166,
+        "competenceId": 840,
+        "competenceName": "Web Services",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474169,
+        "competenceId": 3222,
+        "competenceName": "Financial Services",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "SevenPlus"
+    },
+    {
+        "consultantCompetenceId": 474170,
+        "competenceId": 261,
+        "competenceName": "C#",
+        "competenceLevel": "Expert",
+        "yearsOfExperience": "FifteenPlus"
+    },
+    {
+        "consultantCompetenceId": 474171,
+        "competenceId": 273,
+        "competenceName": "HTML",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "TenPlus"
+    },
+    {
+        "consultantCompetenceId": 474172,
+        "competenceId": 275,
+        "competenceName": "JavaScript",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "TenPlus"
+    },
+    {
+        "consultantCompetenceId": 474173,
+        "competenceId": 298,
+        "competenceName": "SQL",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "TenPlus"
+    },
+    {
+        "consultantCompetenceId": 474174,
+        "competenceId": 1271,
+        "competenceName": ".NET",
+        "competenceLevel": "Expert",
+        "yearsOfExperience": "FifteenPlus"
+    },
+    {
+        "consultantCompetenceId": 474175,
+        "competenceId": 1388,
+        "competenceName": "ASP.NET",
+        "competenceLevel": "Expert",
+        "yearsOfExperience": "SevenPlus"
+    },
+    {
+        "consultantCompetenceId": 474176,
+        "competenceId": 3263,
+        "competenceName": "Git",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474177,
+        "competenceId": 3412,
+        "competenceName": "REST",
+        "competenceLevel": "Expert",
+        "yearsOfExperience": "SevenPlus"
+    },
+    {
+        "consultantCompetenceId": 474178,
+        "competenceId": 5136,
+        "competenceName": "SOLID",
+        "competenceLevel": "Expert",
+        "yearsOfExperience": "SevenPlus"
+    },
+    {
+        "consultantCompetenceId": 474179,
+        "competenceId": 2579,
+        "competenceName": "WCF",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "ThreePlus"
+    },
+    {
+        "consultantCompetenceId": 474181,
+        "competenceId": 2392,
+        "competenceName": "WinForms",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474185,
+        "competenceId": 2929,
+        "competenceName": "TFS",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474186,
+        "competenceId": 2930,
+        "competenceName": "Windows Services",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474187,
+        "competenceId": 1037,
+        "competenceName": "Data Design Patterns",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "SevenPlus"
+    },
+    {
+        "consultantCompetenceId": 474188,
+        "competenceId": 3003,
+        "competenceName": "Multithreading",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "TenPlus"
+    },
+    {
+        "consultantCompetenceId": 474189,
+        "competenceId": 2440,
+        "competenceName": "Unit Testing",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "TenPlus"
+    },
+    {
+        "consultantCompetenceId": 474190,
+        "competenceId": 5296,
+        "competenceName": "User story (Agile)",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "ThreePlus"
+    },
+    {
+        "consultantCompetenceId": 474191,
+        "competenceId": 4520,
+        "competenceName": "Transmission Control Protocol (TCP)",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474192,
+        "competenceId": 84,
+        "competenceName": "IT Support",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "ThreePlus"
+    },
+    {
+        "consultantCompetenceId": 474194,
+        "competenceId": 1763,
+        "competenceName": "Web Development",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474198,
+        "competenceId": 321,
+        "competenceName": "CSS",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "SevenPlus"
+    },
+    {
+        "consultantCompetenceId": 474200,
+        "competenceId": 3650,
+        "competenceName": "Solution Architecture",
+        "competenceLevel": "Expert",
+        "yearsOfExperience": "SevenPlus"
+    },
+    {
+        "consultantCompetenceId": 474202,
+        "competenceId": 5196,
+        "competenceName": "System Architecture",
+        "competenceLevel": "Expert",
+        "yearsOfExperience": "TenPlus"
+    },
+    {
+        "consultantCompetenceId": 474205,
+        "competenceId": 5621,
+        "competenceName": "Agile Release Train (ART)",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474206,
+        "competenceId": 5995,
+        "competenceName": "Burn-down Chart (Scrum)",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474207,
+        "competenceId": 6003,
+        "competenceName": "Definition of Done (Scrum)",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474208,
+        "competenceId": 6004,
+        "competenceName": "Product Backlog",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474209,
+        "competenceId": 6009,
+        "competenceName": "Product Backlog Refinement",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474210,
+        "competenceId": 6008,
+        "competenceName": "Sprint",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474211,
+        "competenceId": 6009,
+        "competenceName": "Sprint Backlog",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474212,
+        "competenceId": 6010,
+        "competenceName": "Sprint Goal",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474213,
+        "competenceId": 6011,
+        "competenceName": "Sprint Planning",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474214,
+        "competenceId": 6012,
+        "competenceName": "Sprint Retrospective",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 474215,
+        "competenceId": 6014,
+        "competenceName": "Technical Debt (Scrum)",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "FivePlus"
+    },
+    {
+        "consultantCompetenceId": 2095505,
+        "competenceId": 2493,
+        "competenceName": "Backend",
+        "competenceLevel": "Expert",
+        "yearsOfExperience": "TenPlus"
+    },
+    {
+        "consultantCompetenceId": 2095514,
+        "competenceId": 4093,
+        "competenceName": "SQL Azure",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "ThreePlus"
+    },
+    {
+        "consultantCompetenceId": 2095515,
+        "competenceId": 4092,
+        "competenceName": "Microsoft Azure",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "TwoPlus"
+    },
+    {
+        "consultantCompetenceId": 2095516,
+        "competenceId": 5325,
+        "competenceName": "Microsoft Azure Active Directory",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "TwoPlus"
+    },
+    {
+        "consultantCompetenceId": 2095517,
+        "competenceId": 6347,
+        "competenceName": "Microsoft Azure Application Insights",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "TwoPlus"
+    },
+    {
+        "consultantCompetenceId": 2095518,
+        "competenceId": 5982,
+        "competenceName": "Microsoft Azure Cosmos DB",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "TwoPlus"
+    },
+    {
+        "consultantCompetenceId": 2095519,
+        "competenceId": 5981,
+        "competenceName": "Microsoft Azure DevOps",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "TwoPlus"
+    },
+    {
+        "consultantCompetenceId": 2095522,
+        "competenceId": 6240,
+        "competenceName": "Microsoft Azure Functions",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "TwoPlus"
+    },
+    {
+        "consultantCompetenceId": 2095523,
+        "competenceId": 6498,
+        "competenceName": "MFA (Multi-Factor Authentication)",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "TwoPlus"
+    },
+    {
+        "consultantCompetenceId": 2095524,
+        "competenceId": 6241,
+        "competenceName": "Microsoft Azure Service Bus",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "TwoPlus"
+    },
+    {
+        "consultantCompetenceId": 2095525,
+        "competenceId": 4819,
+        "competenceName": "Microsoft Azure SQL Database",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "TwoPlus"
+    },
+    {
+        "consultantCompetenceId": 2095526,
+        "competenceId": 6239,
+        "competenceName": "Microsoft Azure Storage",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "TwoPlus"
+    },
+    {
+        "consultantCompetenceId": 2095527,
+        "competenceId": 4820,
+        "competenceName": "Microsoft Azure Table Storage",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "TwoPlus"
+    },
+    {
+        "consultantCompetenceId": 2095528,
+        "competenceId": 5610,
+        "competenceName": "Microsoft Azure Web Apps",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "TwoPlus"
+    },
+    {
+        "consultantCompetenceId": 2095532,
+        "competenceId": 5447,
+        "competenceName": ".NET Core",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "ThreePlus"
+    },
+    {
+        "consultantCompetenceId": 2095533,
+        "competenceId": 4245,
+        "competenceName": "Entity Framework (EF)",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "ThreePlus"
+    },
+    {
+        "consultantCompetenceId": 2095534,
+        "competenceId": 6024,
+        "competenceName": "ASP.NET Core",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "ThreePlus"
+    },
+    {
+        "consultantCompetenceId": 2095535,
+        "competenceId": 6025,
+        "competenceName": "ASP.NET Core MVC",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "ThreePlus"
+    },
+    {
+        "consultantCompetenceId": 2095536,
+        "competenceId": 4387,
+        "competenceName": "ASP.NET SignalR",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "ThreePlus"
+    },
+    {
+        "consultantCompetenceId": 2095537,
+        "competenceId": 4384,
+        "competenceName": "ASP.NET Web API",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "ThreePlus"
+    },
+    {
+        "consultantCompetenceId": 2095540,
+        "competenceId": 1810,
+        "competenceName": ".NET Compact Framework",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "ThreePlus"
+    },
+    {
+        "consultantCompetenceId": 2095542,
+        "competenceId": 3252,
+        "competenceName": "ASP.NET MVC",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "ThreePlus"
+    },
+    {
+        "consultantCompetenceId": 13816005,
+        "competenceId": 4918,
+        "competenceName": "React",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "LessThanOne"
+    },
+    {
+        "consultantCompetenceId": 13816008,
+        "competenceId": 4501,
+        "competenceName": "TypeScript",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "OnePlus"
+    },
+    {
+        "consultantCompetenceId": 13816011,
+        "competenceId": 4790,
+        "competenceName": "DevOps",
+        "competenceLevel": "VeryExperienced",
+        "yearsOfExperience": "ThreePlus"
+    },
+    {
+        "consultantCompetenceId": 13816014,
+        "competenceId": 3023,
+        "competenceName": "ISO 20022 - Financial Services",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "ThreePlus"
+    },
+    {
+        "consultantCompetenceId": 13816374,
+        "competenceId": 1701,
+        "competenceName": "Artificial Intelligence (AI)",
+        "competenceLevel": "Experienced",
+        "yearsOfExperience": "OnePlus"
+    }
+]

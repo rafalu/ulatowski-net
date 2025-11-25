@@ -33,7 +33,6 @@ export function Header() {
                                     <Link className="hover:text-foreground transition-colors" href="/about">About</Link>
                                     <Link className="hover:text-foreground transition-colors" href="/resume">Resume</Link>
                                     <Link className="hover:text-foreground transition-colors" href="/services">Services</Link>
-                                    <Link className="hover:text-foreground transition-colors" href="/gallery">Gallery</Link>
                                     <Link className="hover:text-foreground transition-colors" href="/contact">Contact</Link>
                                 </nav>
                             )}
@@ -94,13 +93,7 @@ export function Header() {
                             >
                                 Services
                             </Link>
-                            <Link
-                                className="text-muted-foreground hover:text-foreground py-2 transition-colors"
-                                href="/gallery"
-                                onClick={() => setIsMenuOpen(false)}
-                            >
-                                Gallery
-                            </Link>
+                            
                             <Link
                                 className="text-muted-foreground hover:text-foreground py-2 transition-colors"
                                 href="/contact"

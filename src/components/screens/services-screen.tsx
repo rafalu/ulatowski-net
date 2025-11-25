@@ -1,12 +1,14 @@
 "use client";
 
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ServicesSection } from "@/components/sections/services-section";
 import { motion } from "framer-motion";
 
 export function ServicesScreen() {
     return (
-        <div className="pt-24 pb-16">
+        <div className="pb-16">
             <div className="mx-auto max-w-6xl px-4 mb-12">
+                <Breadcrumbs items={[{ label: "Services" }]} />
                 <motion.h1
                     className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-text-heading"
                     initial={{ opacity: 0, y: 20 }}

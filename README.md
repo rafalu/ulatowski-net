@@ -68,6 +68,20 @@ steps:
 ```
 
 If you build locally or run a custom server, create `.env.production` on the server or provide the variables to the process environment prior to building.
+# Image optimization
+
+This repo includes a small script to convert raster images located in `public/images` to WebP format using `sharp`.
+
+Run locally:
+
+```powershell
+pnpm install
+pnpm run convert-images
+```
+
+# Lighthouse CI
+
+There's a GitHub Actions workflow `.github/workflows/lighthouse-ci.yml` which runs weekly (and on-demand) to gather Lighthouse metrics for the production site. Set `SITE_URL` as a GitHub secret (e.g. `https://ulatowski.net`) and optionally `LHCI_GITHUB_APP_TOKEN` for artifact uploads.
 # ulatowski-net
 
 <!-- Test deploy trigger - 2025-11-21 03:11:21 -->

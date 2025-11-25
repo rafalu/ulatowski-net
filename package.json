@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "convert-images": "node scripts/convert-images-to-webp.js"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",

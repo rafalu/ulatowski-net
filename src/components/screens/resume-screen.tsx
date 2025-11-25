@@ -1,4 +1,6 @@
 "use client";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+import skillsData from "@/config/skills.json";
 import { motion } from "framer-motion";
 import { Briefcase, Download, GraduationCap } from "lucide-react";
 import Link from "next/link";
@@ -104,74 +106,83 @@ const defaultItems: WorkTimelineItem[] = [
     },
 ];
 
-const skillCards = [
-    {
-        id: "cloud-devops",
-        label: "Azure cloud & DevOps platform",
-        tagline: "Complete Azure delivery — built, deployed, running.",
-        accent: "from-cyan-500/25 via-sky-500/25 to-emerald-500/25",
-        icon: "☁️",
-        points: [
-            "Distributed systems on Azure (App Service, Functions, containers)",
-            "Event-driven & microservices architectures for real-time workloads",
-            "CI/CD with Azure DevOps & GitHub Actions, reusable YAML pipelines",
-            "Terraform/Bicep IaC, VNets, Private Endpoints, Key Vault & App Insights",
-        ],
-    },
-    {
-        id: "backend",
-        label: "Backend engineering (.NET)",
-        tagline: ".NET services I build, deploy, and maintain in production.",
-        accent: "from-amber-500/25 via-orange-500/25 to-rose-500/25",
-        icon: "🧠",
-        points: [
-            ".NET 8 / C# services designed for clarity and performance",
-            "Multithreading, messaging and resiliency patterns under load",
-            "Modernizing legacy .NET into modular, cloud-friendly architectures",
-            "Working across trading, payments and other high-stakes systems",
-        ],
-    },
-    {
-        id: "frontend",
-        label: "Frontend & integration",
-        tagline: "Full-stack capability — I deliver complete solutions, not just backend.",
-        accent: "from-indigo-500/25 via-blue-500/25 to-sky-500/25",
-        icon: "🖥️",
-        points: [
-            "JavaScript, HTML, CSS for web front-ends and integration",
-            "Close collaboration between backend APIs and UI needs",
-            "Debugging issues end-to-end across client, API and cloud",
-            "Using AI to speed up UI prototypes and developer experience",
-        ],
-    },
-];
+
 
 function SkillsSection() {
+    // Simple Skill Bar Component
+    const SkillBar = ({ label, level }: { label: string; level: string }) => {
+        const getBarWidth = (level: string) => {
+            switch (level) {
+                case 'Expert': return 'w-11/12'; // 92%
+                case 'VeryExperienced': return 'w-4/5'; // 80%
+                case 'Experienced': return 'w-3/4'; // 75%
+                default: return 'w-1/2'; // 50%
+            }
+        };
+
+        return (
+            <div className="mb-3">
+                <div className="text-sm font-medium text-gray-200 mb-1">{label}</div>
+                <div className="w-full bg-gray-800 rounded-full h-3">
+                    <div className={`h-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 ${getBarWidth(level)}`}></div>
+                </div>
+            </div>
+        );
+    };
+
+    // Group skills into the 4 main categories
+    const skillCategories = {
+        "Programming Languages": skillsData.filter(s =>
+            ['C#', 'JavaScript', 'TypeScript', 'SQL', 'HTML', 'CSS'].some(lang =>
+                s.competenceName.includes(lang)
+            )
+        ),
+        "Technologies": skillsData.filter(s =>
+            s.competenceName.includes('Azure') ||
+            s.competenceName === 'Git' ||
+            s.competenceName === 'DevOps' ||
+            s.competenceName === 'REST' ||
+            s.competenceName === 'Microservices' ||
+            s.competenceName === 'SOA'
+        ),
+        "Libraries & Frameworks": skillsData.filter(s =>
+            s.competenceName.includes('ASP.NET') ||
+            s.competenceName === 'React' ||
+            s.competenceName === 'Next.js' ||
+            s.competenceName === 'Entity Framework' ||
+            s.competenceName === 'Bicep' ||
+            s.competenceName === '.NET Core' ||
+            s.competenceName === '.NET'
+        ),
+        "Core Engineering": skillsData.filter(s =>
+            s.competenceName.includes('Architecture') ||
+            s.competenceName === 'Performance Optimization' ||
+            s.competenceName === 'Unit Testing' ||
+            s.competenceName === 'Artificial Intelligence (AI)' ||
+            s.competenceName === 'System Design' ||
+            s.competenceName === 'SOLID'
+        )
+    };
+
     return (
         <div className="mx-auto max-w-6xl px-4 py-8 text-foreground">
+            <Breadcrumbs items={[{ label: "Resume" }]} />
             <div className="mb-6 md:mb-8">
-                <h2 className="text-xl font-semibold md:text-2xl text-text-heading">Skills</h2>
-                <p className="text-sm text-text-secondary mt-2">The technical skills I use to deliver complete, production-ready systems.</p>
+                <h2 className="text-xl font-semibold md:text-2xl text-text-heading">Technical Skills</h2>
+                <p className="text-sm text-text-secondary mt-2">Comprehensive overview of my technical competencies organized by category. <Link href="/services" className="text-[#ff6b3d] hover:underline">See what I can deliver for your team</Link>.</p>
             </div>
 
-            <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-8 md:gap-y-10 mt-6">
-                {skillCards.map((card, i) => (
-                    <div key={card.id} className="" style={{ transitionDelay: `${i * 100}ms`, animationDelay: `${i * 100}ms` }}>
-                        <div className="flex flex-row max-w-full sm:max-w-md">
-                            <div className="flex items-start mr-3 mt-1">
-                                <span className="text-xl">{card.icon}</span>
-                            </div>
-
-                            <div>
-                                <h3 className="text-xl font-bold md:text-2xl text-text-heading">{card.label}</h3>
-                                <p className="text-sm text-text-secondary mt-1">{card.tagline}</p>
-                                <div className="mt-2 text-sm leading-relaxed text-text-secondary md:text-[15px]">
-                                    {card.points.map((p, idx) => (
-                                        <p key={idx} className="mt-1 first:mt-0">{p}</p>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
+            <div className="min-h-screen bg-gray-900 text-white p-10 grid grid-cols-1 md:grid-cols-2 gap-10">
+                {Object.entries(skillCategories).map(([category, skills]) => (
+                    <div key={category}>
+                        <h2 className="text-2xl font-bold mb-4">{category}</h2>
+                        {skills.map((skill) => (
+                            <SkillBar
+                                key={skill.competenceId}
+                                label={skill.competenceName}
+                                level={skill.competenceLevel}
+                            />
+                        ))}
                     </div>
                 ))}
             </div>
@@ -184,8 +195,8 @@ function CTASection() {
         <div className="mx-auto px-4 relative lg:py-8 md:px-6 md:py-8 py-8 text-foreground max-w-6xl">
             <div className="mx-auto max-w-3xl border border-border p-6 rounded-md shadow-xl text-center bg-card">
                 <div className="md:mx-auto text-center mb-0 md:mb-0">
-                    <h2 className="font-bold font-heading leading-tighter tracking-tighter md:text-4xl mb-4 text-4xl text-text-heading">Let's build something that ships</h2>
-                    <p className="text-text-secondary mt-4 text-xl">Need someone who delivers complete, production-ready systems?</p>
+                    <h2 className="font-bold font-heading leading-tighter tracking-tighter md:text-4xl mb-4 text-4xl text-text-heading">Let&apos;s build something that ships</h2>
+                    <p className="text-text-secondary mt-4 text-xl">Need someone who delivers complete, production-ready systems? <Link href="/about" className="text-[#ff6b3d] hover:underline">Learn more about my background</Link>.</p>
                 </div>
 
                 <div className="flex flex-col flex-nowrap gap-4 m-auto max-w-xs sm:flex-row sm:justify-center sm:max-w-md mt-6">
@@ -285,7 +296,7 @@ function WorkExperienceTimeline({
 
 export function ResumeScreen() {
     return (
-        <div className="pt-24 pb-16">
+        <div className="pb-16">
             <div className="mx-auto max-w-6xl px-4 mb-12">
                 <motion.h1
                     className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-text-heading"
@@ -293,7 +304,7 @@ export function ResumeScreen() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    Track Record: Systems I've Built & Shipped
+                    Track Record: Systems I&apos;ve Built & Shipped
                 </motion.h1>
                 <motion.p
                     className="text-lg text-text-body max-w-3xl"
@@ -301,7 +312,7 @@ export function ResumeScreen() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
                 >
-                    15+ years of building and shipping production systems — from .NET backends to complete Azure cloud platforms. Here's what I've actually delivered.
+                    15+ years of building and shipping production systems — from .NET backends to complete Azure cloud platforms. Here&apos;s what I&apos;ve actually delivered.
                 </motion.p>
                 <div className="mt-6 flex gap-3">
                     <a href="/files/cv.pdf" download="Rafal_Ulatowski_CV.pdf" aria-label="Download CV (PDF)" className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-transparent text-white px-5 py-2.5 font-medium hover:bg-white/10 hover:text-sky-300 transition-colors w-full justify-center max-w-xs">

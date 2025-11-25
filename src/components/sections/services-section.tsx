@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface ServicesSectionProps {
     variant?: "summary" | "full";
@@ -143,6 +144,13 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
                                     </li>
                                 ))}
                             </ul>
+                            <Link
+                                href="/contact"
+                                className="relative mt-4 inline-flex items-center gap-1 text-sm text-sky-600 dark:text-sky-200/90 hover:text-sky-700 dark:hover:text-sky-300 transition-colors font-medium"
+                            >
+                                Get in touch
+                                <span className="transition-transform group-hover:translate-x-0.5">→</span>
+                            </Link>
                         </motion.article>
                     ))}
                 </motion.div>

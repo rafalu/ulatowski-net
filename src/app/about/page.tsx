@@ -1,5 +1,7 @@
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "About | Developer by Heart, Architect by Experience",
@@ -26,7 +28,8 @@ export default function AboutPage() {
                 },
                 "description": "I build and ship production systems — from .NET code to Azure infrastructure. End-to-end delivery is what I do."
             }} />
-            <div className="mx-auto max-w-3xl px-4 py-12 md:py-20">
+            <div className="mx-auto max-w-3xl px-4 pb-16">
+                <Breadcrumbs items={[{ label: "About" }]} />
                 <div className="space-y-12">
                     {/* Header Section */}
                     <div className="space-y-6">
@@ -41,33 +44,54 @@ export default function AboutPage() {
                     {/* Main Content */}
                     <div className="prose prose-invert prose-lg max-w-none text-text-secondary">
                         <p>
-                            I build and ship production systems for healthcare, fintech, and high-traffic SaaS platforms. I don't stop at architecture diagrams — I write the .NET code, build the Azure infrastructure with Bicep/Terraform, implement the CI/CD pipelines, and make sure everything runs reliably in production. From distributed messaging to performance optimization, I deliver complete solutions.
+                            I build and ship production systems for healthcare, fintech, and high-traffic SaaS platforms. I don't stop at architecture diagrams — I write the .NET code, build the Azure infrastructure with Bicep/Terraform, implement the CI/CD pipelines, and make sure everything runs reliably in production. From distributed messaging to performance optimization, I <Link href="/services" className="text-sky-600 dark:text-sky-300 hover:underline">deliver complete solutions</Link>.
                         </p>
                     </div>
 
                     {/* Expertise Section */}
                     <div className="rounded-2xl bg-white/5 p-8 border border-white/10">
-                        <h2 className="text-2xl font-semibold text-text-heading mb-6">Hands-on expertise</h2>
+                        <h2 className="text-2xl font-semibold text-text-heading mb-6">Hands-on Expertise</h2>
                         <div className="grid gap-6 sm:grid-cols-2">
                             <div className="space-y-2">
-                                <h3 className="font-medium text-primary">Azure</h3>
-                                <p className="text-sm text-text-secondary leading-relaxed">App Service, Functions, AKS, ACR, Cosmos DB, SQL, Storage, VNets, Private Links, Key Vault</p>
+                                <h3 className="font-medium text-primary">Backend (Primary)</h3>
+                                <p className="text-sm text-text-secondary leading-relaxed">.NET 6–10, C#</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">REST APIs, microservices</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">Clean Architecture, DDD</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">Messaging, background workers</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">High-performance, cloud-native backend design</p>
                             </div>
                             <div className="space-y-2">
-                                <h3 className="font-medium text-primary">IaC</h3>
-                                <p className="text-sm text-text-secondary leading-relaxed">Bicep (primary), Terraform</p>
+                                <h3 className="font-medium text-primary">Full-Stack</h3>
+                                <p className="text-sm text-text-secondary leading-relaxed">Blazor (Server/WebAssembly)</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">Razor Pages (ASP.NET Core)</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">React & Next.js (projektowo / non-commercial)</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">TypeScript</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">Component-driven development</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">Rapid prototyping & internal tools with GitHub Copilot</p>
                             </div>
                             <div className="space-y-2">
-                                <h3 className="font-medium text-primary">DevOps</h3>
-                                <p className="text-sm text-text-secondary leading-relaxed">GitHub Actions, Azure DevOps, Docker</p>
+                                <h3 className="font-medium text-primary">Cloud (Azure)</h3>
+                                <p className="text-sm text-text-secondary leading-relaxed">App Service, Functions</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">AKS, ACR</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">Cosmos DB, SQL</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">Storage, Event Grid, Service Bus</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">VNets, Private Endpoints, Key Vault</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">Monitoring, logging, distributed tracing</p>
                             </div>
                             <div className="space-y-2">
-                                <h3 className="font-medium text-primary">Backend</h3>
-                                <p className="text-sm text-text-secondary leading-relaxed">.NET 6–10, REST APIs, clean architecture, domain‑driven design</p>
+                                <h3 className="font-medium text-primary">Infrastructure as Code</h3>
+                                <p className="text-sm text-text-secondary leading-relaxed">Bicep (primary)</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">Terraform</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">Modular architectures, environment isolation</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">CI-driven infra, GitOps workflows</p>
                             </div>
                             <div className="space-y-2 sm:col-span-2">
-                                <h3 className="font-medium text-primary">Security</h3>
-                                <p className="text-sm text-text-secondary leading-relaxed">Identity, RBAC, secrets, zero‑trust patterns</p>
+                                <h3 className="font-medium text-primary">DevOps & Automation</h3>
+                                <p className="text-sm text-text-secondary leading-relaxed">GitHub Actions</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">Azure DevOps</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">Docker</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">CI/CD for .NET, containers, IaC</p>
+                                <p className="text-sm text-text-secondary leading-relaxed">Release pipelines with approvals, environments, secrets</p>
                             </div>
                         </div>
                     </div>
@@ -77,6 +101,22 @@ export default function AboutPage() {
                         <p className="text-lg text-text-body italic">
                             "I build systems that ship. From writing .NET code to deploying Azure infrastructure, I own the complete delivery cycle. If you need someone who doesn't just design but actually builds, deploys, and maintains production systems — that's where I deliver the most value."
                         </p>
+                    </div>
+
+                    {/* CTA Section */}
+                    <div className="flex flex-wrap gap-4 pt-6">
+                        <Link
+                            href="/resume"
+                            className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold bg-white/10 hover:bg-white/20 transition border border-white/10"
+                        >
+                            View my resume →
+                        </Link>
+                        <Link
+                            href="/contact"
+                            className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold bg-[#2da44e] hover:bg-[#2c974b] text-white transition"
+                        >
+                            Get in touch
+                        </Link>
                     </div>
                 </div>
             </div>

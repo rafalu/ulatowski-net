@@ -133,10 +133,10 @@ export function ProjectsSection() {
                             </motion.ul>
 
                             <Link
-                                href="/resume"
+                                href="/about"
                                 className="mt-4 inline-flex items-center gap-1 text-sm text-sky-600 dark:text-sky-200/90 group-hover:text-sky-700 dark:group-hover:text-sky-300 transition-colors font-medium"
                             >
-                                Details in conversation
+                                Learn more about my experience
                                 <span className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                             </Link>
                         </motion.article>

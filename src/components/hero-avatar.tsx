@@ -3,11 +3,13 @@
 import Image from "next/image";
 import { ChangeEvent, useState } from "react";
 
-const defaultAvatarUrl =
-  "/images/profile-photo.png";
+const defaultAvatarPng = "/images/rafal-ulatowski-profile-photo.png";
+const defaultAvatarWebp = "/images/rafal-ulatowski-profile-photo.webp";
 
 export default function HeroAvatarReplaceable() {
-  const [avatarUrl, setAvatarUrl] = useState<string>(defaultAvatarUrl);
+  // Use WebP by default (modern browsers support WebP). Keep PNG fallback available but
+  // default to the pre-converted WebP to reduce client-side control flow and early swap.
+  const [avatarUrl, setAvatarUrl] = useState<string>(defaultAvatarWebp);
 
   const handleAvatarChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -30,6 +32,8 @@ export default function HeroAvatarReplaceable() {
               src={avatarUrl}
               alt="Rafał Ulatowski - Senior Azure Cloud Architect & .NET Consultant in Copenhagen, specializing in Cloud Migration and DevOps"
               className="h-full w-full object-cover object-center"
+              loading="lazy"
+              decoding="async"
             />
           ) : (
             <Image

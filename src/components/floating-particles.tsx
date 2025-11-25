@@ -3,15 +3,18 @@
 import { motion } from "framer-motion";
 import { useMemo } from "react";
 
+// Generate particles at module level to avoid calling Math.random during render
+const generateParticles = () => Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 3 + 1,
+    speed: Math.random() * 0.5 + 0.1,
+}));
+
 // Floating Particles Component - Client-only to avoid hydration mismatch
 function FloatingParticles() {
-    const particles = useMemo(() => Array.from({ length: 20 }, (_, i) => ({
-        id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * 3 + 1,
-        speed: Math.random() * 0.5 + 0.1,
-    })), []);
+    const particles = useMemo(() => generateParticles(), []);
 
     return (
         <div className="fixed inset-0 pointer-events-none">

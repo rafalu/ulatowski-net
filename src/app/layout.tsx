@@ -95,6 +95,10 @@ export default function RootLayout({
             <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
           </>
         )}
+        {/* Preload hero avatar (LCP candidate) to help reduce Largest Contentful Paint in production */}
+        {isProd && (
+          <link rel="preload" as="image" href="/images/rafal-ulatowski-profile-photo.webp" type="image/webp" />
+        )}
         {isProd && HOTJAR_ID && (
           <>
             <link rel="preconnect" href="https://static.hotjar.com" />
@@ -195,6 +199,12 @@ export default function RootLayout({
             ]
           }}
         />
+        {/* Frame-busting fallback (optional): redirects top if inside an iframe. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if (window.top !== window.self) { try { window.top.location = window.self.location.href; } catch (e) { /* might be blocked by CSP or cross-origin */ } }`,
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -210,7 +220,7 @@ export default function RootLayout({
           ) : (
             <SiteShell>
               <Header />
-              <main className="min-h-[calc(100vh-14rem)]">
+              <main className="min-h-[calc(100vh-14rem)] pt-24">
                 {children}
               </main>
               <Footer />

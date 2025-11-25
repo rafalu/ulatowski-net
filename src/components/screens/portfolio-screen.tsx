@@ -1,10 +1,14 @@
 "use client";
 
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Layout } from "@/components/layout";
 
 export function PortfolioScreen() {
     return (
         <Layout>
+            <div className="mx-auto max-w-6xl px-4">
+                <Breadcrumbs items={[{ label: "Portfolio" }]} />
+            </div>
             <div className="space-y-12">
                 {/* Hero Section */}
                 <div className="text-center space-y-6">

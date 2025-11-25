@@ -1,5 +1,6 @@
 "use client";
 
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ObfuscatedMail } from "@/components/obfuscated-mail";
 import { Toast } from "@/components/ui/toast";
 import siteConfig from "@/config/site-config.json";
@@ -35,8 +36,9 @@ export function ContactScreen() {
     };
 
     return (
-        <div className="pt-24 pb-16 min-h-[80vh] flex flex-col justify-center">
+        <div className="pb-16 min-h-[80vh] flex flex-col justify-center">
             <div className="mx-auto max-w-5xl px-4 w-full">
+                <Breadcrumbs items={[{ label: "Contact" }]} />
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}

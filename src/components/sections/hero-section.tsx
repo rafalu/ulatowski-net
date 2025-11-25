@@ -82,7 +82,7 @@ export function HeroSection() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.4 }}
                         >
-                            If you need someone who actually knows how to build software end-to-end — from writing solid .NET code to shipping reliable, production-ready cloud systems — that's exactly where I deliver the most impact. I don't just design architectures; I build them, deploy them, and make sure they run in production.
+                            If you need someone who actually knows how to build software end-to-end — from writing solid .NET code to shipping reliable, production-ready cloud systems — that's exactly where I deliver the most impact. I don't just design architectures; I <Link href="/services" className="text-sky-600 dark:text-sky-300 hover:underline">build them, deploy them</Link>, and make sure they run in production.
                         </motion.p>
 
                         <motion.p
