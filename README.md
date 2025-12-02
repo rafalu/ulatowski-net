@@ -1,24 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ulatowski.net
+
+This is the personal portfolio website of Rafal Ulatowski, built with [Next.js](https://nextjs.org) 16.
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies and run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Testing
+
+This project uses [Vitest](https://vitest.dev) for unit testing.
+
+```bash
+pnpm test          # Run tests
+pnpm test:ui       # Run tests with UI
+```
 
 ## Learn More
 
@@ -35,14 +41,20 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-## Environment & Deployment (production envs)
+## Environment Variables
 
-This project expects public environment variables with the `NEXT_PUBLIC_` prefix for social links and email. These values must be available at build time because they are embedded into the client bundle and used in statically generated HTML.
+This project uses environment variables for configuration. Defaults are provided in `src/config/site-config.json`, but can be overridden with `NEXT_PUBLIC_*` prefixed variables for client-side access.
 
-Keys used in this repo:
-- NEXT_PUBLIC_LINKEDIN_URL
-- NEXT_PUBLIC_GITHUB_URL
-- NEXT_PUBLIC_EMAIL
+Required keys (with defaults in `site-config.json`):
+- `NEXT_PUBLIC_LINKEDIN_URL` - LinkedIn profile URL
+- `NEXT_PUBLIC_GITHUB_URL` - GitHub profile URL
+- `NEXT_PUBLIC_EMAIL` - Contact email
+
+Optional keys:
+- `NEXT_PUBLIC_GA_ID` - Google Analytics Measurement ID
+- `NEXT_PUBLIC_HOTJAR_ID` - Hotjar site ID
+- `NEXT_PUBLIC_HOTJAR_SV` - Hotjar snippet version (defaults to 6)
+- `MAINTENANCE_MODE` - Set to `true` to enable maintenance mode
 
 Best practice:
 - Do NOT commit production secrets to the repo. Use your hosting provider's environment variable settings.
@@ -50,25 +62,26 @@ Best practice:
 
 Examples:
 
-- Vercel: Project → Settings → Environment Variables. Add the keys for the Production environment so `next build` sees them.
+- **Vercel**: Project → Settings → Environment Variables. Add the keys for the Production environment so `next build` sees them.
 
-- Netlify: Site settings → Build & deploy → Environment → Environment variables.
+- **Netlify**: Site settings → Build & deploy → Environment → Environment variables.
 
-- GitHub Actions: set env variables in the workflow before `next build`:
+- **GitHub Actions**: Set env variables in the workflow before `next build`:
 
 ```yaml
 env:
-	NEXT_PUBLIC_LINKEDIN_URL: ${{ secrets.NEXT_PUBLIC_LINKEDIN_URL }}
-	NEXT_PUBLIC_GITHUB_URL: ${{ secrets.NEXT_PUBLIC_GITHUB_URL }}
-	NEXT_PUBLIC_EMAIL: ${{ secrets.NEXT_PUBLIC_EMAIL }}
+  NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
+  NEXT_PUBLIC_HOTJAR_ID: ${{ secrets.NEXT_PUBLIC_HOTJAR_ID }}
+  NEXT_PUBLIC_EMAIL: ${{ secrets.NEXT_PUBLIC_EMAIL }}
 
 steps:
-	- name: Build
-		run: npm run build
+  - name: Build
+    run: npm run build
 ```
 
-If you build locally or run a custom server, create `.env.production` on the server or provide the variables to the process environment prior to building.
-# Image optimization
+If you build locally or run a custom server, create `.env.local` on the server or provide the variables to the process environment prior to building.
+
+## Image Optimization
 
 This repo includes a small script to convert raster images located in `public/images` to WebP format using `sharp`.
 
@@ -79,10 +92,12 @@ pnpm install
 pnpm run convert-images
 ```
 
-# Lighthouse CI
+## CI/CD
 
-There's a GitHub Actions workflow `.github/workflows/lighthouse-ci.yml` which runs weekly (and on-demand) to gather Lighthouse metrics for the production site. Set `SITE_URL` as a GitHub secret (e.g. `https://ulatowski.net`) and optionally `LHCI_GITHUB_APP_TOKEN` for artifact uploads.
-# ulatowski-net
+The project includes GitHub Actions workflows for continuous integration and deployment:
+
+- `.github/workflows/ci-cd.yml`: Runs linting, testing, and deploys to Vercel on pushes to the main branch.
+- `.github/workflows/lighthouse-ci.yml`: Runs Lighthouse performance audits weekly (and on-demand) to gather metrics for the production site. Set `SITE_URL` as a GitHub secret (e.g. `https://ulatowski.net`) and optionally `LHCI_GITHUB_APP_TOKEN` for artifact uploads.
 
 <!-- Test deploy trigger - 2025-11-21 03:11:21 -->
 
