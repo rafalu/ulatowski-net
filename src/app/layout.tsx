@@ -1,9 +1,7 @@
 import { JsonLd } from "@/components/json-ld";
 import { Footer, Header } from "@/components/layout-components";
-import { ComingSoonScreen } from "@/components/screens/coming-soon-screen";
 import { SiteShell } from "@/components/site-shell";
 import { ThemeProvider } from "@/components/theme-provider";
-import siteConfig from "@/config/site-config.json";
 import { GITHUB_URL, LINKEDIN_URL } from "@/lib/social";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -215,17 +213,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {siteConfig.comingSoon ? (
-            <ComingSoonScreen />
-          ) : (
-            <SiteShell>
-              <Header />
-              <main className="min-h-[calc(100vh-14rem)]">
-                {children}
-              </main>
-              <Footer />
-            </SiteShell>
-          )}
+          <SiteShell>
+            <Header />
+            <main className="min-h-[calc(100vh-14rem)]">
+              {children}
+            </main>
+            <Footer />
+          </SiteShell>
         </ThemeProvider>
       </body>
     </html>
