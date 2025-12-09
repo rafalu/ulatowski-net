@@ -29,7 +29,7 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
             accent: "from-cyan-500/25 via-sky-500/25 to-emerald-500/25",
             icon: "🚀",
             points: [
-                { icon: "⚙️", text: "DevOps & CI/CD for .NET on Azure" },
+                { icon: "⚙️", text: <>DevOps & CI/CD for .NET on <a href="https://azure.microsoft.com/en-us/products/devops" target="_blank" rel="noopener noreferrer" className="text-sky-600 dark:text-sky-300 hover:underline">Azure DevOps</a></> },
                 { icon: "📦", text: "Advanced CI/CD for .NET applications" },
                 { icon: "🧪", text: "Ephemeral environments for testing" },
                 { icon: "✅", text: "Automated releases & quality gates" }

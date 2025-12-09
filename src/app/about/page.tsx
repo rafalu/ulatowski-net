@@ -37,14 +37,29 @@ export default function AboutPage() {
                             About Me
                         </h1>
                         <p className="text-xl leading-relaxed text-text-body">
-                            I&apos;m a developer by heart, architect by experience. Senior Azure Cloud Architect & .NET Developer with 15+ years of building and shipping secure, scalable, production systems. I write the code, build the infrastructure, set up the pipelines, and ensure it all runs reliably in production. End-to-end delivery is what I do.
+                            I&apos;m a developer by heart, architect by experience. Senior Azure Cloud Architect &{" "}
+                            <a href="https://dotnet.microsoft.com/" target="_blank" rel="noopener noreferrer" className="text-sky-600 dark:text-sky-300 hover:underline">
+                                .NET Developer
+                            </a>{" "}
+                            with 15+ years of building and shipping secure, scalable, production systems. I write the code, build the infrastructure, set up the pipelines, and ensure it all runs reliably in production. End-to-end delivery is what I do.
                         </p>
                     </div>
 
                     {/* Main Content */}
                     <div className="prose prose-invert prose-lg max-w-none text-text-secondary">
                         <p>
-                            I build and ship production systems for healthcare, fintech, and high-traffic SaaS platforms. I don&apos;t stop at architecture diagrams — I write the .NET code, build the Azure infrastructure with Bicep/Terraform, implement the CI/CD pipelines, and make sure everything runs reliably in production. From distributed messaging to performance optimization, I <Link href="/services" className="text-sky-600 dark:text-sky-300 hover:underline">deliver complete solutions</Link>.
+                            I build and ship production systems for healthcare, fintech, and high-traffic SaaS platforms. I don&apos;t stop at architecture diagrams — I write the .NET code, build the{" "}
+                            <a href="https://azure.microsoft.com/" target="_blank" rel="noopener noreferrer" className="text-sky-600 dark:text-sky-300 hover:underline">
+                                Azure infrastructure
+                            </a>{" "}
+                            with{" "}
+                            <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/" target="_blank" rel="noopener noreferrer" className="text-sky-600 dark:text-sky-300 hover:underline">
+                                Bicep
+                            </a>
+                            /Terraform, implement the CI/CD pipelines, and make sure everything runs reliably in production. From distributed messaging to performance optimization, I{" "}
+                            <Link href="/services" className="text-sky-600 dark:text-sky-300 hover:underline">
+                                deliver complete solutions
+                            </Link>.
                         </p>
                     </div>
 

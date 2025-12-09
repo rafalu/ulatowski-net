@@ -130,39 +130,13 @@ function SkillsSection() {
         );
     };
 
-    // Group skills into the 4 main categories
-    const skillCategories = {
-        "Programming Languages": skillsData.filter(s =>
-            ['C#', 'JavaScript', 'TypeScript', 'SQL', 'HTML', 'CSS'].some(lang =>
-                s.competenceName.includes(lang)
-            )
-        ),
-        "Technologies": skillsData.filter(s =>
-            s.competenceName.includes('Azure') ||
-            s.competenceName === 'Git' ||
-            s.competenceName === 'DevOps' ||
-            s.competenceName === 'REST' ||
-            s.competenceName === 'Microservices' ||
-            s.competenceName === 'SOA'
-        ),
-        "Libraries & Frameworks": skillsData.filter(s =>
-            s.competenceName.includes('ASP.NET') ||
-            s.competenceName === 'React' ||
-            s.competenceName === 'Next.js' ||
-            s.competenceName === 'Entity Framework' ||
-            s.competenceName === 'Bicep' ||
-            s.competenceName === '.NET Core' ||
-            s.competenceName === '.NET'
-        ),
-        "Core Engineering": skillsData.filter(s =>
-            s.competenceName.includes('Architecture') ||
-            s.competenceName === 'Performance Optimization' ||
-            s.competenceName === 'Unit Testing' ||
-            s.competenceName === 'Artificial Intelligence (AI)' ||
-            s.competenceName === 'System Design' ||
-            s.competenceName === 'SOLID'
+    // Group competences by category
+    const categoriesWithSkills = skillsData.categories.map(category => ({
+        categoryName: category.categoryName,
+        competences: skillsData.competences.filter(
+            competence => competence.categoryId === category.categoryId
         )
-    };
+    }));
 
     return (
         <div className="mx-auto max-w-6xl px-4 py-8 text-foreground">
@@ -173,14 +147,14 @@ function SkillsSection() {
             </div>
 
             <div className="min-h-screen bg-gray-900 text-white p-10 grid grid-cols-1 md:grid-cols-2 gap-10">
-                {Object.entries(skillCategories).map(([category, skills]) => (
-                    <div key={category}>
-                        <h2 className="text-2xl font-bold mb-4">{category}</h2>
-                        {skills.map((skill) => (
+                {categoriesWithSkills.map((category) => (
+                    <div key={category.categoryName}>
+                        <h2 className="text-2xl font-bold mb-4">{category.categoryName}</h2>
+                        {category.competences.map((competence) => (
                             <SkillBar
-                                key={skill.competenceId}
-                                label={skill.competenceName}
-                                level={skill.competenceLevel}
+                                key={competence.competenceName}
+                                label={competence.competenceName}
+                                level={competence.competenceLevel}
                             />
                         ))}
                     </div>

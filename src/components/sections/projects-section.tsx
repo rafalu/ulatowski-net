@@ -12,7 +12,7 @@ export function ProjectsSection() {
             icon: <Server className="size-5" />,
             bullets: [
                 "Led a long-term evolution of a legacy .NET monolith into a cloud-native service ecosystem on Azure.",
-                "Introduced clear domain boundaries, asynchronous communication patterns and automated infrastructure as code with Bicep for Azure App Service, SQL, Azure Service Bus and secure key management.",
+                <>Introduced clear domain boundaries, asynchronous communication patterns and automated infrastructure as code with <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/" target="_blank" rel="noopener noreferrer" className="text-sky-600 dark:text-sky-300 hover:underline">Bicep</a> for Azure App Service, SQL, Azure Service Bus and secure key management.</>,
                 "Outcome: a cleaner architecture, predictable releases and a platform that scales without friction.",
             ],
         },
@@ -21,7 +21,7 @@ export function ProjectsSection() {
             tag: "DevOps · Engineering Excellence · Developer Experience",
             icon: <Rocket className="size-5" />,
             bullets: [
-                "Designed a unified CI/CD experience using Azure DevOps pipelines and GitHub Actions integration with reusable YAML templates.",
+                <>Designed a unified CI/CD experience using <a href="https://azure.microsoft.com/en-us/products/devops" target="_blank" rel="noopener noreferrer" className="text-sky-600 dark:text-sky-300 hover:underline">Azure DevOps</a> pipelines and GitHub Actions integration with reusable YAML templates.</>,
                 "Implemented CI/CD for .NET microservices enabling ephemeral test environments with App Service + SQL for E2E validation.",
                 "Outcome: consistent delivery, reduced cognitive load for developers and notably faster iteration cycles.",
             ],
