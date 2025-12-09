@@ -1,5 +1,6 @@
 "use client";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import projectsData from "@/config/projects.json";
 import { motion } from "framer-motion";
 import { Briefcase, Download, GraduationCap } from "lucide-react";
 import Link from "next/link";
@@ -7,6 +8,7 @@ import Link from "next/link";
 export type ProjectTimelineItem = {
     role: string;
     company: string;
+    companyUrl?: string;
     location?: string;
     period: string;
     bullets: string[];
@@ -16,94 +18,6 @@ type ProjectTimelineProps = {
     title?: string;
     items?: ProjectTimelineItem[];
 };
-
-const defaultItems: ProjectTimelineItem[] = [
-    {
-        role: "Senior Cloud Engineer",
-        company: "Dawn Health",
-        location: "Capital Region of Denmark",
-        period: "September 2024 – Present",
-        bullets: [
-            "Architecting and developing cloud-native solutions on Azure.",
-            "Focus on reliable and maintainable code using .NET and C#.",
-        ],
-    },
-    {
-        role: "Software Engineer Consultant",
-        company: "Banking Circle",
-        location: "Copenhagen Area",
-        period: "January 2020 – March 2024",
-        bullets: [
-            "Contributed to the Banking Circle Payments API team, enhancing payment functionalities using custom REST API protocols and ISO20022 standards.",
-            "Prioritized quality and performance, utilizing skills in Microsoft Azure, distributed applications, and .NET Core.",
-            "Key technologies included C#, Azure DevOps Services, SQL, and ASP.NET Core.",
-        ],
-    },
-    {
-        role: "Software Engineering Consultant",
-        company: "Saxo Bank",
-        location: "Copenhagen Area",
-        period: "December 2017 – January 2020",
-        bullets: [
-            "Focused on enhancing Saxo Bank's trading capabilities through RESTful APIs.",
-            "Delivered core trading functionalities with a strong emphasis on quality and performance as part of the OpenAPI team.",
-            "Employed TFS, VisualStudio, C#, .NET, ASP.NET, T-SQL, and Scrum methodologies.",
-            "Expertise included distributed systems, microservices, and object-oriented programming.",
-        ],
-    },
-    {
-        role: "Senior Analyst",
-        company: "Nordea Markets",
-        location: "Copenhagen Area",
-        period: "April 2014 – November 2017",
-        bullets: [
-            "Responsible for driving delivery of content-related solutions (news, research, charts, quotes) in Nordea e-Markets application.",
-            "Implemented agile methodologies utilizing Atlassian toolbox (JIRA, Confluence).",
-            "Worked with REST, C#, and Java code bases.",
-        ],
-    },
-    {
-        role: "Senior Software Developer",
-        company: "Saxo Bank",
-        location: "Copenhagen Area",
-        period: "March 2009 – March 2014",
-        bullets: [
-            "Designed and developed front-end trading software, Saxo Trader.",
-            "Contributed to usability improvements and implemented SSO in Saxo Trader.",
-            "Utilized C#, .NET, Win-forms, and WPF, with a focus on problem-solving, teamwork, and quality.",
-        ],
-    },
-    {
-        role: "Senior Software Developer",
-        company: "Interse A/S",
-        location: "Copenhagen Area",
-        period: "June 2005 – January 2009",
-        bullets: [
-            "Full-stack design and development of a web-based search engine for a content management repository.",
-            "Worked with C#, ASP.NET, Ajax, WCF, WebServices, COM, C++, Win-forms, and MS SharePoint.",
-        ],
-    },
-    {
-        role: "Software Developer",
-        company: "Bank Millennium SA Poland",
-        location: "Poland",
-        period: "December 2004 – May 2005",
-        bullets: [
-            "Design and development of web-based intranet banking solutions.",
-            "UI design and implementation using C#, ASP.NET, Web Services, and JavaScript.",
-        ],
-    },
-    {
-        role: "Senior Software Developer",
-        company: "SPEED SP. Z O.O Poland",
-        location: "Poland",
-        period: "January 2004 – December 2004",
-        bullets: [
-            "Developed workflow-based application using MSSQL/MySQL Server for TQM Systems.",
-            "Worked with Apache, PHP, ASP, JavaScript, C, and Linux scripts.",
-        ],
-    },
-];
 
 
 
@@ -130,7 +44,7 @@ function CTASection() {
 
 function WorkExperienceTimeline({
     title = "Work experience",
-    items = defaultItems,
+    items = projectsData.workExperience as ProjectTimelineItem[],
 }: ProjectTimelineProps) {
     return (
         <section className="relative">
@@ -163,7 +77,18 @@ function WorkExperienceTimeline({
                                         {item.role}
                                         <br />
                                         <span className="font-normal text-base md:text-lg">
-                                            {item.company}
+                                            {item.companyUrl ? (
+                                                <a 
+                                                    href={item.companyUrl} 
+                                                    target="_blank" 
+                                                    rel="noopener noreferrer"
+                                                    className="text-sky-400 hover:text-sky-300 underline decoration-sky-400/30 hover:decoration-sky-300/50 transition-colors"
+                                                >
+                                                    {item.company}
+                                                </a>
+                                            ) : (
+                                                item.company
+                                            )}
                                             {item.location ? `, ${item.location}` : null}
                                         </span>
                                         <br />

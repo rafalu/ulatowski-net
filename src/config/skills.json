@@ -2,165 +2,341 @@
     "coreSkills": {
         "cloudAndDevOps": [
             {
-                "name": "Azure (App Service, Functions, Service Bus, Event Grid, Storage, SQL, CosmosDB, ACR, VNet, Private Endpoints)",
+                "name": "Microsoft Azure",
                 "competenceLevel": "VeryExperienced",
-                "yearsOfExperience": "TwoPlus",
-                "source": [
-                    "Microsoft Azure",
-                    "Azure SQL",
-                    "SQL Azure",
-                    "Azure Service Bus",
-                    "Microsoft Azure Service Bus",
-                    "Azure Cosmos DB",
-                    "Microsoft Azure Cosmos DB",
-                    "Azure Functions",
-                    "Microsoft Azure Functions",
-                    "Microsoft Azure Storage",
-                    "Microsoft Azure Table Storage",
-                    "Microsoft Azure Web Apps"
-                ]
+                "yearsOfExperience": "TwoPlus"
             },
             {
-                "name": "Azure DevOps Pipelines",
+                "name": "Azure App Service",
                 "competenceLevel": "VeryExperienced",
-                "yearsOfExperience": "TwoPlus",
-                "source": [
-                    "Azure DevOps Services",
-                    "Microsoft Azure DevOps"
-                ]
+                "yearsOfExperience": "TwoPlus"
             },
             {
-                "name": "GitHub Actions"
+                "name": "Azure Functions",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "TwoPlus"
             },
             {
-                "name": "Infrastructure as Code: Bicep"
+                "name": "Azure Service Bus",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "TwoPlus"
             },
             {
-                "name": "Infrastructure as Code: Terraform"
+                "name": "Azure Storage",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "TwoPlus"
+            },
+            {
+                "name": "Azure Cosmos DB",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "TwoPlus"
+            },
+            {
+                "name": "Azure SQL",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "TwoPlus"
+            },
+            {
+                "name": "Azure Virtual Network (VNet)",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "TwoPlus"
+            },
+            {
+                "name": "Azure Container Registry (ACR)",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "TwoPlus"
+            },
+            {
+                "name": "Azure Private Endpoints",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "TwoPlus"
+            },
+            {
+                "name": "Azure DevOps Services",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "TwoPlus"
+            },
+            {
+                "name": "GitHub Actions",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "TwoPlus"
+            },
+            {
+                "name": "Git",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "TenPlus"
+            },
+            {
+                "name": "Docker",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "ThreePlus"
+            },
+            {
+                "name": "Containerization",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "ThreePlus"
+            },
+            {
+                "name": "Linux",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "ThreePlus"
+            },
+            {
+                "name": "DevOps",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "ThreePlus"
             },
             {
                 "name": "CI/CD Automation",
                 "competenceLevel": "Experienced",
-                "yearsOfExperience": "Unknown",
-                "source": [
-                    "CI/CD"
-                ]
+                "yearsOfExperience": "TwoPlus"
             },
             {
-                "name": "Cloud Security (RBAC, Managed Identities, Entra, networking)",
+                "name": "Infrastructure as Code (IaC)",
                 "competenceLevel": "VeryExperienced",
-                "yearsOfExperience": "TwoPlus",
-                "source": [
-                    "Microsoft Azure Active Directory",
-                    "MFA (Multi-Factor Authentication)"
-                ]
+                "yearsOfExperience": "TwoPlus"
             },
             {
-                "name": "AI-supported architecture validation & troubleshooting"
+                "name": "Cloud Security",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "TwoPlus"
             },
             {
-                "name": "AI-assisted Bicep module generation"
-            },
-            {
-                "name": "AI-enhanced CI/CD workflows"
-            },
-            {
-                "name": "AI-driven debugging & issue resolution"
+                "name": "GitHub Copilot",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "OnePlus"
             }
         ],
         "backendDevelopment": [
             {
-                "name": "C# / .NET 6/7/8",
+                "name": "C#",
                 "competenceLevel": "Expert",
-                "yearsOfExperience": "FifteenPlus",
-                "source": [
-                    "C#",
-                    ".NET"
-                ]
+                "yearsOfExperience": "FifteenPlus"
             },
             {
-                "name": "Clean Architecture"
+                "name": ".NET",
+                "competenceLevel": "Expert",
+                "yearsOfExperience": "FifteenPlus"
             },
             {
-                "name": "Microservices & Distributed Systems",
+                "name": ".NET Core",
+                "competenceLevel": "Expert",
+                "yearsOfExperience": "TenPlus"
+            },
+            {
+                "name": "ASP.NET",
+                "competenceLevel": "Expert",
+                "yearsOfExperience": "FifteenPlus"
+            },
+            {
+                "name": "High Availability (HA)",
                 "competenceLevel": "Experienced",
-                "yearsOfExperience": "Unknown",
-                "source": [
-                    "Microservices / Microservice architecture",
-                    "Distributed Systems / Distributed Applications"
-                ]
+                "yearsOfExperience": "TenPlus"
             },
             {
-                "name": "AI-assisted backend development & refactoring"
+                "name": "System Performance",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "TenPlus"
+            },
+            {
+                "name": "WCF",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "TenPlus"
+            },
+            {
+                "name": "Web Services",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "FifteenPlus"
+            },
+            {
+                "name": "REST APIs",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "TenPlus"
+            },
+            {
+                "name": "SQL",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "FifteenPlus"
+            },
+            {
+                "name": "Transact-SQL (T-SQL)",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "FifteenPlus"
+            },
+            {
+                "name": "Stored Procedures",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "FifteenPlus"
+            },
+            {
+                "name": "Entity Framework",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "TenPlus"
+            },
+            {
+                "name": "Microservices",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "TenPlus"
+            },
+            {
+                "name": "Distributed Systems",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "TenPlus"
+            },
+            {
+                "name": "Multithreaded Development",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "TenPlus"
+            },
+            {
+                "name": "Concurrent Programming",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "TenPlus"
+            },
+            {
+                "name": "Object Oriented Design",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "FifteenPlus"
+            },
+            {
+                "name": "SOLID Design Principles",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "TenPlus"
+            },
+            {
+                "name": "Software Design",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "FifteenPlus"
+            },
+            {
+                "name": "Software Development",
+                "competenceLevel": "Expert",
+                "yearsOfExperience": "FifteenPlus"
+            },
+            {
+                "name": "Unit Testing",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "TenPlus"
+            },
+            {
+                "name": "Trading Systems",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "TenPlus"
+            },
+            {
+                "name": "FinTech",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "SevenPlus"
+            },
+            {
+                "name": "Clean Architecture",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "FivePlus"
+            },
+            {
+                "name": "PHP",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "TenPlus"
             }
         ],
         "fullStackDevelopment": [
             {
+                "name": "Full-Stack Development",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "TenPlus"
+            },
+            {
+                "name": "JavaScript",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "TenPlus"
+            },
+            {
                 "name": "TypeScript",
                 "competenceLevel": "Experienced",
-                "yearsOfExperience": "OnePlus",
-                "source": [
-                    "TypeScript"
-                ]
+                "yearsOfExperience": "OnePlus"
             },
             {
-                "name": "React",
+                "name": "React.js",
                 "competenceLevel": "Experienced",
-                "yearsOfExperience": "LessThanOne",
-                "source": [
-                    "React"
-                ]
+                "yearsOfExperience": "LessThanOne"
             },
             {
-                "name": "Next.js"
+                "name": "Next.js",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "OnePlus"
             },
             {
-                "name": "React Native"
+                "name": "React Native",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "OnePlus"
+            },
+            {
+                "name": "Blazor",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "ThreePlus"
             },
             {
                 "name": "HTML5 / CSS3",
                 "competenceLevel": "VeryExperienced",
-                "yearsOfExperience": "SevenPlus",
-                "source": [
-                    "HTML / HTML5",
-                    "HTML",
-                    "CSS"
-                ]
+                "yearsOfExperience": "SevenPlus"
+            },
+            {
+                "name": "WinForms",
+                "competenceLevel": "VeryExperienced",
+                "yearsOfExperience": "FivePlus"
+            },
+            {
+                "name": "WPF / XAML",
+                "competenceLevel": "Experienced",
+                "yearsOfExperience": "ThreePlus"
             }
         ]
     },
     "secondarySkills": [
         {
-            "name": "PHP",
+            "name": "IT Consulting",
             "competenceLevel": "Experienced",
-            "yearsOfExperience": "Unknown",
-            "source": [
-                "PHP"
-            ]
+            "yearsOfExperience": "SevenPlus"
         },
         {
-            "name": "jQuery",
+            "name": "Agile Methodologies",
+            "competenceLevel": "VeryExperienced",
+            "yearsOfExperience": "TenPlus"
+        },
+        {
+            "name": "Scrum",
+            "competenceLevel": "VeryExperienced",
+            "yearsOfExperience": "TenPlus"
+        },
+        {
+            "name": "Business Analysis",
             "competenceLevel": "Experienced",
-            "yearsOfExperience": "Unknown",
-            "source": [
-                "jQuery"
-            ]
+            "yearsOfExperience": "TenPlus"
+        },
+        {
+            "name": "Problem Solving",
+            "competenceLevel": "Expert",
+            "yearsOfExperience": "FifteenPlus"
+        },
+        {
+            "name": "Teamwork",
+            "competenceLevel": "VeryExperienced",
+            "yearsOfExperience": "FifteenPlus"
+        },
+        {
+            "name": "Automated Trading",
+            "competenceLevel": "Experienced",
+            "yearsOfExperience": "TenPlus"
+        },
+        {
+            "name": "FX trading",
+            "competenceLevel": "Experienced",
+            "yearsOfExperience": "TenPlus"
         },
         {
             "name": "MQL4",
             "competenceLevel": "Experienced",
-            "yearsOfExperience": "Unknown",
-            "source": [
-                "MQL4"
-            ]
-        },
-        {
-            "name": "Blazor",
-            "competenceLevel": "Experienced",
-            "yearsOfExperience": "Unknown",
-            "source": [
-                "Blazor"
-            ]
+            "yearsOfExperience": "ThreePlus"
         }
     ]
 }

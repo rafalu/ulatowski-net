@@ -3,6 +3,13 @@
 import skillsData from "@/config/skills.json";
 import React from "react";
 
+// Map competence levels to a 1-5 scale
+const levelToScore: Record<string, number> = {
+    Expert: 5,
+    VeryExperienced: 4,
+    Experienced: 3,
+};
+
 const levelLabelMap: Record<string, string> = {
     Expert: "Expert",
     VeryExperienced: "Very experienced",
@@ -11,12 +18,34 @@ const levelLabelMap: Record<string, string> = {
 
 function levelToBadge(level?: string) {
     if (!level) return null;
+
+    const score = levelToScore[level] ?? 3;
+    const maxScore = 5;
     const label = levelLabelMap[level] ?? level;
 
     return (
-        <span className="inline-flex items-center rounded-full border border-border px-2 py-0.5 text-[11px] font-medium uppercase tracking-wide text-text-secondary">
-            {label}
-        </span>
+        <div className="flex flex-col items-end gap-1">
+            {/* Progress dots */}
+            <div className="flex items-center gap-0.5">
+                {Array.from({ length: maxScore }).map((_, index) => {
+                    const isFilled = index < score;
+                    return (
+                        <div
+                            key={index}
+                            className={`h-1.5 w-1.5 rounded-full transition-colors ${isFilled
+                                    ? "bg-gradient-to-r from-sky-400 to-blue-500 shadow-sm"
+                                    : "bg-white/10 border border-white/20"
+                                }`}
+                            title={label}
+                        />
+                    );
+                })}
+            </div>
+            {/* Optional: Small label */}
+            <span className="text-[9px] uppercase tracking-wider text-text-tertiary opacity-70">
+                {score}/{maxScore}
+            </span>
+        </div>
     );
 }
 
@@ -85,7 +114,7 @@ const SkillSectionCard: React.FC<SkillCardProps> = ({ title, subtitle, items }) 
 const SecondaryPills: React.FC = () => {
     const typedSkillsData = skillsData as {
         coreSkills: Record<string, any[]>;
-        secondarySkills: { name: string; competenceLevel?: string }[];
+        secondarySkills: { name: string; competenceLevel?: string; yearsOfExperience?: string }[];
     };
 
     return (
@@ -97,19 +126,44 @@ const SecondaryPills: React.FC = () => {
                 Things I&apos;ve worked with in the past or use occasionally.
             </p>
             <div className="flex flex-wrap gap-2">
-                {typedSkillsData.secondarySkills.map((s) => (
-                    <span
-                        key={s.name}
-                        className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-3 py-1 text-xs text-text-body"
-                    >
-                        <span>{s.name}</span>
-                        {s.competenceLevel && (
-                            <span className="text-[10px] uppercase text-text-tertiary">
-                                {levelLabelMap[s.competenceLevel] ?? s.competenceLevel}
-                            </span>
-                        )}
-                    </span>
-                ))}
+                {typedSkillsData.secondarySkills.map((s) => {
+                    const score = levelToScore[s.competenceLevel ?? ""] ?? 3;
+                    const maxScore = 5;
+                    const yearsText = yearsToText(s.yearsOfExperience);
+
+                    return (
+                        <div
+                            key={s.name}
+                            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5"
+                        >
+                            <span className="text-xs font-medium text-text-body">{s.name}</span>
+                            <div className="flex items-center gap-1.5">
+                                {/* Level dots */}
+                                <div className="flex items-center gap-0.5">
+                                    {Array.from({ length: maxScore }).map((_, index) => {
+                                        const isFilled = index < score;
+                                        return (
+                                            <div
+                                                key={index}
+                                                className={`h-1.5 w-1.5 rounded-full transition-colors ${isFilled
+                                                        ? "bg-gradient-to-r from-sky-400 to-blue-500 shadow-sm"
+                                                        : "bg-white/10 border border-white/20"
+                                                    }`}
+                                                title={levelLabelMap[s.competenceLevel ?? ""] ?? s.competenceLevel}
+                                            />
+                                        );
+                                    })}
+                                </div>
+                                {/* Years of experience */}
+                                {yearsText && (
+                                    <span className="text-[10px] text-text-tertiary">
+                                        {yearsText}
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );
@@ -128,8 +182,8 @@ const SkillsOverview: React.FC = () => {
     const { coreSkills } = typedSkillsData;
 
     return (
-        <>
-            <section className="space-y-3 mt-6">
+        <div className="space-y-6">
+            <div className="space-y-3">
                 <h2 className="text-sm font-semibold tracking-tight text-text-heading">
                     ⭐ Core Skills
                 </h2>
@@ -150,12 +204,12 @@ const SkillsOverview: React.FC = () => {
                         items={coreSkills.fullStackDevelopment}
                     />
                 </div>
-            </section>
+            </div>
 
-            <section className="space-y-3 mt-6">
+            <div className="mt-6">
                 <SecondaryPills />
-            </section>
-        </>
+            </div>
+        </div>
     );
 };
 
