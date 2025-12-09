@@ -23,7 +23,7 @@ export function Header() {
                     <div className="flex h-14 items-center justify-between">
                         <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight text-foreground">
                             <Globe className="size-5" aria-hidden />
-                            <span className="hidden sm:inline">Rafał — Senior Cloud Architect</span>
+                            <span className="hidden sm:inline">Rafał — Senior Cloud Engineer</span>
                             <span className="sm:hidden">Rafał Ulatowski</span>
                         </Link>
 
@@ -32,7 +32,8 @@ export function Header() {
                             {!isComingSoon && (
                                 <nav className="flex items-center gap-6 text-sm text-muted-foreground">
                                     <Link className="hover:text-foreground transition-colors" href="/about">About</Link>
-                                    <Link className="hover:text-foreground transition-colors" href="/resume">Resume</Link>
+                                    <Link className="hover:text-foreground transition-colors" href="/skills">Skills</Link>
+                                    <Link className="hover:text-foreground transition-colors" href="/projects">Projects</Link>
                                     <Link className="hover:text-foreground transition-colors" href="/services">Services</Link>
                                     <Link className="hover:text-foreground transition-colors" href="/contact">Contact</Link>
                                 </nav>
@@ -82,10 +83,17 @@ export function Header() {
                             </Link>
                             <Link
                                 className="text-muted-foreground hover:text-foreground py-2 transition-colors"
-                                href="/resume"
+                                href="/skills"
                                 onClick={() => setIsMenuOpen(false)}
                             >
-                                Resume
+                                Skills
+                            </Link>
+                            <Link
+                                className="text-muted-foreground hover:text-foreground py-2 transition-colors"
+                                href="/projects"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                Projects
                             </Link>
                             <Link
                                 className="text-muted-foreground hover:text-foreground py-2 transition-colors"
@@ -94,7 +102,7 @@ export function Header() {
                             >
                                 Services
                             </Link>
-                            
+
                             <Link
                                 className="text-muted-foreground hover:text-foreground py-2 transition-colors"
                                 href="/contact"

@@ -1,23 +1,23 @@
 import { JsonLd } from "@/components/json-ld";
-import { ResumeScreen } from "@/components/screens/resume-screen";
+import { ProjectsScreen } from "@/components/screens/projects-screen";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Track Record: Systems I've Built & Shipped | Rafał Ulatowski",
-    description: "15+ years of building and shipping production systems — from .NET backends to complete Azure cloud platforms. Here's what I've actually delivered.",
+    description: "15+ years of building and shipping production systems — from .NET backends to complete Azure cloud platforms. AI-accelerated development for faster delivery. Here's what I've actually delivered.",
     alternates: {
-        canonical: '/resume',
+        canonical: '/projects',
     },
 };
 
-export default function ResumePage() {
+export default function ProjectsPage() {
     return (
         <>
             <JsonLd data={{
                 "@context": "https://schema.org",
                 "@type": "ProfilePage",
-                "@id": "https://ulatowski.net/resume/#webpage",
-                "url": "https://ulatowski.net/resume",
+                "@id": "https://ulatowski.net/projects/#webpage",
+                "url": "https://ulatowski.net/projects",
                 "name": "Track Record: Systems I've Built & Shipped",
                 "isPartOf": {
                     "@id": "https://ulatowski.net/#website"
@@ -27,7 +27,7 @@ export default function ResumePage() {
                 },
                 "description": "15+ years of building and shipping production systems — from .NET backends to complete Azure cloud platforms."
             }} />
-            <ResumeScreen />
+            <ProjectsScreen />
         </>
     );
 }

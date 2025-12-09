@@ -1,11 +1,10 @@
 "use client";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import skillsData from "@/config/skills.json";
 import { motion } from "framer-motion";
 import { Briefcase, Download, GraduationCap } from "lucide-react";
 import Link from "next/link";
 
-export type WorkTimelineItem = {
+export type ProjectTimelineItem = {
     role: string;
     company: string;
     location?: string;
@@ -13,14 +12,14 @@ export type WorkTimelineItem = {
     bullets: string[];
 };
 
-type WorkTimelineProps = {
+type ProjectTimelineProps = {
     title?: string;
-    items?: WorkTimelineItem[];
+    items?: ProjectTimelineItem[];
 };
 
-const defaultItems: WorkTimelineItem[] = [
+const defaultItems: ProjectTimelineItem[] = [
     {
-        role: "Senior Cloud Architect",
+        role: "Senior Cloud Engineer",
         company: "Dawn Health",
         location: "Capital Region of Denmark",
         period: "September 2024 – Present",
@@ -108,69 +107,13 @@ const defaultItems: WorkTimelineItem[] = [
 
 
 
-function SkillsSection() {
-    // Simple Skill Bar Component
-    const SkillBar = ({ label, level }: { label: string; level: string }) => {
-        const getBarWidth = (level: string) => {
-            switch (level) {
-                case 'Expert': return 'w-11/12'; // 92%
-                case 'VeryExperienced': return 'w-4/5'; // 80%
-                case 'Experienced': return 'w-3/4'; // 75%
-                default: return 'w-1/2'; // 50%
-            }
-        };
-
-        return (
-            <div className="mb-3">
-                <div className="text-sm font-medium text-gray-200 mb-1">{label}</div>
-                <div className="w-full bg-gray-800 rounded-full h-3">
-                    <div className={`h-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-400 ${getBarWidth(level)}`}></div>
-                </div>
-            </div>
-        );
-    };
-
-    // Group competences by category
-    const categoriesWithSkills = skillsData.categories.map(category => ({
-        categoryName: category.categoryName,
-        competences: skillsData.competences.filter(
-            competence => competence.categoryId === category.categoryId
-        )
-    }));
-
-    return (
-        <div className="mx-auto max-w-6xl px-4 py-8 text-foreground">
-            <Breadcrumbs items={[{ label: "Resume" }]} />
-            <div className="mb-6 md:mb-8">
-                <h2 className="text-xl font-semibold md:text-2xl text-text-heading">Technical Skills</h2>
-                <p className="text-sm text-text-secondary mt-2">Comprehensive overview of my technical competencies organized by category. <Link href="/services" className="text-[#ff6b3d] hover:underline">See what I can deliver for your team</Link>.</p>
-            </div>
-
-            <div className="min-h-screen bg-gray-900 text-white p-10 grid grid-cols-1 md:grid-cols-2 gap-10">
-                {categoriesWithSkills.map((category) => (
-                    <div key={category.categoryName}>
-                        <h2 className="text-2xl font-bold mb-4">{category.categoryName}</h2>
-                        {category.competences.map((competence) => (
-                            <SkillBar
-                                key={competence.competenceName}
-                                label={competence.competenceName}
-                                level={competence.competenceLevel}
-                            />
-                        ))}
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
-}
-
 function CTASection() {
     return (
         <div className="mx-auto px-4 relative lg:py-8 md:px-6 md:py-8 py-8 text-foreground max-w-6xl">
             <div className="mx-auto max-w-3xl border border-border p-6 rounded-md shadow-xl text-center bg-card">
                 <div className="md:mx-auto text-center mb-0 md:mb-0">
                     <h2 className="font-bold font-heading leading-tighter tracking-tighter md:text-4xl mb-4 text-4xl text-text-heading">Let&apos;s build something that ships</h2>
-                    <p className="text-text-secondary mt-4 text-xl">Need someone who delivers complete, production-ready systems? <Link href="/about" className="text-[#ff6b3d] hover:underline">Learn more about my background</Link>.</p>
+                    <p className="text-text-secondary mt-4 text-xl">Need someone who delivers complete, production-ready systems? <Link href="/skills" className="text-[#ff6b3d] hover:underline">View my technical skills</Link>.</p>
                 </div>
 
                 <div className="flex flex-col flex-nowrap gap-4 m-auto max-w-xs sm:flex-row sm:justify-center sm:max-w-md mt-6">
@@ -188,7 +131,7 @@ function CTASection() {
 function WorkExperienceTimeline({
     title = "Work experience",
     items = defaultItems,
-}: WorkTimelineProps) {
+}: ProjectTimelineProps) {
     return (
         <section className="relative">
             <div className="h-px w-full bg-gradient-to-r from-transparent via-border to-transparent" />
@@ -261,17 +204,16 @@ function WorkExperienceTimeline({
                     </div>
                 </div>
             </div>
-            {/* Skills placed after Education as requested */}
-            <SkillsSection />
             <CTASection />
         </section>
     );
 }
 
-export function ResumeScreen() {
+export function ProjectsScreen() {
     return (
         <div className="pb-16">
             <div className="mx-auto max-w-6xl px-4 mb-12">
+                <Breadcrumbs items={[{ label: "Projects" }]} />
                 <motion.h1
                     className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-text-heading"
                     initial={{ opacity: 0, y: 20 }}

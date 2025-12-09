@@ -14,7 +14,7 @@ export function HeroSection() {
     // Smooth typing effect with consistent width
     const [displayText, setDisplayText] = useState("");
     const [showCursor, setShowCursor] = useState(true);
-    const fullText = "End-to-end delivery: code, cloud, CI/CD — production-ready.";
+    const fullText = "AI-driven engineering that ships fast.";
 
     useEffect(() => {
         let i = 0;
@@ -31,7 +31,7 @@ export function HeroSection() {
         return () => clearInterval(timer);
     }, []);
 
-    const MotionLink = motion(Link);
+    const MotionLink = motion.create(Link);
 
     return (
         <section id="home" className="relative">
@@ -48,12 +48,12 @@ export function HeroSection() {
                     <div className="md:col-span-7">
                         <div className="mb-4" />
                         <motion.h1
-                            className="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] mb-6 text-text-heading"
+                            className="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] mb-2 text-text-heading"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            I build .NET systems that run reliably in the cloud.
+                            Senior Cloud & Backend Engineer (.NET / C# · Azure · DevOps) – Copenhagen
                         </motion.h1>
 
                         <motion.div
@@ -82,15 +82,19 @@ export function HeroSection() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.4 }}
                         >
-                            If you need someone who actually knows how to build software end-to-end — from writing solid{" "}
+                            I&apos;m a senior backend & cloud engineer focused on{" "}
                             <a href="https://dotnet.microsoft.com/" target="_blank" rel="noopener noreferrer" className="text-sky-600 dark:text-sky-300 hover:underline">
-                                .NET code
+                                .NET / C#
                             </a>{" "}
-                            to shipping reliable, production-ready{" "}
+                            and{" "}
                             <a href="https://azure.microsoft.com/" target="_blank" rel="noopener noreferrer" className="text-sky-600 dark:text-sky-300 hover:underline">
-                                cloud systems
-                            </a>{" "}
-                            — that&apos;s exactly where I deliver the most impact. I don&apos;t just design architectures; I{" "}
+                                Azure
+                            </a>
+                            . I design and build production-grade systems end-to-end — from clean backend architecture and APIs to CI/CD and cloud infrastructure. When it makes sense, I also ship modern{" "}
+                            <span className="text-sky-600 dark:text-sky-300">
+                                React
+                            </span>{" "}
+                            frontends to support the product, but my core focus stays on backend and cloud. I use AI heavily in my workflow — it lets me build, refactor and ship features way faster than traditional teams. I don&apos;t just design architectures; I{" "}
                             <Link href="/services" className="text-sky-600 dark:text-sky-300 hover:underline">
                                 build them, deploy them
                             </Link>
@@ -132,7 +136,7 @@ export function HeroSection() {
                             </MotionLink>
 
                             <MotionLink
-                                href="/resume"
+                                href="/projects"
                                 className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 hover:bg-white/10 relative overflow-hidden group"
                                 whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.95 }}
@@ -141,7 +145,7 @@ export function HeroSection() {
                                     className="absolute inset-0 bg-gradient-to-r from-indigo-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity"
                                     initial={false}
                                 />
-                                <span className="relative z-10">See resume</span>
+                                <span className="relative z-10">View projects</span>
                             </MotionLink>
                         </motion.div>
 

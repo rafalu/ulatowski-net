@@ -23,9 +23,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ulatowski.net"),
   title: "Rafał Ulatowski | I Build .NET Systems That Run Reliably in the Cloud",
   description:
-    "I build and ship production-ready .NET systems on Azure — from writing solid code to deploying complete cloud infrastructure. End-to-end delivery: code, cloud, CI/CD. Based in Copenhagen, available across EU/UK/US.",
+    "Senior Cloud & Backend Engineer (.NET, Azure, DevOps) with AI-driven development workflows. I build and ship modern cloud systems and full-stack apps fast using AI-assisted engineering. Based in Copenhagen, Denmark.",
   keywords:
-    "Azure Cloud Architect, .NET Developer, Azure Developer, Cloud Developer Copenhagen, End-to-end Cloud Delivery, Azure Bicep, IaC, CI/CD, Production Systems, Azure DevOps, GitHub Actions, .NET 8, C# Developer, Cloud Migration, Azure Infrastructure",
+    "Azure Cloud Architect, .NET Developer, Azure Developer, Cloud Developer Copenhagen, End-to-end Cloud Delivery, Azure Bicep, IaC, CI/CD, Production Systems, Azure DevOps, GitHub Actions, .NET 8, C# Developer, Cloud Migration, Azure Infrastructure, AI-driven engineering, AI-accelerated development, AI-assisted architecture, AI-powered full-stack delivery",
   authors: [{ name: "Rafał Ulatowski" }],
   creator: "Rafał Ulatowski",
   publisher: "Rafał Ulatowski",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title:
       "Rafał Ulatowski | I Build .NET Systems That Run Reliably in the Cloud",
     description:
-      "I build and ship production-ready .NET systems on Azure — from writing solid code to deploying complete cloud infrastructure. End-to-end delivery: code, cloud, CI/CD.",
+      "Senior Cloud & Backend Engineer (.NET, Azure, DevOps) with AI-driven development workflows. I build and ship modern cloud systems and full-stack apps fast using AI-assisted engineering.",
     url: "https://ulatowski.net",
     type: "website",
     locale: "en_US",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     title:
       "Rafał Ulatowski | I Build .NET Systems That Run Reliably in the Cloud",
     description:
-      "I build and ship production-ready .NET systems on Azure — from writing solid code to deploying complete cloud infrastructure. End-to-end delivery: code, cloud, CI/CD.",
+      "Senior Cloud & Backend Engineer (.NET, Azure, DevOps) with AI-driven development workflows. I build and ship modern cloud systems and full-stack apps fast using AI-assisted engineering.",
     images: ["/og/azure-cloud-architect.webp"],
   },
   robots: {

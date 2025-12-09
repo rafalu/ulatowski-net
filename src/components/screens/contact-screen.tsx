@@ -162,15 +162,19 @@ export function ContactScreen() {
                                     </li>
                                     <li className="flex items-start gap-3">
                                         <span className="mt-1.5 size-2 rounded-full bg-emerald-400 shrink-0 shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
-                                        <span>Specialized in Azure & .NET 8+</span>
+                                        <span>Specialized in Azure &amp; .NET 8+</span>
                                     </li>
                                     <li className="flex items-start gap-3">
                                         <span className="mt-1.5 size-2 rounded-full bg-emerald-400 shrink-0 shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
-                                        <span>Cloud Migration & Modernization</span>
+                                        <span>Cloud Migration &amp; Modernization</span>
                                     </li>
                                     <li className="flex items-start gap-3">
                                         <span className="mt-1.5 size-2 rounded-full bg-emerald-400 shrink-0 shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
-                                        <span>DevOps & Infrastructure as Code</span>
+                                        <span>DevOps &amp; Infrastructure as Code</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <span className="mt-1.5 size-2 rounded-full bg-emerald-400 shrink-0 shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
+                                        <span>AI-powered full-stack delivery — React, Next.js, TypeScript, whatever's needed.</span>
                                     </li>
                                 </ul>
 

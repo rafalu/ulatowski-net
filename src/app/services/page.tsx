@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "How I Deliver Complete Cloud Solutions | Rafał Ulatowski",
-    description: "I build and ship complete Azure cloud systems from start to finish — writing .NET code, building infrastructure, setting up CI/CD. Production-ready delivery, not PowerPoint architectures.",
+    description: "I build and ship complete Azure cloud systems from start to finish — writing .NET code, building infrastructure, setting up CI/CD. AI-driven delivery for faster time-to-market. Production-ready delivery, not PowerPoint architectures.",
     alternates: {
         canonical: '/services',
     },

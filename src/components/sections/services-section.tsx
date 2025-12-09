@@ -137,8 +137,8 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
                             </div>
 
                             <ul className="relative mt-6 space-y-3 text-sm text-text-secondary md:text-[15px]">
-                                {card.points.map((p) => (
-                                    <li key={p.text} className="flex gap-3 items-start">
+                                {card.points.map((p, pIdx) => (
+                                    <li key={pIdx} className="flex gap-3 items-start">
                                         <span className="mt-1 inline-block flex-none text-base">{p.icon}</span>
                                         <span className="leading-relaxed">{p.text}</span>
                                     </li>
@@ -153,6 +153,56 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
                             </Link>
                         </motion.article>
                     ))}
+                </motion.div>
+
+                {/* AI-Driven Delivery Section */}
+                <motion.div
+                    className="mt-10 rounded-2xl border border-sky-500/30 bg-gradient-to-br from-sky-500/10 via-indigo-500/10 to-fuchsia-500/10 p-8 backdrop-blur-xl"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                    <div className="flex items-start gap-4 mb-4">
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sky-500/20 ring-1 ring-sky-400/30 text-2xl">
+                            <span aria-hidden="true">🤖</span>
+                        </div>
+                        <div>
+                            <h3 className="text-2xl font-bold text-text-heading">AI-Driven Delivery</h3>
+                        </div>
+                    </div>
+                    <p className="text-base text-text-body leading-relaxed">
+                        AI is part of my workflow end-to-end. It helps me design, code, debug and ship features
+                        ridiculously fast — even in stacks outside my primary domain. That means faster delivery,
+                        fewer bottlenecks and more value per sprint.
+                    </p>
+
+                    <div className="mt-3 flex flex-wrap items-center gap-2 text-xs md:text-sm text-text-secondary">
+                        <span className="uppercase tracking-wide text-[0.7rem] text-text-tertiary mr-1">
+                            AI-assisted work in:
+                        </span>
+
+                        <span className="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 border border-white/10">
+                            <span className="text-base">⚛️</span>
+                            <span>React</span>
+                        </span>
+
+                        <span className="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 border border-white/10">
+                            <span className="text-base">▲</span>
+                            <span>Next.js</span>
+                        </span>
+
+                        <span className="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 border border-white/10">
+                            <span className="text-[0.75rem] font-semibold">TS</span>
+                            <span>TypeScript</span>
+                        </span>
+
+                        <span className="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 border border-emerald-400/50">
+                            <span className="text-base">🤖</span>
+                            <span>Backends in .NET / Azure</span>
+                        </span>
+                    </div>
+
                 </motion.div>
             </div>
         </section>

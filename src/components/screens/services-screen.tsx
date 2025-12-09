@@ -24,6 +24,7 @@ export function ServicesScreen() {
                     transition={{ duration: 0.6, delay: 0.1 }}
                 >
                     I deliver complete cloud systems from start to finish — writing the .NET code, building the Azure infrastructure, setting up CI/CD, and ensuring it all runs reliably in production. No hand-waving, no PowerPoint architectures. Just working software that ships.
+                    Leveraging AI tooling, I can ship production-ready backends and full-stack apps at a speed that traditional teams can’t match.
                 </motion.p>
             </div>
 
