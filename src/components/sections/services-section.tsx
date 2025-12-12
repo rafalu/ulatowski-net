@@ -107,23 +107,26 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
                     {visibleServices.map((card, idx) => (
                         <motion.article
                             key={card.id}
-                            className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 dark:bg-slate-900/70 p-5 pb-6 backdrop-blur-xl flex flex-col"
-                            initial={{ opacity: 0, y: 24 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            className="group rounded-3xl border border-slate-200 bg-white/50 dark:border-white/10 dark:bg-white/5 p-5 backdrop-blur-xl hover:bg-slate-50 dark:hover:bg-white/10 shadow-sm dark:shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset,0_8px_30px_rgba(0,0,0,0.35)] dark:hover:shadow-[0_0_0_1px_rgba(255,255,255,0.12)_inset,0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden"
+                            initial={{ opacity: 0, y: 30, rotateX: 15 }}
+                            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                             viewport={{ once: true }}
                             transition={{
-                                duration: 0.5,
-                                delay: 0.15 + idx * 0.08,
+                                duration: 0.3,
+                                delay: idx * 0.15,
                                 type: "spring",
-                                stiffness: 200
+                                stiffness: 100
                             }}
                             whileHover={{
-                                y: -6,
-                                boxShadow: "0 24px 60px rgba(15,23,42,0.9)"
+                                y: -8,
+                                scale: 1.02,
+                                rotateX: -2,
+                                transition: { duration: 0.3 }
                             }}
                         >
-                            <div
-                                className={`pointer-events-none absolute inset-x-0 -top-24 h-44 bg-gradient-to-br ${card.accent} opacity-30 blur-3xl`}
+                            <motion.div
+                                className="absolute inset-0 bg-gradient-to-br from-sky-400/5 to-indigo-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                                initial={false}
                             />
 
                             <div className="relative flex items-start gap-4">
@@ -131,19 +134,44 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
                                     <span aria-hidden="true">{card.icon}</span>
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold text-text-heading md:text-xl">{card.label}</h3>
-                                    <p className="text-sm text-text-tertiary mt-1">{card.tagline}</p>
+                                    <motion.h3
+                                        className="text-lg font-bold text-text-heading md:text-xl"
+                                        initial={{ opacity: 0, x: -10 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: idx * 0.15 + 0.3 }}
+                                    >
+                                        {card.label}
+                                    </motion.h3>
+                                    <motion.p
+                                        className="text-sm text-text-tertiary mt-1"
+                                        initial={{ opacity: 0, x: -10 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: idx * 0.15 + 0.35 }}
+                                    >
+                                        {card.tagline}
+                                    </motion.p>
                                 </div>
                             </div>
 
-                            <ul className="relative mt-6 space-y-3 text-sm text-text-secondary md:text-[15px]">
+                            <motion.ul
+                                className="relative mt-6 space-y-3 text-sm text-text-secondary md:text-[15px]"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: idx * 0.15 + 0.4 }}
+                            >
                                 {card.points.map((p, pIdx) => (
-                                    <li key={pIdx} className="flex gap-3 items-start">
+                                    <motion.li
+                                        key={pIdx}
+                                        className="flex gap-3 items-start"
+                                        initial={{ opacity: 0, x: -10 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: idx * 0.15 + 0.4 + pIdx * 0.1 }}
+                                    >
                                         <span className="mt-1 inline-block flex-none text-base">{p.icon}</span>
                                         <span className="leading-relaxed">{p.text}</span>
-                                    </li>
+                                    </motion.li>
                                 ))}
-                            </ul>
+                            </motion.ul>
                             <Link
                                 href="/contact"
                                 className="relative mt-4 inline-flex items-center gap-1 text-sm text-sky-600 dark:text-sky-200/90 hover:text-sky-700 dark:hover:text-sky-300 transition-colors font-medium"
