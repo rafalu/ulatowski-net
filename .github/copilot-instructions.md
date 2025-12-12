@@ -124,3 +124,10 @@ Jobs are deduplicated by composite key: `title.toLowerCase()|company.toLowerCase
 - No pagination or limit query params
 - No authentication/rate limiting
 - Lint configured but errors non-blocking
+
+## CRITICAL: Documentation Policy
+**NEVER create README files, documentation files, or summary markdown files unless explicitly requested by the user.**
+- Do NOT create `README.md`, `COMPONENT-NAME-README.md`, or similar documentation files
+- Do NOT create summary or changelog files after making changes
+- Focus on implementing the actual code changes requested
+- User will request documentation separately if needed

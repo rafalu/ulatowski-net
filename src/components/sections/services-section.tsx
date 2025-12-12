@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedCard } from "@/components/animated-card";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -105,24 +106,10 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
                     {visibleServices.map((card, idx) => (
-                        <motion.article
+                        <AnimatedCard
                             key={card.id}
+                            index={idx}
                             className="group rounded-3xl border border-slate-200 bg-white/50 dark:border-white/10 dark:bg-white/5 p-5 backdrop-blur-xl hover:bg-slate-50 dark:hover:bg-white/10 shadow-sm dark:shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset,0_8px_30px_rgba(0,0,0,0.35)] dark:hover:shadow-[0_0_0_1px_rgba(255,255,255,0.12)_inset,0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden"
-                            initial={{ opacity: 0, y: 30, rotateX: 15 }}
-                            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                            viewport={{ once: true }}
-                            transition={{
-                                duration: 0.3,
-                                delay: idx * 0.15,
-                                type: "spring",
-                                stiffness: 100
-                            }}
-                            whileHover={{
-                                y: -8,
-                                scale: 1.02,
-                                rotateX: -2,
-                                transition: { duration: 0.3 }
-                            }}
                         >
                             <motion.div
                                 className="absolute inset-0 bg-gradient-to-br from-sky-400/5 to-indigo-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -179,7 +166,7 @@ export function ServicesSection({ variant = "full" }: ServicesSectionProps) {
                                 Get in touch
                                 <span className="transition-transform group-hover:translate-x-0.5">→</span>
                             </Link>
-                        </motion.article>
+                        </AnimatedCard>
                     ))}
                 </motion.div>
 

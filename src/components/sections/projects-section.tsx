@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedCard } from "@/components/animated-card";
 import { motion } from "framer-motion";
 import { Rocket, Server, Zap } from "lucide-react";
 import Link from "next/link";
@@ -72,23 +73,9 @@ export function ProjectsSection() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
                     {visibleProjects.map((p, i) => (
-                        <motion.article
+                        <AnimatedCard
                             key={i}
-                            initial={{ opacity: 0, y: 30, rotateX: 15 }}
-                            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                            viewport={{ once: true, amount: 0.2 }}
-                            transition={{
-                                duration: 0.3,
-                                delay: i * 0.15,
-                                type: "spring",
-                                stiffness: 100
-                            }}
-                            whileHover={{
-                                y: -8,
-                                scale: 1.02,
-                                rotateX: -2,
-                                transition: { duration: 0.3 }
-                            }}
+                            index={i}
                             className="group rounded-3xl border border-slate-200 bg-white/50 dark:border-white/10 dark:bg-white/5 p-5 backdrop-blur-xl hover:bg-slate-50 dark:hover:bg-white/10 shadow-sm dark:shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset,0_8px_30px_rgba(0,0,0,0.35)] dark:hover:shadow-[0_0_0_1px_rgba(255,255,255,0.12)_inset,0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden"
                         >
                             <motion.div
@@ -139,7 +126,7 @@ export function ProjectsSection() {
                                 Learn more about my experience
                                 <span className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                             </Link>
-                        </motion.article>
+                        </AnimatedCard>
                     ))}
                 </motion.div>
             </div>
