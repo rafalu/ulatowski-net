@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+const isProduction = process.env.NODE_ENV === "production";
+
 const nextConfig: NextConfig = {
   async rewrites() {
     return [
@@ -24,39 +26,65 @@ const nextConfig: NextConfig = {
   }
   ,
   async headers() {
+    const securityHeaders = {
+      // Prevent clickjacking: allow framing only from same origin (more compatible)
+      source: '/:path*',
+      headers: [
+        {
+          key: 'X-Frame-Options',
+          value: 'SAMEORIGIN',
+        },
+        {
+          key: 'Content-Security-Policy',
+          // frame-ancestors 'self' allows same-origin frames but blocks others
+          value: "frame-ancestors 'self'",
+        },
+      ],
+    };
+
+    if (isProduction) {
+      return [
+        securityHeaders,
+        {
+          // cache static _next files long-term in production
+          source: '/_next/static/:path*',
+          headers: [
+            {
+              key: 'Cache-Control',
+              value: 'public, max-age=31536000, immutable',
+            },
+          ],
+        },
+        {
+          // cache image files (pre-converted WebP) long-term
+          source: '/images/:path*',
+          headers: [
+            {
+              key: 'Cache-Control',
+              value: 'public, max-age=31536000, immutable',
+            },
+          ],
+        },
+      ];
+    }
+
     return [
+      securityHeaders,
       {
-        // Prevent clickjacking: allow framing only from same origin (more compatible)
-        source: '/:path*',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN',
-          },
-          {
-            key: 'Content-Security-Policy',
-            // frame-ancestors 'self' allows same-origin frames but blocks others
-            value: "frame-ancestors 'self'",
-          },
-        ],
-      },
-      {
-        // cache static _next files long-term in production
         source: '/_next/static/:path*',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: 'no-store',
           },
         ],
       },
       {
-        // cache image files (pre-converted WebP) long-term
         source: '/images/:path*',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: 'no-cache',
           },
         ],
       },

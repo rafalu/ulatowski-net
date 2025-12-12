@@ -174,7 +174,7 @@ export function ContactScreen() {
                                     </li>
                                     <li className="flex items-start gap-3">
                                         <span className="mt-1.5 size-2 rounded-full bg-emerald-400 shrink-0 shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
-                                        <span>AI-powered full-stack delivery — React, Next.js, TypeScript, whatever's needed.</span>
+                                        <span>AI-powered full-stack delivery — React, Next.js, TypeScript, whatever&apos;s needed.</span>
                                     </li>
                                 </ul>
 

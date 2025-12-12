@@ -292,21 +292,16 @@
             }
         ]
     },
-    "secondarySkills": [
+    "secondarySoftSkills": [
         {
-            "name": "IT Consulting",
-            "competenceLevel": "Experienced",
-            "yearsOfExperience": "SevenPlus"
+            "name": "Problem Solving",
+            "competenceLevel": "Expert",
+            "yearsOfExperience": "FifteenPlus"
         },
         {
-            "name": "Agile Methodologies",
+            "name": "Team Collaboration & Communication",
             "competenceLevel": "VeryExperienced",
-            "yearsOfExperience": "TenPlus"
-        },
-        {
-            "name": "Scrum",
-            "competenceLevel": "VeryExperienced",
-            "yearsOfExperience": "TenPlus"
+            "yearsOfExperience": "FifteenPlus"
         },
         {
             "name": "Business Analysis",
@@ -314,27 +309,41 @@
             "yearsOfExperience": "TenPlus"
         },
         {
-            "name": "Problem Solving",
-            "competenceLevel": "Expert",
-            "yearsOfExperience": "FifteenPlus"
-        },
+            "name": "IT Consulting & Stakeholder Communication",
+            "competenceLevel": "Experienced",
+            "yearsOfExperience": "SevenPlus"
+        }
+    ],
+    "deliverySkills": [
         {
-            "name": "Teamwork",
+            "name": "Agile Delivery",
             "competenceLevel": "VeryExperienced",
-            "yearsOfExperience": "FifteenPlus"
+            "yearsOfExperience": "TenPlus"
         },
         {
-            "name": "Automated Trading",
+            "name": "Scrum Framework",
+            "competenceLevel": "VeryExperienced",
+            "yearsOfExperience": "TenPlus"
+        },
+        {
+            "name": "Cross-functional Collaboration",
+            "competenceLevel": "Experienced",
+            "yearsOfExperience": "TenPlus"
+        }
+    ],
+    "sideSpecializations": [
+        {
+            "name": "Automated Trading Systems",
             "competenceLevel": "Experienced",
             "yearsOfExperience": "TenPlus"
         },
         {
-            "name": "FX trading",
+            "name": "FX Trading",
             "competenceLevel": "Experienced",
             "yearsOfExperience": "TenPlus"
         },
         {
-            "name": "MQL4",
+            "name": "MQL4 Development",
             "competenceLevel": "Experienced",
             "yearsOfExperience": "ThreePlus"
         }
