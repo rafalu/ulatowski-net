@@ -27,6 +27,11 @@ export const metadata: Metadata = {
   authors: [{ name: "Rafał Ulatowski" }],
   creator: "Rafał Ulatowski",
   publisher: "Rafał Ulatowski",
+  verification: {
+    other: {
+      "msvalidate.01": "7695F1AA01E0DC1751BEAE95C74A06E1",
+    },
+  },
   alternates: {
     canonical: "/",
   },
