@@ -19,9 +19,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ulatowski.net"),
-  title: "Rafał Ulatowski | I Build .NET Systems That Run Reliably in the Cloud",
+  title: "Senior .NET & Azure Cloud Engineer | DevOps | Full-stack (React) | B2B Contract",
   description:
-    "Senior .NET & Azure Engineer in Copenhagen. I build production-ready cloud systems end-to-end with AI-driven workflows. Code, infrastructure, CI/CD.",
+    "Senior .NET & Azure Engineer in Copenhagen focused on building production-ready cloud systems end-to-end with AI-driven full-stack delivery (React, .NET, C#, Azure, Iac). Available for contract & B2B.",
   keywords:
     "Azure Cloud Architect, .NET Developer, Azure Developer, Cloud Developer Copenhagen, End-to-end Cloud Delivery, Azure Bicep, IaC, CI/CD, Production Systems, Azure DevOps, GitHub Actions, .NET 8, C# Developer, Cloud Migration, Azure Infrastructure, AI-driven engineering, AI-accelerated development, AI-assisted architecture, AI-powered full-stack delivery",
   authors: [{ name: "Rafał Ulatowski" }],
@@ -37,29 +37,29 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      "Rafał Ulatowski | I Build .NET Systems That Run Reliably in the Cloud",
+      "Senior .NET & Azure Cloud Engineer | DevOps | Full-stack (React) | B2B Contract",
     description:
-      "Senior .NET & Azure Engineer in Copenhagen. I build production-ready cloud systems end-to-end with AI-driven workflows. Code, infrastructure, CI/CD.",
+      "Senior .NET & Azure Engineer based in Copenhagen, building production-ready cloud systems end-to-end.",
     url: "https://ulatowski.net",
     type: "website",
     locale: "en_US",
     siteName: "Rafał Ulatowski – Azure & .NET Developer",
     images: [
       {
-        url: "/og/azure-cloud-engineer.webp",
+        url: "https://ulatowski.net/og/senior-dotnet-azure-cloud-engineer.webp",
         width: 1200,
         height: 630,
-        alt: "Rafał Ulatowski – Building Production-Ready Cloud Systems",
+        alt: "Senior .NET & Azure Cloud Engineer — Azure, DevOps, Full-stack",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "Rafał Ulatowski | I Build .NET Systems That Run Reliably in the Cloud",
+      "Senior .NET & Azure Cloud Engineer | DevOps | Full-stack (React) | B2B Contract",
     description:
-      "Senior .NET & Azure Engineer in Copenhagen. I build production-ready cloud systems end-to-end with AI-driven workflows. Code, infrastructure, CI/CD.",
-    images: ["/og/azure-cloud-engineer.webp"],
+      "Senior .NET & Azure Engineer based in Copenhagen, building production-ready cloud systems end-to-end.",
+    images: ["https://ulatowski.net/og/senior-dotnet-azure-cloud-engineer.webp"],
   },
   robots: {
     index: true,
