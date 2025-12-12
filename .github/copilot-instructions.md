@@ -1,5 +1,7 @@
 # Contract Agent API - Copilot Instructions
 
+## Code Language Policy — **ALL code, comments, commit messages, and documentation MUST be in English.** No exceptions.
+
 ## Project Overview
 This is a **Next.js 14 API-only application** deployed to Vercel. It aggregates and scores contract job opportunities from multiple sources (Emagine, Verama) based on tech stack preferences and recency. No frontend UI—pure API routes.
 
