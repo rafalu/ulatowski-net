@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: route === '' ? 'weekly' : 'monthly',
+    changeFrequency: route === '' ? 'weekly' : (['/about', '/contact'].includes(route) ? 'yearly' : 'monthly'),
     priority: route === '' ? 1 : 0.8,
   }))
 }

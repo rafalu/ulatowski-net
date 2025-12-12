@@ -95,7 +95,7 @@ export default function RootLayout({
         )}
         {/* Preload hero avatar (LCP candidate) to help reduce Largest Contentful Paint in production */}
         {isProd && (
-          <link rel="preload" as="image" href="/images/rafal-ulatowski-profile-photo.webp" type="image/webp" />
+          <link rel="preload" as="image" href="/images/profile-photo.webp" type="image/webp" />
         )}
         {isProd && HOTJAR_ID && (
           <>

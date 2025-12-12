@@ -29,7 +29,7 @@ export default function AboutPage() {
                     "@id": "https://ulatowski.net/#person"
                 }
             }} />
-            <div className="mx-auto max-w-3xl px-4 pb-16">
+            <div className="mx-auto max-w-6xl px-4 pb-16">
                 <Breadcrumbs items={[{ label: "About" }]} />
                 <div className="space-y-12">
                     {/* Header Section */}
