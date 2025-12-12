@@ -8,6 +8,26 @@ export const metadata: Metadata = {
     alternates: {
         canonical: '/portfolio',
     },
+    openGraph: {
+        title: "Portfolio | Rafał Ulatowski",
+        description: "Showcase of projects and technical capabilities.",
+        url: "https://ulatowski.net/portfolio",
+        type: "website",
+        images: [
+            {
+                url: "https://ulatowski.net/og/senior-dotnet-azure-cloud-engineer.webp",
+                width: 1200,
+                height: 630,
+                alt: "Portfolio - Rafał Ulatowski",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Portfolio | Rafał Ulatowski",
+        description: "Showcase of projects and technical capabilities.",
+        images: ["https://ulatowski.net/og/senior-dotnet-azure-cloud-engineer.webp"],
+    },
 };
 
 export default function PortfolioPage() {

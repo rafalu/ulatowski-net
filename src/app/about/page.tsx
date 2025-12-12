@@ -4,11 +4,31 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-    title: "About | Senior Cloud & Backend Engineer (.NET, Azure, DevOps) – Copenhagen",
+    title: "About | Senior .NET & Azure Engineer – Copenhagen",
     description:
         "Senior Cloud & Backend Engineer specializing in .NET, Azure, DevOps, and microservices. I build secure, scalable cloud systems end-to-end. Copenhagen-based.",
     alternates: {
         canonical: '/about',
+    },
+    openGraph: {
+        title: "About | Senior .NET & Azure Engineer – Copenhagen",
+        description: "Senior Cloud & Backend Engineer specializing in .NET, Azure, DevOps, and microservices. I build secure, scalable cloud systems end-to-end. Copenhagen-based.",
+        url: "https://ulatowski.net/about",
+        type: "profile",
+        images: [
+            {
+                url: "https://ulatowski.net/og/senior-dotnet-azure-cloud-engineer.webp",
+                width: 1200,
+                height: 630,
+                alt: "About Rafał Ulatowski - Senior .NET & Azure Engineer",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "About | Senior .NET & Azure Engineer – Copenhagen",
+        description: "Senior Cloud & Backend Engineer specializing in .NET, Azure, DevOps, and microservices. I build secure, scalable cloud systems end-to-end. Copenhagen-based.",
+        images: ["https://ulatowski.net/og/senior-dotnet-azure-cloud-engineer.webp"],
     },
 };
 

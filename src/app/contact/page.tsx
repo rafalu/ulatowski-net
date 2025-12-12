@@ -3,10 +3,30 @@ import { ContactScreen } from "@/components/screens/contact-screen";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Contact – Hire Someone Who Actually Delivers | Rafał Ulatowski",
+    title: "Contact | Hire a .NET & Azure Engineer",
     description: "Available for .NET & Azure projects. I deliver working systems in production—not just plans. AI-driven workflows for faster delivery. Code, infrastructure, CI/CD.",
     alternates: {
         canonical: '/contact',
+    },
+    openGraph: {
+        title: "Contact | Hire a .NET & Azure Engineer",
+        description: "Available for .NET & Azure projects. I deliver working systems in production—not just plans. AI-driven workflows for faster delivery. Code, infrastructure, CI/CD.",
+        url: "https://ulatowski.net/contact",
+        type: "website",
+        images: [
+            {
+                url: "https://ulatowski.net/og/senior-dotnet-azure-cloud-engineer.webp",
+                width: 1200,
+                height: 630,
+                alt: "Contact Rafał Ulatowski - .NET & Azure Engineer",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Contact | Hire a .NET & Azure Engineer",
+        description: "Available for .NET & Azure projects. I deliver working systems in production—not just plans. AI-driven workflows for faster delivery. Code, infrastructure, CI/CD.",
+        images: ["https://ulatowski.net/og/senior-dotnet-azure-cloud-engineer.webp"],
     },
 };
 

@@ -3,10 +3,30 @@ import { ServicesScreen } from "@/components/screens/services-screen";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "How I Deliver Complete Cloud Solutions | Rafał Ulatowski",
+    title: "Cloud Solutions & Services | Rafał Ulatowski",
     description: "I build complete Azure cloud systems: .NET code, infrastructure, CI/CD. AI-driven delivery for faster time-to-market. Production-ready, not PowerPoint.",
     alternates: {
         canonical: '/services',
+    },
+    openGraph: {
+        title: "Cloud Solutions & Services | Rafał Ulatowski",
+        description: "I build complete Azure cloud systems: .NET code, infrastructure, CI/CD. AI-driven delivery for faster time-to-market. Production-ready, not PowerPoint.",
+        url: "https://ulatowski.net/services",
+        type: "website",
+        images: [
+            {
+                url: "https://ulatowski.net/og/senior-dotnet-azure-cloud-engineer.webp",
+                width: 1200,
+                height: 630,
+                alt: "Cloud Solutions & Services - Rafał Ulatowski",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Cloud Solutions & Services | Rafał Ulatowski",
+        description: "I build complete Azure cloud systems: .NET code, infrastructure, CI/CD. AI-driven delivery for faster time-to-market. Production-ready, not PowerPoint.",
+        images: ["https://ulatowski.net/og/senior-dotnet-azure-cloud-engineer.webp"],
     },
 };
 

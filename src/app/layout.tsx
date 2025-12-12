@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ulatowski.net"),
-  title: "Senior .NET & Azure Cloud Engineer | DevOps | Full-stack (React) | B2B Contract",
+  title: "Senior .NET & Azure Engineer | DevOps | Copenhagen",
   description:
     "Senior .NET & Azure Engineer in Copenhagen focused on building production-ready cloud systems end-to-end with AI-driven full-stack delivery (React, .NET, C#, Azure, Iac). Available for contract & B2B.",
   keywords:
@@ -36,8 +36,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title:
-      "Senior .NET & Azure Cloud Engineer | DevOps | Full-stack (React) | B2B Contract",
+    title: "Senior .NET & Azure Engineer | DevOps | Copenhagen",
     description:
       "Senior .NET & Azure Engineer based in Copenhagen, building production-ready cloud systems end-to-end.",
     url: "https://ulatowski.net",
@@ -55,8 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Senior .NET & Azure Cloud Engineer | DevOps | Full-stack (React) | B2B Contract",
+    title: "Senior .NET & Azure Engineer | DevOps | Copenhagen",
     description:
       "Senior .NET & Azure Engineer based in Copenhagen, building production-ready cloud systems end-to-end.",
     images: ["https://ulatowski.net/og/senior-dotnet-azure-cloud-engineer.webp"],
