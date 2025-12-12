@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Track Record: Systems I've Built & Shipped | Rafał Ulatowski",
-    description: "15+ years of building and shipping production systems — from .NET backends to complete Azure cloud platforms. AI-accelerated development for faster delivery. Here's what I've actually delivered.",
+    description: "15+ years building production systems—from .NET backends to Azure cloud platforms. AI-accelerated development. Here's what I've actually shipped.",
     alternates: {
         canonical: '/projects',
     },

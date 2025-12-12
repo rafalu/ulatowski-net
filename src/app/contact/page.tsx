@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Contact – Hire Someone Who Actually Delivers | Rafał Ulatowski",
-    description: "Available for projects where you need someone who builds and ships complete solutions — not just plans, but working systems running in production. AI-driven workflows for faster delivery. .NET code, Azure infrastructure, CI/CD pipelines.",
+    description: "Available for .NET & Azure projects. I deliver working systems in production—not just plans. AI-driven workflows for faster delivery. Code, infrastructure, CI/CD.",
     alternates: {
         canonical: '/contact',
     },

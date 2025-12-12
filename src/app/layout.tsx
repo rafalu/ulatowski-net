@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ulatowski.net"),
   title: "Rafał Ulatowski | I Build .NET Systems That Run Reliably in the Cloud",
   description:
-    "Senior Cloud & Backend Engineer (.NET, Azure, DevOps) with AI-driven development workflows. I build and ship modern cloud systems and full-stack apps fast using AI-assisted engineering. Based in Copenhagen, Denmark.",
+    "Senior .NET & Azure Engineer in Copenhagen. I build production-ready cloud systems end-to-end with AI-driven workflows. Code, infrastructure, CI/CD.",
   keywords:
     "Azure Cloud Architect, .NET Developer, Azure Developer, Cloud Developer Copenhagen, End-to-end Cloud Delivery, Azure Bicep, IaC, CI/CD, Production Systems, Azure DevOps, GitHub Actions, .NET 8, C# Developer, Cloud Migration, Azure Infrastructure, AI-driven engineering, AI-accelerated development, AI-assisted architecture, AI-powered full-stack delivery",
   authors: [{ name: "Rafał Ulatowski" }],
@@ -39,14 +39,14 @@ export const metadata: Metadata = {
     title:
       "Rafał Ulatowski | I Build .NET Systems That Run Reliably in the Cloud",
     description:
-      "Senior Cloud & Backend Engineer (.NET, Azure, DevOps) with AI-driven development workflows. I build and ship modern cloud systems and full-stack apps fast using AI-assisted engineering.",
+      "Senior .NET & Azure Engineer in Copenhagen. I build production-ready cloud systems end-to-end with AI-driven workflows. Code, infrastructure, CI/CD.",
     url: "https://ulatowski.net",
     type: "website",
     locale: "en_US",
     siteName: "Rafał Ulatowski – Azure & .NET Developer",
     images: [
       {
-        url: "/og/azure-cloud-architect.webp",
+        url: "/og/azure-cloud-engineer.webp",
         width: 1200,
         height: 630,
         alt: "Rafał Ulatowski – Building Production-Ready Cloud Systems",
@@ -58,8 +58,8 @@ export const metadata: Metadata = {
     title:
       "Rafał Ulatowski | I Build .NET Systems That Run Reliably in the Cloud",
     description:
-      "Senior Cloud & Backend Engineer (.NET, Azure, DevOps) with AI-driven development workflows. I build and ship modern cloud systems and full-stack apps fast using AI-assisted engineering.",
-    images: ["/og/azure-cloud-architect.webp"],
+      "Senior .NET & Azure Engineer in Copenhagen. I build production-ready cloud systems end-to-end with AI-driven workflows. Code, infrastructure, CI/CD.",
+    images: ["/og/azure-cloud-engineer.webp"],
   },
   robots: {
     index: true,
@@ -137,7 +137,7 @@ export default function RootLayout({
                 "name": "Rafal Ulatowski",
                 "alternateName": "Rafał Ulatowski",
                 "url": "https://ulatowski.net/",
-                "image": "https://ulatowski.net/images/profile.jpg",
+                "image": "https://ulatowski.net/images/profile-photo.webp",
                 "jobTitle": "Senior Azure Cloud Architect & .NET Developer",
                 "description": "I build and ship production-ready .NET systems on Azure. Developer by heart, architect by experience.",
                 "worksFor": {

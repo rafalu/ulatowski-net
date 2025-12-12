@@ -6,7 +6,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
     title: "About | Senior Cloud & Backend Engineer (.NET, Azure, DevOps) – Copenhagen",
     description:
-        "About Rafal Ulatowski – Senior Cloud & Backend Engineer specializing in .NET, C#, Azure, DevOps, microservices and production-grade cloud architecture. Based in Copenhagen, Denmark. I design and build secure, scalable, cloud-native systems end-to-end.",
+        "Senior Cloud & Backend Engineer specializing in .NET, Azure, DevOps, and microservices. I build secure, scalable cloud systems end-to-end. Copenhagen-based.",
     alternates: {
         canonical: '/about',
     },
