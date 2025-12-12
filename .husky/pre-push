@@ -1,2 +1,1 @@
-echo "🔒 Running security checks before push..."
-pnpm run check-security
+# Security checks removed - using Vercel's automatic detection instead

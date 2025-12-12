@@ -1,5 +1,2 @@
-echo "🔒 Running security checks..."
-pnpm run check-security
-
 echo "🧪 Running tests..."
 pnpm test
