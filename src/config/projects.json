@@ -7,8 +7,9 @@
             "location": "Capital Region of Denmark",
             "period": "September 2024 – Present",
             "bullets": [
-                "Architecting and developing cloud-native solutions on Azure.",
-                "Focus on reliable and maintainable code using .NET and C#."
+                "Architecting and delivering secure Azure cloud platforms and .NET services with full ownership from design to production.",
+                "Key focus areas: IaC (Bicep), Azure networking (VNets, private endpoints), secure identity and access (RBAC, Managed Identities/Entra), CI/CD automation, and production operations (monitoring, reliability).",
+                "Built with emphasis on maintainability, performance, and clean engineering practices in C#/.NET."
             ]
         },
         {
