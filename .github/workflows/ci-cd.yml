@@ -27,6 +27,8 @@ jobs:
             ${{ runner.os }}-pnpm-
 
       - run: pnpm install --frozen-lockfile
+      - name: Security check - Next.js version
+        run: pnpm run check-security
       - name: Run linter
         run: pnpm run lint
       - name: Run tests
