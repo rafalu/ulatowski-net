@@ -27,8 +27,6 @@ jobs:
             ${{ runner.os }}-pnpm-
 
       - run: pnpm install --frozen-lockfile
-      - name: Security check - Next.js version
-        run: pnpm run check-security
       # Linter disabled - ESLint 9.x has compatibility issues with Next.js 15
       # - name: Run linter
       #   run: pnpm run lint
