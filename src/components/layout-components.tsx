@@ -116,7 +116,7 @@ export function Header() {
 export function Footer() {
     const year = new Date().getFullYear();
     return (
-        <section id="footer" className="relative">
+        <div id="footer" className="relative">
             <div className="h-px w-full bg-gradient-to-r from-transparent via-border to-transparent" />
             <footer className="mx-auto max-w-6xl px-4 py-10 text-sm text-muted-foreground flex flex-col md:flex-row items-center justify-between gap-3">
                 <div className="flex flex-col items-center md:items-start gap-2">
@@ -135,6 +135,6 @@ export function Footer() {
                     </div>
                 </div>
             </footer>
-        </section>
+        </div>
     );
 }

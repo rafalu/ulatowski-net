@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function QuoteSection() {
     return (
-        <section className="relative py-8">
+        <div className="relative py-8">
             <div className="mx-auto max-w-4xl px-4">
                 <motion.div
                     className="text-center"
@@ -19,6 +19,6 @@ export function QuoteSection() {
                     <cite className="text-text-tertiary text-sm">— Rafał Ulatowski</cite>
                 </motion.div>
             </div>
-        </section>
+        </div>
     );
 }
