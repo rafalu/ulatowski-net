@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bari & Puglia — Travel Plan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sea: { 50:'#f0f9ff', 100:'#e0f2fe', 200:'#bae6fd', 300:'#7dd3fc', 400:'#38bdf8', 500:'#0ea5e9', 600:'#0284c7', 700:'#0369a1', 800:'#075985', 900:'#0c4a6e' },
+            olive: { 50:'#f7f8f0', 100:'#eef0df', 200:'#dde2bf', 300:'#c5cc91', 400:'#a9b35f', 500:'#8f9a3e', 600:'#717b2f', 700:'#565e27', 800:'#454c24', 900:'#3b4123' },
+            terra: { 50:'#fdf6ef', 100:'#fae9d4', 200:'#f4d0a8', 300:'#edb172', 400:'#e58c3e', 500:'#df721f', 600:'#c75a17', 700:'#a54316', 800:'#873719', 900:'#6f2f18' },
+            wine: { 50:'#fdf2f6', 100:'#fce7ef', 200:'#facfe1', 300:'#f6a7c7', 400:'#ef71a1', 500:'#e5467e', 600:'#d3255d', 700:'#b41847', 800:'#95173c', 900:'#7d1836' },
+          },
+          fontFamily: {
+            display: ['"Playfair Display"','Georgia','serif'],
+            body: ['"Inter"','system-ui','sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .day-card { transition: all .3s ease; }
+    .day-card:hover { transform: translateY(-2px); box-shadow: 0 20px 60px -15px rgba(0,0,0,.15); }
+    .leaflet-popup-content-wrapper { border-radius: 12px !important; font-family: 'Inter', sans-serif; }
+    .leaflet-popup-content { margin: 12px 16px !important; }
+    .glass { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    @media print { .no-print { display: none !important; } }
+  </style>
+</head>
+<body class="bg-stone-50 font-body text-stone-800 antialiased">
+  <header class="relative min-h-[70vh] flex items-end overflow-hidden bg-gradient-to-br from-sea-800 via-sea-700 to-sea-900">
+    <div class="absolute inset-0 opacity-20" style="background-image: url('https://images.unsplash.com/photo-1599405706547-9a869c5e4e5b?w=1920&q=80'); background-size:cover; background-position:center;"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-sea-900/90 via-sea-900/40 to-transparent"></div>
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 pt-32">
+      <p class="text-sea-300 font-medium tracking-widest uppercase text-sm mb-3">Mon – Fri · Puglia · Couple</p>
+      <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl text-white font-bold leading-tight mb-4">Bari <span class="text-sea-300">&</span> surroundings</h1>
+      <p class="text-sea-200 text-lg sm:text-xl max-w-2xl leading-relaxed">One town per day. Train, coffee, a seaside run, orecchiette, wine, sunset. Repeat ×5.</p>
+      <div class="flex flex-wrap gap-3 mt-8">
+        <span class="bg-white/10 glass text-white text-sm font-medium px-4 py-2 rounded-full">🏠 33 Strada Nuccia Serra, Bari</span>
+        <span class="bg-white/10 glass text-white text-sm font-medium px-4 py-2 rounded-full">🚆 Public transport only</span>
+        <span class="bg-white/10 glass text-white text-sm font-medium px-4 py-2 rounded-full">🎒 Carry-on only</span>
+        <span class="bg-white/10 glass text-white text-sm font-medium px-4 py-2 rounded-full">🏃 Daily running</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sticky top-0 z-50 bg-white/80 glass border-b border-stone-200 no-print">
+    <div class="max-w-6xl mx-auto px-6 flex gap-1 overflow-x-auto py-2 text-sm font-medium">
+      <a href="#map" class="px-3 py-2 rounded-lg hover:bg-sea-50 text-stone-600 hover:text-sea-700 whitespace-nowrap transition">🗺️ Map</a>
+      <a href="#day-mon" class="px-3 py-2 rounded-lg hover:bg-sea-50 text-stone-600 hover:text-sea-700 whitespace-nowrap transition">Mon</a>
+      <a href="#day-tue" class="px-3 py-2 rounded-lg hover:bg-sea-50 text-stone-600 hover:text-sea-700 whitespace-nowrap transition">Tue</a>
+      <a href="#day-wed" class="px-3 py-2 rounded-lg hover:bg-sea-50 text-stone-600 hover:text-sea-700 whitespace-nowrap transition">Wed</a>
+      <a href="#day-thu" class="px-3 py-2 rounded-lg hover:bg-sea-50 text-stone-600 hover:text-sea-700 whitespace-nowrap transition">Thu</a>
+      <a href="#day-thu-alt" class="px-3 py-2 rounded-lg hover:bg-violet-50 text-violet-600 hover:text-violet-700 whitespace-nowrap transition">Thu alt</a>
+      <a href="#day-fri" class="px-3 py-2 rounded-lg hover:bg-sea-50 text-stone-600 hover:text-sea-700 whitespace-nowrap transition">Fri</a>
+      <a href="#food" class="px-3 py-2 rounded-lg hover:bg-sea-50 text-stone-600 hover:text-sea-700 whitespace-nowrap transition">🍷 Food & Wine</a>
+      <a href="#packing" class="px-3 py-2 rounded-lg hover:bg-sea-50 text-stone-600 hover:text-sea-700 whitespace-nowrap transition">🎒 Packing</a>
+      <a href="#skip" class="px-3 py-2 rounded-lg hover:bg-sea-50 text-stone-600 hover:text-sea-700 whitespace-nowrap transition">🚫 Skip</a>
+      <a href="#practical" class="px-3 py-2 rounded-lg hover:bg-sea-50 text-stone-600 hover:text-sea-700 whitespace-nowrap transition">📝 Practical</a>
+      <a href="#sources" class="px-3 py-2 rounded-lg hover:bg-sea-50 text-stone-600 hover:text-sea-700 whitespace-nowrap transition">📚 Sources</a>
+      <a href="#compact" class="px-3 py-2 rounded-lg hover:bg-sea-50 text-stone-600 hover:text-sea-700 whitespace-nowrap transition">📱 Phone Notes</a>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-6">
+    <section id="map" class="py-12">
+      <h2 class="font-display text-3xl font-bold text-stone-900 mb-2">🗺️ Travel map</h2>
+      <p class="text-stone-500 mb-6">Click a marker to see details. The line connects the route Mon → Fri.</p>
+      <div id="trip-map" class="w-full h-[500px] sm:h-[600px] rounded-2xl shadow-xl border border-stone-200 overflow-hidden"></div>
+    </section>
+
+    <section class="py-8">
+      <div class="grid sm:grid-cols-5 gap-3">
+        <div class="bg-sea-600 text-white rounded-2xl p-5 text-center shadow-lg"><div class="text-3xl mb-1">🏛️</div><div class="font-bold">Monday</div><div class="text-sea-200 text-sm mt-1">Bari Vecchia</div><div class="text-sea-300 text-xs mt-1">walk from base</div></div>
+        <div class="bg-terra-500 text-white rounded-2xl p-5 text-center shadow-lg"><div class="text-3xl mb-1">🌊</div><div class="font-bold">Tuesday</div><div class="text-terra-200 text-sm mt-1">Polignano a Mare</div><div class="text-terra-200 text-xs mt-1">🚆 25 min · €3.20</div></div>
+        <div class="bg-olive-600 text-white rounded-2xl p-5 text-center shadow-lg"><div class="text-3xl mb-1">⛵</div><div class="font-bold">Wednesday</div><div class="text-olive-200 text-sm mt-1">Monopoli</div><div class="text-olive-200 text-xs mt-1">🚆 35–45 min · €3.80</div></div>
+        <div class="bg-wine-600 text-white rounded-2xl p-5 text-center shadow-lg"><div class="text-3xl mb-1">⛪</div><div class="font-bold">Thursday</div><div class="text-wine-200 text-sm mt-1">Trani</div><div class="text-wine-200 text-xs mt-1">🚆 35–45 min · ~€4</div></div>
+        <div class="bg-stone-700 text-white rounded-2xl p-5 text-center shadow-lg"><div class="text-3xl mb-1">✈️</div><div class="font-bold">Friday</div><div class="text-stone-300 text-sm mt-1">Bari → BRI</div><div class="text-stone-400 text-xs mt-1">FM2 15 min · €5</div></div>
+      </div>
+    </section>
+
+    <section id="day-mon" class="py-10">
+      <div class="day-card bg-white rounded-3xl shadow-lg border border-stone-100 overflow-hidden">
+        <div class="bg-gradient-to-r from-sea-600 to-sea-700 px-8 py-6"><div class="flex items-center gap-4"><span class="bg-white/20 text-white text-sm font-bold px-3 py-1 rounded-full">DAY 1</span><div><h3 class="font-display text-3xl text-white font-bold">Monday — Bari</h3><p class="text-sea-200 mt-1">Vecchia + Murat · arrival ~10:00 · no train needed</p></div></div></div>
+        <div class="p-8">
+          <p class="text-stone-600 mb-6 italic">You land around 10:00. No trains today. Drop the bags, settle in, and get to know the city on foot. Bari Vecchia is one of Italy’s most atmospheric medieval quarters — pasta-making nonnas in the street, a Norman castle, and Romanesque basilicas.</p>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-5">
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🥐</span><div><div class="font-semibold text-stone-900">Breakfast</div><p class="text-stone-600 text-sm"><strong>Caffè Borghese</strong> (Via Putignani, Murat) — cornetto + espresso €2–3. <span class="text-amber-600">⚠️ verify</span></p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🏃</span><div><div class="font-semibold text-stone-900">Run — Lungomare loop</div><p class="text-stone-600 text-sm"><strong>6 km</strong> · Piazza Diaz → Pane e Pomodoro beach → back. Flat asphalt, waterfront promenade, very safe from 06:30 onward.</p><div class="mt-2 pl-3 border-l-2 border-sea-200"><div class="font-medium text-stone-700 text-sm">Alternative run — Parco 2 Giugno</div><p class="text-stone-500 text-sm"><strong>3–5 km</strong> paved loop inside Bari’s largest park (Murat). Shaded by Mediterranean pines, flat, water fountains. Great when the seafront is too windy. ~15 min walk from base.</p></div></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">☀️</span><div><div class="font-semibold text-stone-900">Morning</div><ul class="text-stone-600 text-sm space-y-1 mt-1"><li>Piazza Mercantile → Piazza del Ferrarese → <strong>Strada Arco Basso</strong> (orecchiette nonnas, mornings only)</li><li><strong>Basilica di San Nicola</strong> — Saint Nicholas’ relics in the crypt, Norman architecture</li><li><strong>Cattedrale di San Sabino</strong> — 5 min walk away</li></ul></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🍝</span><div><div class="font-semibold text-stone-900">Lunch</div><p class="text-stone-600 text-sm"><strong>Le Travi – La Braceria</strong> (Largo Chiurlia) — orecchiette cime di rapa, grilled meats. €€. Reservation recommended.<br/>Or: <strong>Panificio Fiore</strong> (Strada Palazzo di Città 38) — takeaway focaccia barese, €2.50 per slice.</p></div></div>
+            </div>
+            <div class="space-y-5">
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🌅</span><div><div class="font-semibold text-stone-900">Afternoon</div><ul class="text-stone-600 text-sm space-y-1 mt-1"><li><strong>Castello Svevo</strong> — walls + views (interior €6, ~45 min)</li><li><strong>Muraglia</strong> — old wall promenade, best at sunset</li></ul></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🍷</span><div><div class="font-semibold text-stone-900">Aperitivo</div><p class="text-stone-600 text-sm"><strong>Enoteca Vinarius</strong> (Via Marchese di Montrone, Murat) — Primitivo di Manduria or Susumaniello, ~€5–7. <span class="text-amber-600">⚠️ verify</span></p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🏗️</span><div><div class="font-semibold text-stone-900">Dinner</div><p class="text-stone-600 text-sm"><strong>Vini e Cucina</strong> (Strada Vallisa) — historic trattoria, fava e cicoria + orecchiette. €. No reservations, arrive at 19:30.<br/>Backup: <strong>La Uascezze</strong> — orecchiette + horse meat (regional). <span class="text-amber-600">⚠️ verify Monday opening</span><br/>Alternative: <strong>Terranima</strong> (Via Putignani, Murat) — cozy trattoria, excellent orecchiette, less touristy. €€.</p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🌧️</span><div><div class="font-semibold text-stone-900">Rain backup</div><p class="text-stone-600 text-sm"><strong>Teatro Petruzzelli</strong> tour + Pinacoteca Provinciale</p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🥾</span><div><div class="font-semibold text-stone-900">Walking intensity</div><p class="text-stone-600 text-sm">Medium (~10–12 km including the run). Bring a light evening layer, comfortable shoes, sunglasses, and a water bottle.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="day-tue" class="py-10">
+      <div class="day-card bg-white rounded-3xl shadow-lg border border-stone-100 overflow-hidden">
+        <div class="bg-gradient-to-r from-terra-500 to-terra-600 px-8 py-6"><div class="flex items-center gap-4"><span class="bg-white/20 text-white text-sm font-bold px-3 py-1 rounded-full">DAY 2</span><div><h3 class="font-display text-3xl text-white font-bold">Tuesday — Polignano a Mare</h3><p class="text-terra-200 mt-1">🚆 Trenitalia 25 min · €3.20 · cliffs, old town, Lama Monachile</p></div></div></div>
+        <div class="p-8">
+          <p class="text-stone-600 mb-6 italic">The iconic cliffs of southern Italy. Go early before the day-trip buses arrive. A whitewashed old town hanging above the Adriatic, and the birthplace of Domenico Modugno (“Volare”).</p>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-5">
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🥐</span><div><div class="font-semibold text-stone-900">Breakfast</div><p class="text-stone-600 text-sm">Before the train: <strong>Martinucci Laboratory</strong> (Murat, Bari). Or in Polignano: <strong>Super Mago del Gelo</strong> — the famous <em>caffè speciale</em> (espresso + amaretto + lemon zest + cream). <span class="text-amber-600">⚠️ verify</span></p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🏃</span><div><div class="font-semibold text-stone-900">Run — South cliff route</div><p class="text-stone-600 text-sm"><strong>5 km</strong> out-and-back · Piazza Aldo Moro → Cala Paguro / Cala San Giovanni. Asphalt + dirt. Stunning sea views. <strong>Watch the cliff edges</strong> — some stretches have no barriers.</p><div class="mt-2 pl-3 border-l-2 border-terra-200"><div class="font-medium text-stone-700 text-sm">Alternative run — North to San Vito</div><p class="text-stone-500 text-sm"><strong>5 km</strong> out-and-back from the station north along SP87 toward San Vito / Cala Incina. Wider road, fewer cliff edges, mix of farmland and sea glimpses. Flatter and safer.</p></div></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🚆</span><div><div class="font-semibold text-stone-900">Getting there</div><ul class="text-stone-600 text-sm space-y-1 mt-1"><li>Walk to Bari Centrale (~10 min)</li><li>Trenitalia R/RV → Polignano a Mare (~25–30 min, €3.20)</li><li>Tickets: Trenitalia app or station machines · e-tickets do not need validation</li><li>Return: trains until ~23:00, comfortable last train around ~22:00</li></ul></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">☀️</span><div><div class="font-semibold text-stone-900">Morning</div><ul class="text-stone-600 text-sm space-y-1 mt-1"><li>From the station, walk 10 min to <strong>Arco Marchesale</strong></li><li><strong>Lama Monachile</strong> — photo from the Roman bridge above the cove</li><li>Old town: Piazza Vittorio Emanuele, Modugno statue, <strong>Terrazza Santo Stefano</strong></li></ul></div></div>
+            </div>
+            <div class="space-y-5">
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🍝</span><div><div class="font-semibold text-stone-900">Lunch</div><p class="text-stone-600 text-sm"><strong>Pescaria</strong> (Piazza Aldo Moro) — gourmet seafood panini (tuna tartare, octopus). €€. Queue peaks 13:00–14:00, so go at 12:00 or 14:30.<br/>Or: <strong>Mint Cucina Fresca</strong> — modern seafood. €€. Reservation recommended.<br/>Hidden gem: <strong>Osteria di Chichibio</strong> (old town) — local seafood, quieter, off the tourist circuit. €€.</p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🌅</span><div><div class="font-semibold text-stone-900">Afternoon</div><ul class="text-stone-600 text-sm space-y-1 mt-1"><li><strong>Grotta Palazzese</strong> — look from above, do <strong>not</strong> eat there (€€€€, mixed reviews)</li><li>Sea cave boat tour (45–60 min, €15–20 pp from the harbor). Cash.</li><li>Or simply sit by Lama Monachile</li></ul></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🏖️</span><div><div class="font-semibold text-stone-900">Beach</div><p class="text-stone-600 text-sm"><strong>Lama Monachile</strong> — pebbly, crowded, but iconic. May water: 18–20°C. A brave dip = yes. A proper beach day = no.</p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🍷</span><div><div class="font-semibold text-stone-900">Aperitivo</div><p class="text-stone-600 text-sm"><strong>Il Bastione</strong> — cliff terrace, spritz or Verdeca. <span class="text-amber-600">⚠️ verify</span></p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🍽️</span><div><div class="font-semibold text-stone-900">Dinner</div><p class="text-stone-600 text-sm">Back in Bari. <strong>Al Pescatore</strong> (Piazza Federico II) — seafood, terrace. €€–€€€. Reservation recommended.<br/>Cheap backup: <strong>Panzerotteria Di Cosimo</strong> — panzerotti for €2 each.</p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🎒</span><div><div class="font-semibold text-stone-900">Bring</div><p class="text-stone-600 text-sm">Swimsuit + microfibre towel, hat, cash, and your phone for the bridge photo.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="day-wed" class="py-10">
+      <div class="day-card bg-white rounded-3xl shadow-lg border border-stone-100 overflow-hidden">
+        <div class="bg-gradient-to-r from-olive-600 to-olive-700 px-8 py-6"><div class="flex items-center gap-4"><span class="bg-white/20 text-white text-sm font-bold px-3 py-1 rounded-full">DAY 3</span><div><h3 class="font-display text-3xl text-white font-bold">Wednesday — Monopoli</h3><p class="text-olive-200 mt-1">🚆 Trenitalia 35–45 min · €3.80 · harbor, castle, beach within the walls</p></div></div></div>
+        <div class="p-8">
+          <p class="text-stone-600 mb-6 italic">The older, calmer cousin of Polignano. A real fishing harbor with painted gozzi boats, an Aragonese castle by the sea, fewer Instagram crowds, and better food for the money. The town locals would quietly recommend instead.</p>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-5">
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🥐</span><div><div class="font-semibold text-stone-900">Breakfast</div><p class="text-stone-600 text-sm"><strong>Lula Caffè</strong> (Piazza XX Settembre, Monopoli) on arrival. <span class="text-amber-600">⚠️ verify</span></p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🏃</span><div><div class="font-semibold text-stone-900">Run — Lungomare Santa Maria</div><p class="text-stone-600 text-sm"><strong>4–5 km</strong> · flat waterfront route → Cala Porta Vecchia → Castello. Quiet and safe in the morning. Reward yourself with a cornetto in the old town afterward.</p><div class="mt-2 pl-3 border-l-2 border-olive-200"><div class="font-medium text-stone-700 text-sm">Alternative run — South to Capitolo</div><p class="text-stone-500 text-sm"><strong>5–6 km</strong> out-and-back along the coast road (SP90) south from Monopoli. Wider road, flat, olive groves on one side and rocky coves on the other. More open and rural.</p></div></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🚆</span><div><div class="font-semibold text-stone-900">Getting there</div><ul class="text-stone-600 text-sm space-y-1 mt-1"><li>Bari Centrale → Monopoli, Trenitalia regional, ~35–45 min, €3.80</li><li>From the station: 15 min walk to the old town</li><li>Return: until ~22:30</li></ul></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">☀️</span><div><div class="font-semibold text-stone-900">Morning</div><ul class="text-stone-600 text-sm space-y-1 mt-1"><li><strong>Castello Carlo V</strong> + harbor walls</li><li><strong>Cattedrale Maria SS. della Madia</strong> — baroque, gold-lit interior</li><li><strong>Porto Vecchio</strong> — painted fishing boats</li></ul></div></div>
+            </div>
+            <div class="space-y-5">
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🍝</span><div><div class="font-semibold text-stone-900">Lunch</div><p class="text-stone-600 text-sm"><strong>Osteria Perricci</strong> (Via Orazio Comes) — a Monopoli institution since the 1920s, seafood antipasti, orecchiette frutti di mare. €€. Reservation recommended. <span class="text-amber-600">⚠️ verify</span><br/>Raw-fish option: <strong>Il Guazzetto</strong> (old town, near Piazza Palmieri) — crudo di mare and grilled catch of the day. €€.</p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🏖️</span><div><div class="font-semibold text-stone-900">Beach</div><p class="text-stone-600 text-sm"><strong>Cala Porta Vecchia</strong> — a tiny beach tucked into the city walls. Very postcard-worthy. In May, swimming is optimistic.</p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🚲</span><div><div class="font-semibold text-stone-900">Alternative afternoon — e-bike</div><p class="text-stone-600 text-sm">Rent an <strong>e-bike</strong> from Monopoli’s city bike sharing (45 stations, 200 e-bikes, official service) and ride south toward <strong>Capitolo</strong> beaches. Ask at the info point: Piazza Garibaldi 24, daily 10:00–19:00. <span class="text-amber-600">⚠️ verify</span></p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🍷</span><div><div class="font-semibold text-stone-900">Aperitivo</div><p class="text-stone-600 text-sm"><strong>Mezza Pinta</strong> (Via Vasco de Gama) — Negroamaro rosato + taralli. <span class="text-amber-600">⚠️ verify</span></p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🍽️</span><div><div class="font-semibold text-stone-900">Dinner — ★ splurge night</div><p class="text-stone-600 text-sm">Back to Bari for <strong>La Bul</strong> (Via Villari, Murat) — modern Puglia tasting menu, €€€. <strong>Book 1–2 weeks ahead.</strong> <span class="text-amber-600">⚠️ verify</span></p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🌧️</span><div><div class="font-semibold text-stone-900">Rain backup</div><p class="text-stone-600 text-sm">Castello Carlo V interior + lunch at Perricci + an afternoon at Bari’s Pinacoteca</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="day-thu" class="py-10">
+      <div class="day-card bg-white rounded-3xl shadow-lg border border-stone-100 overflow-hidden">
+        <div class="bg-gradient-to-r from-wine-600 to-wine-700 px-8 py-6"><div class="flex items-center gap-4"><span class="bg-white/20 text-white text-sm font-bold px-3 py-1 rounded-full">DAY 4</span><div><h3 class="font-display text-3xl text-white font-bold">Thursday — Trani</h3><p class="text-wine-200 mt-1">🚆 Trenitalia 35–45 min · ~€4 · cathedral by the sea, Giudecca, Moscato di Trani</p></div></div></div>
+        <div class="p-8">
+          <p class="text-stone-600 mb-6 italic">The underrated star. An 11th-century Romanesque cathedral built right by the sea — one of the most beautiful churches in Italy, and much less crowded than Polignano. Fishing harbor, Jewish quarter, and a different coastline north of Bari. The change of direction keeps the trip fresh.</p>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-5">
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🥐</span><div><div class="font-semibold text-stone-900">Breakfast</div><p class="text-stone-600 text-sm">Quick stop near the base (for example <strong>Caffè Borghese</strong>) to catch the earliest easy train.</p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🏃</span><div><div class="font-semibold text-stone-900">Run — Trani harbor loop</div><p class="text-stone-600 text-sm"><strong>4 km</strong> loop · harbor → Villa Comunale → cathedral promenade. Very scenic and safe in the morning. Or do the Bari Lungomare before the train.</p><div class="mt-2 pl-3 border-l-2 border-wine-200"><div class="font-medium text-stone-700 text-sm">Alternative run — South to Bisceglie</div><p class="text-stone-500 text-sm"><strong>5 km</strong> out-and-back along the Lungomare south past Colonna di Marmo. Flat coastal road, very quiet in the early morning, with views back toward Trani’s cathedral silhouette.</p></div></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🚆</span><div><div class="font-semibold text-stone-900">Getting there</div><ul class="text-stone-600 text-sm space-y-1 mt-1"><li>Bari Centrale → Trani, Trenitalia R/RV, ~35–45 min, ~€4</li><li>From the station: ~12 min to the harbor via Via Cavour, flat walk</li><li>Return: until ~22:00</li></ul></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">☀️</span><div><div class="font-semibold text-stone-900">Morning</div><ul class="text-stone-600 text-sm space-y-1 mt-1"><li><strong>Cattedrale di San Nicola Pellegrino</strong> — cathedral by the sea. Three levels: crypt, lower church, upper church.</li><li><strong>Castello Svevo di Trani</strong> — castle with a sea moat (€5)</li></ul></div></div>
+            </div>
+            <div class="space-y-5">
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🍝</span><div><div class="font-semibold text-stone-900">Lunch</div><p class="text-stone-600 text-sm"><strong>Corteinfiore</strong> (Via Ognissanti) — refined seafood, courtyard seating. €€–€€€. Reservation recommended.<br/>Mid-range: <strong>Osteria Frangipane</strong> — burrata, raw fish, local wines. €€. <span class="text-amber-600">⚠️ verify</span><br/>Harbor-front: <strong>La Darsena</strong> (Via Statuti Marittimi) — local seafood, more casual, right on the water. €€.</p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🌅</span><div><div class="font-semibold text-stone-900">Afternoon</div><ul class="text-stone-600 text-sm space-y-1 mt-1"><li><strong>Giudecca</strong> — Jewish quarter, including the Scolanova synagogue, one of the oldest in Europe</li><li>Harbor stroll + gelato</li></ul></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🍷</span><div><div class="font-semibold text-stone-900">Aperitivo — Moscato di Trani</div><p class="text-stone-600 text-sm"><strong>Le Lampare al Fortino</strong> — terrace at the harbor fortification, sunset + Moscato di Trani DOC. <strong>Drink it here, not in Bari</strong> — this is its true home. <span class="text-amber-600">⚠️ verify</span></p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🍽️</span><div><div class="font-semibold text-stone-900">Dinner</div><p class="text-stone-600 text-sm">Stay in Trani: <strong>Quintessenza</strong> (Via Nigrò) — refined regional cuisine, sometimes Michelin-mentioned. €€€. Book 1+ week ahead. <span class="text-amber-600">⚠️ verify</span><br/>Cheaper: <strong>Osteria Frangipane</strong> or head back to Bari.</p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">📸</span><div><div class="font-semibold text-stone-900">Bring</div><p class="text-stone-600 text-sm">A respectful layer for the cathedral, cash for smaller shops, and a camera — the cathedral at golden hour is <strong>the shot</strong> of the trip.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="day-thu-alt" class="py-10">
+      <div class="day-card bg-white rounded-3xl shadow-lg border-2 border-dashed border-violet-300 overflow-hidden">
+        <div class="bg-gradient-to-r from-violet-600 to-violet-700 px-8 py-6"><div class="flex items-center gap-4"><span class="bg-white/20 text-white text-sm font-bold px-3 py-1 rounded-full">DAY 4 · ALT</span><div><h3 class="font-display text-3xl text-white font-bold">Thursday — Matera</h3><p class="text-violet-200 mt-1">🚆 FAL ~1h45–2h · Sassi, caves, sunset, wine · romantic stretch day</p></div></div></div>
+        <div class="p-8">
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
+            <p class="text-amber-800 text-sm font-medium">⚠️ Alternative to Trani. Use only if you accept longer transit (~1h45–2h each way via FAL) and higher walking intensity. Trani is the safer default. Check FAL timetable the day before — current disruption on Matera Sud–Altamura with bus replacement (valid from Dec 2025 "until further notice"). No FAL service on Sundays/holidays.</p>
+          </div>
+          <p class="text-stone-600 mb-6 italic">The most dramatic day of the trip. Matera’s Sassi — UNESCO cave houses, churches, monasteries built into natural caves — are cinematic, ancient, and genuinely romantic at sunset. It breaks the 1-hour rule, but if you want one unforgettable romantic day, this is it.</p>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-5">
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🥐</span><div><div class="font-semibold text-stone-900">Breakfast</div><p class="text-stone-600 text-sm">Quick coffee + cornetto near the base or Bari Centrale. Don’t waste time — the day is about getting to Matera early.</p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🏃</span><div><div class="font-semibold text-stone-900">Run — Bari Lungomare shakeout</div><p class="text-stone-600 text-sm"><strong>3–4 km</strong> at 06:30 if energy allows. Flat, easy. <strong>Do not run in Matera Sassi</strong> — steep stone stairs, slippery surfaces, tourists.</p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🚆</span><div><div class="font-semibold text-stone-900">Getting there — FAL (not Trenitalia)</div><ul class="text-stone-600 text-sm space-y-1 mt-1"><li>Walk to Bari Centrale / <strong>FAL side</strong> (~10 min, separate area)</li><li><strong>FAL</strong> Bari Centrale → Matera Centrale, ~1h45–2h (bus replacement segment active)</li><li>Target: early departure <strong>07:45–08:00</strong></li><li>Return: <strong>18:15–19:10</strong> from Matera if dinner in Bari, or later if staying</li><li><span class="text-amber-600">⚠️ Check FAL timetable the day before. If disrupted → keep Trani.</span></li></ul></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">☀️</span><div><div class="font-semibold text-stone-900">Morning</div><ul class="text-stone-600 text-sm space-y-1 mt-1"><li>Arrive Matera Centrale → walk to <strong>Piazza Vittorio Veneto</strong></li><li>First viewpoint: <strong>Belvedere Luigi Guerricchio</strong> (“Three Arches”)</li><li>Slow descent into <strong>Sasso Barisano</strong></li><li><strong>Casa Grotta di via Fiorentini</strong> — furnished cave-house museum (~€5)</li><li>Keep the first 2 hours loose. Matera rewards wandering, not speedrunning.</li></ul></div></div>
+            </div>
+            <div class="space-y-5">
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🍝</span><div><div class="font-semibold text-stone-900">Lunch — Lucanian food</div><p class="text-stone-600 text-sm">Small trattoria in Sasso Barisano / Caveoso. Try: <strong>pane di Matera</strong> (IGP bread), <strong>peperoni cruschi</strong> (fried dried peppers), <strong>cavatelli</strong> (local pasta), lamb, local cheese.<br/>Romantic option: <strong>Baccanti Ristorante</strong> — cave setting in the Sassi. €€€. Reservation needed.</p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🌅</span><div><div class="font-semibold text-stone-900">Afternoon</div><ul class="text-stone-600 text-sm space-y-1 mt-1"><li>Walk toward <strong>Sasso Caveoso</strong></li><li>Visit <strong>Madonna de Idris / San Giovanni in Monterrone</strong> OR <strong>Santa Lucia alle Malve</strong> — pick one, not all</li><li><strong>Piazzetta Pascoli</strong> — one of the best viewpoints within the city</li><li>Do not overpack the schedule. Matera punishes checklist tourists.</li></ul></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🍷</span><div><div class="font-semibold text-stone-900">Aperitivo — cave wine bar</div><p class="text-stone-600 text-sm"><strong>Enoteca dai Tosi</strong> — cave wine bar in the Sassi. The romantic wine stop of the trip. Local Basilicata wine, especially <strong>Aglianico del Vulture</strong>. <span class="text-amber-600">⚠️ verify</span></p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🍽️</span><div><div class="font-semibold text-stone-900">Dinner — choose your path</div><p class="text-stone-600 text-sm"><strong>Stay in Matera:</strong> <strong>Baccanti</strong> (cave restaurant, book ahead) or <strong>Dimora Ulmo</strong> (refined, terrace if open). Return later.<br/><strong>Zero-risk:</strong> Return to Bari ~18:15–19:10, eat simple in Bari Vecchia. Do <strong>not</strong> book a tasting-menu dinner in Bari after Matera — that’s overkill.</p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🥾</span><div><div class="font-semibold text-stone-900">Walking intensity — HIGH</div><p class="text-stone-600 text-sm">Steep, uneven, full of stairs and stone. Beautiful but not soft. Wear <strong>grippy shoes</strong>, bring water + power bank.</p></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🌧️</span><div><div class="font-semibold text-stone-900">Rain / transport backup</div><p class="text-stone-600 text-sm">Matera works in rain (caves, rock churches, wine bar, long lunch). But if <strong>transport</strong> is disrupted → keep <strong>Trani</strong>.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="day-fri" class="py-10">
+      <div class="day-card bg-white rounded-3xl shadow-lg border border-stone-100 overflow-hidden">
+        <div class="bg-gradient-to-r from-stone-600 to-stone-700 px-8 py-6"><div class="flex items-center gap-4"><span class="bg-white/20 text-white text-sm font-bold px-3 py-1 rounded-full">DAY 5</span><div><h3 class="font-display text-3xl text-white font-bold">Friday — Bari → ✈️</h3><p class="text-stone-300 mt-1">Last coffee, last focaccia, FM2 to the airport</p></div></div></div>
+        <div class="p-8">
+          <p class="text-stone-600 mb-6 italic">Flight around midday. No adventures today. One last espresso, one last focaccia, one last look at the sea, then the airport train.</p>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-5">
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🏃</span><div><div class="font-semibold text-stone-900">Morning run</div><p class="text-stone-600 text-sm"><strong>3 km</strong> shakeout on the Lungomare at 06:30. Back, shower, pack.</p><div class="mt-2 pl-3 border-l-2 border-stone-300"><div class="font-medium text-stone-700 text-sm">Alternative run — Parco 2 Giugno</div><p class="text-stone-500 text-sm"><strong>3 km</strong> shaded loop — quieter than the seafront, a gentle farewell-to-Bari option if you’ve done the Lungomare enough.</p></div></div></div>
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">🥐</span><div><div class="font-semibold text-stone-900">Breakfast</div><p class="text-stone-600 text-sm"><strong>Panificio Fiore</strong> — focaccia + coffee. Grab an extra slice for the road.</p></div></div>
+            </div>
+            <div class="space-y-5">
+              <div class="flex gap-3"><span class="text-2xl shrink-0 mt-0.5">✈️</span><div><div class="font-semibold text-stone-900">Airport transfer</div><ul class="text-stone-600 text-sm space-y-1 mt-1"><li><strong>Leave the base at 08:30–08:45</strong></li><li>Walk → Bari Centrale (10 min)</li><li><strong>Ferrotramviaria FM2</strong> → Aeroporto di Bari (~15–17 min, €5–5.30 "Pay and Go", every 30 min). Station inside BRI, connected via 300 m tunnel to arrivals.</li><li>Tickets: separate counter inside Centrale (not Trenitalia) or the app</li><li>Paper tickets → validate in the yellow/green machine</li><li>Backup: Tempesta bus or Bolt/taxi €25–30</li></ul></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="food" class="py-16">
+      <h2 class="font-display text-3xl font-bold text-stone-900 mb-8">🍷 Puglia food & wine</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-2xl shadow-lg border border-stone-100 p-8"><h3 class="font-display text-xl font-bold text-stone-900 mb-4">🍝 Must-try dishes</h3><div class="space-y-3 text-sm text-stone-600"><div class="flex gap-2"><span class="shrink-0">•</span><div><strong>Focaccia barese</strong> — tomato + olives, fluffy, oily, and perfect for breakfast. Benchmark: Panificio Fiore.</div></div><div class="flex gap-2"><span class="shrink-0">•</span><div><strong>Orecchiette con cime di rapa</strong> — broccoli rabe + anchovy + garlic</div></div><div class="flex gap-2"><span class="shrink-0">•</span><div><strong>Panzerotti</strong> — fried dough pockets with mozzarella + tomato. Di Cosimo / Mastro Ciccio.</div></div><div class="flex gap-2"><span class="shrink-0">•</span><div><strong>Tiella di riso, patate e cozze</strong> — Bari’s rice, potato, and mussel bake</div></div><div class="flex gap-2"><span class="shrink-0">•</span><div><strong>Burrata di Andria DOP</strong> — best with focaccia and tomatoes</div></div><div class="flex gap-2"><span class="shrink-0">•</span><div><strong>Bombette</strong> — grilled pork rolls stuffed with cheese</div></div><div class="flex gap-2"><span class="shrink-0">•</span><div><strong>Crudo di mare</strong> — raw seafood. Sea urchin season is usually Oct–Apr, so <strong>May is borderline</strong>.</div></div><div class="flex gap-2"><span class="shrink-0">•</span><div><strong>Sgagliozze</strong> — fried polenta squares, Bari Vecchia street food</div></div></div></div>
+        <div class="bg-white rounded-2xl shadow-lg border border-stone-100 p-8"><h3 class="font-display text-xl font-bold text-stone-900 mb-4">🍇 Local wines</h3><div class="space-y-3 text-sm text-stone-600"><div class="flex gap-2"><span class="text-red-400 shrink-0">🔴</span><div><strong>Primitivo di Manduria DOP</strong> — rich, jammy, 14%+.</div></div><div class="flex gap-2"><span class="text-red-400 shrink-0">🔴</span><div><strong>Negroamaro / Salice Salentino</strong> — more elegant than Primitivo</div></div><div class="flex gap-2"><span class="text-red-400 shrink-0">🔴</span><div><strong>Susumaniello</strong> — rare local grape, peppery and food-friendly</div></div><div class="flex gap-2"><span class="text-red-400 shrink-0">🔴</span><div><strong>Castel del Monte DOC</strong> — Bari province red, often based on Nero di Troia</div></div><div class="flex gap-2"><span class="text-amber-400 shrink-0">⚪</span><div><strong>Verdeca</strong> — fresh, mineral white from Locorotondo / Martina Franca</div></div><div class="flex gap-2"><span class="text-amber-400 shrink-0">⚪</span><div><strong>Bombino Bianco</strong> — light, easy summer white</div></div><div class="flex gap-2"><span class="text-amber-500 shrink-0">🟡</span><div><strong>Moscato di Trani DOC</strong> — sweet wine; <strong>drink it in Trani</strong></div></div></div></div>
+        <div class="bg-white rounded-2xl shadow-lg border border-stone-100 p-8"><h3 class="font-display text-xl font-bold text-stone-900 mb-4">🍷 Wine bars / enotecas in Bari</h3><div class="space-y-3 text-sm text-stone-600"><div class="flex gap-2"><span class="shrink-0">📍</span><div><strong>Enoteca Vinarius</strong> — Via Marchese di Montrone, Murat. Big list, knowledgeable team.</div></div><div class="flex gap-2"><span class="shrink-0">📍</span><div><strong>Biancofiore Enoteca</strong> — Murat, more polished atmosphere.</div></div><div class="flex gap-2"><span class="shrink-0">📍</span><div><strong>Schiaccianoci</strong> — Bari Vecchia, smaller and more local.</div></div><div class="flex gap-2"><span class="shrink-0">📍</span><div><strong>L'Acqua del Vino</strong> — wine + small plates.</div></div><div class="flex gap-2"><span class="shrink-0">📍</span><div><strong>Mastro Ciccio</strong> — Murat, casual wine + panzerotti.</div></div></div></div>
+        <div class="bg-white rounded-2xl shadow-lg border border-stone-100 p-8"><h3 class="font-display text-xl font-bold text-stone-900 mb-4">🏠 Bringing wine home</h3><div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4"><p class="text-amber-800 text-sm font-medium">⚠️ Liquids over 100 ml can only go in checked baggage. In carry-on, they’ll be confiscated.</p></div><div class="space-y-3 text-sm text-stone-600"><div class="flex gap-2"><span class="shrink-0">1.</span><div>Buy from an enoteca with EU shipping (Vinarius may offer it — <span class="text-amber-600">⚠️ verify</span>)</div></div><div class="flex gap-2"><span class="shrink-0">2.</span><div>Buy at Bari Airport after security — limited selection, but perfectly legal</div></div><div class="flex gap-2"><span class="shrink-0">3.</span><div>Use a padded wine sleeve and check a small bag at the airport (€30–50 one way)</div></div></div><div class="mt-4 p-3 bg-olive-50 rounded-xl text-sm text-olive-800"><strong>Great 4-bottle set:</strong> 1× Primitivo di Manduria + 1× Susumaniello + 1× Moscato di Trani + 1× Castel del Monte.</div></div>
+      </div>
+    </section>
+
+    <section id="packing" class="py-16">
+      <h2 class="font-display text-3xl font-bold text-stone-900 mb-8">🎒 Packing list — carry-on only</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl shadow border border-stone-100 p-6"><h4 class="font-bold text-stone-900 mb-3 flex items-center gap-2"><span>🏃</span> Running</h4><ul class="text-sm text-stone-600 space-y-1.5"><li>1× running shoes (can double as daily shoes)</li><li>2× technical tops, 1× shorts/tights</li><li>At least 1× running socks</li><li>Light cap for the sun</li><li>Phone belt / armband</li></ul></div>
+        <div class="bg-white rounded-2xl shadow border border-stone-100 p-6"><h4 class="font-bold text-stone-900 mb-3 flex items-center gap-2"><span>👟</span> Shoes</h4><ul class="text-sm text-stone-600 space-y-1.5"><li>1× comfortable sneakers (if different from running shoes)</li><li>1× light sandals or slip-ons for evenings (optional)</li><li><strong>Max 2 pairs.</strong></li></ul></div>
+        <div class="bg-white rounded-2xl shadow border border-stone-100 p-6"><h4 class="font-bold text-stone-900 mb-3 flex items-center gap-2"><span>👕</span> Clothes <span class="text-xs font-normal text-stone-400">(May: 18–26°C)</span></h4><ul class="text-sm text-stone-600 space-y-1.5"><li>3–4× light T-shirts / tops</li><li>1× nicer top or shirt for La Bul / Quintessenza</li><li>1× light trousers + 1× jeans</li><li>1× light sweater or fleece for evenings and churches</li><li>1× packable rain / wind shell</li><li>Underwear + socks for 5 days</li><li>1× swimsuit + microfibre towel</li><li>Hat and sunglasses</li></ul></div>
+        <div class="bg-white rounded-2xl shadow border border-stone-100 p-6"><h4 class="font-bold text-stone-900 mb-3 flex items-center gap-2"><span>🔌</span> Tech & documents</h4><ul class="text-sm text-stone-600 space-y-1.5"><li>Phones + chargers</li><li>1× multi-port USB charger</li><li>Type L adapter for older Italian sockets</li><li>Power bank (≤100 Wh)</li><li>Passport / ID + EHIC</li><li>Paper copy of address + bookings</li><li>€100–150 cash to start</li></ul></div>
+        <div class="bg-white rounded-2xl shadow border border-stone-100 p-6"><h4 class="font-bold text-stone-900 mb-3 flex items-center gap-2"><span>🧴</span> Toiletries <span class="text-xs font-normal text-stone-400">(≤100 ml, 1 L bag)</span></h4><ul class="text-sm text-stone-600 space-y-1.5"><li>Toothbrush + 75 ml toothpaste</li><li>Mini shampoo / shower gel 100 ml</li><li>Stick deodorant</li><li>SPF 30+ sunscreen 100 ml</li><li>Lip balm, plasters, ibuprofen</li></ul></div>
+        <div class="bg-red-50 rounded-2xl shadow border border-red-200 p-6"><h4 class="font-bold text-red-800 mb-3 flex items-center gap-2"><span>🚫</span> Do not pack</h4><ul class="text-sm text-red-700 space-y-1.5"><li>Hiking boots — overkill for cobblestones</li><li>Formal clothes — Puglia is casual even at nicer places</li><li>Full-size toiletries — airport security will eat them alive</li><li>Hairdryer — your accommodation should have one</li><li>Paper guidebooks — your phone is enough</li><li>Wine bottles in carry-on — guaranteed confiscation</li></ul></div>
+      </div>
+    </section>
+
+    <section id="skip" class="py-16">
+      <h2 class="font-display text-3xl font-bold text-stone-900 mb-8">🚫 Do not waste time on this</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="bg-red-50 border border-red-200 rounded-2xl p-6"><h4 class="font-bold text-red-800 mb-2">Alberobello</h4><p class="text-red-700 text-sm">1.5 h+ by FSE with a transfer, then a trulli Disneyland full of tour buses. Save it for a deeper Puglia trip.</p></div>
+        <div class="bg-red-50 border border-red-200 rounded-2xl p-6"><h4 class="font-bold text-red-800 mb-2">Lecce / Gallipoli / Salento</h4><p class="text-red-700 text-sm">1.5–3 hours away. Not realistic for a relaxed public-transport day trip.</p></div>
+        <div class="bg-red-50 border border-red-200 rounded-2xl p-6"><h4 class="font-bold text-red-800 mb-2">Matera as a rushed checklist day</h4><p class="text-red-700 text-sm">If doing Matera (see Thu alternative), do it for mood: Sassi walk, one cave/rock-church stop, sunset viewpoint, wine, early dinner. Do not stack 8 attractions.</p></div>
+        <div class="bg-red-50 border border-red-200 rounded-2xl p-6"><h4 class="font-bold text-red-800 mb-2">Murgia Timone without planning</h4><p class="text-red-700 text-sm">The opposite-canyon viewpoint is stunning but sits across the ravine. Do it only with a planned transfer/tour, or skip it and use city viewpoints (Piazzetta Pascoli, Belvedere Guerricchio).</p></div>
+        <div class="bg-red-50 border border-red-200 rounded-2xl p-6"><h4 class="font-bold text-red-800 mb-2">Grotta Palazzese restaurant</h4><p class="text-red-700 text-sm">€€€€, mixed reviews, you’re paying for the cave. Admire it from above and move on.</p></div>
+        <div class="bg-red-50 border border-red-200 rounded-2xl p-6"><h4 class="font-bold text-red-800 mb-2">Castellana Grotte</h4><p class="text-red-700 text-sm">Too much transit, fixed tour times, and it eats half a day.</p></div>
+        <div class="bg-red-50 border border-red-200 rounded-2xl p-6"><h4 class="font-bold text-red-800 mb-2">Tourist-menu places near the castle</h4><p class="text-red-700 text-sm">Generic Lungomare-adjacent food. Walk 200 meters deeper into the old town instead.</p></div>
+        <div class="bg-red-50 border border-red-200 rounded-2xl p-6"><h4 class="font-bold text-red-800 mb-2">The nonna pasta show as lunch</h4><p class="text-red-700 text-sm">Watch it, yes. Eat beside plastic tables there, no.</p></div>
+        <div class="bg-red-50 border border-red-200 rounded-2xl p-6"><h4 class="font-bold text-red-800 mb-2">Thinking May means beach weather</h4><p class="text-red-700 text-sm">The Adriatic will likely be 18–20°C. Quick brave dip? Sure. Full beach day? Not really.</p></div>
+      </div>
+    </section>
+
+    <section id="practical" class="py-16">
+      <h2 class="font-display text-3xl font-bold text-stone-900 mb-8">📝 Practical info & budget</h2>
+      <div class="grid md:grid-cols-2 gap-8 mb-8">
+        <div class="bg-white rounded-2xl shadow-lg border border-stone-100 p-8">
+          <h3 class="font-display text-xl font-bold text-stone-900 mb-4">📋 Travel documents</h3>
+          <div class="space-y-3 text-sm text-stone-600">
+            <div class="flex gap-2"><span class="shrink-0">•</span><div><strong>EU/Schengen citizens:</strong> valid ID card or passport. Children need their own document.</div></div>
+            <div class="flex gap-2"><span class="shrink-0 text-red-500">⚠️</span><div><strong>mObywatel is NOT accepted</strong> at the Italian border — bring a physical document (Polish MFA warning).</div></div>
+            <div class="flex gap-2"><span class="shrink-0">•</span><div><strong>EKUZ / EHIC</strong> — European Health Insurance Card. Bring it.</div></div>
+            <div class="flex gap-2"><span class="shrink-0">•</span><div><strong>EES (Entry/Exit System):</strong> fully operational since <strong>10 April 2026</strong>. Expect biometric registration at the border.</div></div>
+            <div class="flex gap-2"><span class="shrink-0">•</span><div><strong>ETIAS:</strong> not yet active. Expected Q4 2026.</div></div>
+            <div class="flex gap-2"><span class="shrink-0">•</span><div><strong>Emergency:</strong> <strong>112</strong> (free, EU-wide).</div></div>
+            <div class="flex gap-2"><span class="shrink-0">•</span><div><strong>Medication:</strong> if carrying controlled substances, bring a certificate/prescription in Italian or English.</div></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg border border-stone-100 p-8">
+          <h3 class="font-display text-xl font-bold text-stone-900 mb-4">🚆 Verified transport prices</h3>
+          <p class="text-stone-500 text-sm mb-4">Official Puglia regional tariff (Tariffa 39), May 2026. May differ slightly from main plan estimates.</p>
+          <div class="space-y-3 text-sm text-stone-600">
+            <div class="flex justify-between"><span>Bari → Polignano (30 km)</span><strong>€2.60</strong></div>
+            <div class="flex justify-between"><span>Bari → Monopoli (41 km)</span><strong>€4.00</strong></div>
+            <div class="flex justify-between"><span>Bari → Trani (42 km)</span><strong>€4.00</strong></div>
+            <div class="flex justify-between"><span>Bari → BRI Airport (Ferrotramviaria)</span><strong>€5.30</strong></div>
+          </div>
+          <div class="mt-4 p-3 bg-amber-50 rounded-xl text-sm text-amber-800">
+            <strong>⚠️ Track work — May 2026 (CONFIRMED):</strong> Trenitalia has scheduled disruptions on <strong>Bari Centrale ↔ Lecce</strong> and <strong>Barletta ↔ Fasano</strong> in two windows: <strong>2–12 May</strong> and <strong>13–30 May 2026</strong>. Cancellations, route limitations, and bus replacements on the Polignano / Monopoli / Trani axis. <strong>Check the Trenitalia "lavori programmati" page the morning of travel</strong> — link in Sources below.
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg border border-stone-100 p-8">
+          <h3 class="font-display text-xl font-bold text-stone-900 mb-4">🚌 Bari city transport (AMTAB)</h3>
+          <div class="space-y-3 text-sm text-stone-600">
+            <div class="flex justify-between"><span>Single ticket</span><strong>€1.00</strong></div>
+            <div class="flex justify-between"><span>90-minute ticket</span><strong>€1.20</strong></div>
+            <div class="flex justify-between"><span>Day pass</span><strong>€2.50</strong></div>
+            <div class="flex justify-between"><span>App</span><strong>MUVT</strong></div>
+          </div>
+          <p class="text-stone-500 text-sm mt-4">Mostly unnecessary — the base is walkable to Bari Vecchia and Centrale. Backup for tired legs or rain.</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg border border-stone-100 p-8">
+          <h3 class="font-display text-xl font-bold text-stone-900 mb-4">ℹ️ Tourist info points</h3>
+          <div class="space-y-3 text-sm text-stone-600">
+            <div class="flex gap-2"><span class="shrink-0">📍</span><div><strong>Bari:</strong> regional network via viaggiareinpuglia.it</div></div>
+            <div class="flex gap-2"><span class="shrink-0">📍</span><div><strong>Polignano a Mare:</strong> regional info point</div></div>
+            <div class="flex gap-2"><span class="shrink-0">📍</span><div><strong>Monopoli:</strong> Piazza Garibaldi 24, daily 10:00–19:00</div></div>
+            <div class="flex gap-2"><span class="shrink-0">📍</span><div><strong>Trani:</strong> Piazza Trieste 8</div></div>
+          </div>
+          <div class="mt-4 p-3 bg-olive-50 rounded-xl text-sm text-olive-800">
+            <strong>Monopoli e-bikes:</strong> 45 stations, 200 e-bikes. Official city service. Great for Capitolo beaches.
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg border border-stone-100 p-8">
+        <h3 class="font-display text-xl font-bold text-stone-900 mb-4">💰 Budget overview <span class="text-stone-400 font-normal text-base">(2 persons, 4 nights, all-in estimate)</span></h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-stone-600">
+            <thead><tr class="border-b border-stone-200 text-stone-900"><th class="text-left py-2 pr-4">Component</th><th class="text-right py-2 px-3">Budget</th><th class="text-right py-2 px-3">Mid-range</th><th class="text-right py-2 pl-3">Comfort</th></tr></thead>
+            <tbody>
+              <tr class="border-b border-stone-100"><td class="py-2 pr-4">Core transport (trains + airport)</td><td class="text-right px-3">€64</td><td class="text-right px-3">€64</td><td class="text-right pl-3">€67</td></tr>
+              <tr class="border-b border-stone-100"><td class="py-2 pr-4">Bari city bus (AMTAB)</td><td class="text-right px-3">€0–5</td><td class="text-right px-3">€5–10</td><td class="text-right pl-3">€10–15</td></tr>
+              <tr class="border-b border-stone-100"><td class="py-2 pr-4">Accommodation (4 nights)</td><td class="text-right px-3">€440–640</td><td class="text-right px-3">€640–1,040</td><td class="text-right pl-3">€1,200–1,800</td></tr>
+              <tr class="border-b border-stone-100"><td class="py-2 pr-4">Food & drink</td><td class="text-right px-3">€240–320</td><td class="text-right px-3">€320–420</td><td class="text-right pl-3">€420–500</td></tr>
+              <tr class="border-b border-stone-100"><td class="py-2 pr-4">Emergency reserve</td><td class="text-right px-3">€50</td><td class="text-right px-3">€100</td><td class="text-right pl-3">€150</td></tr>
+              <tr class="font-bold text-stone-900"><td class="py-2 pr-4">Total estimate</td><td class="text-right px-3">€794–1,079</td><td class="text-right px-3">€1,129–1,634</td><td class="text-right pl-3">€1,847–2,532</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-stone-500 text-sm mt-4">Core transport = BRI ↔ Bari (2 pax, return) + 3 day trips. Accommodation and food are planning ranges — confirm once dates and standard are fixed.</p>
+      </div>
+      <div class="mt-8 bg-white rounded-2xl shadow-lg border border-stone-100 p-8">
+        <h3 class="font-display text-xl font-bold text-stone-900 mb-4">🏨 Accommodation zones <span class="text-stone-400 font-normal text-base">(if base changes)</span></h3>
+        <div class="grid sm:grid-cols-3 gap-4 text-sm text-stone-600">
+          <div class="p-4 bg-stone-50 rounded-xl"><div class="font-semibold text-stone-900 mb-1">Bari Vecchia / East</div><p>Max atmosphere + walking. Noisier, older buildings.</p></div>
+          <div class="p-4 bg-stone-50 rounded-xl"><div class="font-semibold text-stone-900 mb-1">Murat / Near Centrale</div><p>Max train convenience. More modern, less charm.</p></div>
+          <div class="p-4 bg-stone-50 rounded-xl"><div class="font-semibold text-stone-900 mb-1">Seafront / Lungomare</div><p>Premium views + evening walks. Higher price.</p></div>
+        </div>
+        <p class="text-stone-500 text-sm mt-4">Verified options: <strong>JR Hotels Oriente Bari</strong> (4★), <strong>The Nicolaus Hotel</strong> (4★, free shuttle + bikes), <strong>JR Hotels Grande Albergo delle Nazioni</strong> (5★ seafront), <strong>Bari Sea View</strong>, <strong>Bari Stay</strong>.</p>
+      </div>
+      <div class="mt-8 grid md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-2xl shadow-lg border border-stone-100 p-8">
+          <h3 class="font-display text-xl font-bold text-stone-900 mb-4">🎫 E-ticket & validation tip</h3>
+          <div class="space-y-3 text-sm text-stone-600">
+            <div class="flex gap-2"><span class="shrink-0">•</span><div><strong>Digital Regional Ticket (Trenitalia):</strong> auto-validates at the scheduled departure time — no manual stamping needed.</div></div>
+            <div class="flex gap-2"><span class="shrink-0">•</span><div><strong>Paper regional ticket:</strong> stamp it in the yellow/green machine on the platform <em>before</em> boarding. Skipping this = fine.</div></div>
+            <div class="flex gap-2"><span class="shrink-0">•</span><div>Buy <strong>directly from operators</strong> (Trenitalia, Ferrotramviaria, FAL, FSE) — avoid resellers.</div></div>
+            <div class="flex gap-2"><span class="shrink-0">•</span><div>Check QR / ticket status in the app or email before boarding.</div></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg border border-stone-100 p-8">
+          <h3 class="font-display text-xl font-bold text-stone-900 mb-4">🛟 Plan B — when things go sideways</h3>
+          <div class="space-y-3 text-sm text-stone-600">
+            <div class="flex gap-2"><span class="shrink-0">🌧️</span><div><strong>Bad weather:</strong> swap Polignano for Trani or extend a Bari day — both are less sun/sea-dependent.</div></div>
+            <div class="flex gap-2"><span class="shrink-0">🚧</span><div><strong>Track work or strike:</strong> check Trenitalia + Ferrotramviaria alerts in the morning. Replacement buses are typical on the Foggia–Bari–Lecce axis.</div></div>
+            <div class="flex gap-2"><span class="shrink-0">💼</span><div><strong>Trip turns into remote work:</strong> cut to Bari + max one day trip (Polignano or Monopoli).</div></div>
+            <div class="flex gap-2"><span class="shrink-0">📸</span><div><strong>Want more checklist sightseeing:</strong> activate Matera (Thu alternative) — but verify FAL the morning of travel.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources" class="py-16">
+      <h2 class="font-display text-3xl font-bold text-stone-900 mb-2">📚 Sources & evidence</h2>
+      <p class="text-stone-500 mb-8">Every non-obvious claim in this plan comes from one of the official sources below. Bookmark them and re-check the morning of travel.</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl shadow border border-stone-100 p-6">
+          <h3 class="font-bold text-stone-900 mb-3 flex items-center gap-2"><span>🚆</span> Trains & transport</h3>
+          <ul class="text-sm text-stone-600 space-y-2">
+            <li><a href="https://www.trenitalia.com" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">trenitalia.com</a> — main schedule + tickets</li>
+            <li><a href="https://www.trenitalia.com/it/informazioni/lavori-programmati/20260513-linee-foggia-bari-centrale-lecce-foggia-s-severo-peschici.html" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">Trenitalia lavori 13–30 May 2026</a> — <span class="text-red-600 font-semibold">⚠️ Bari–Lecce track work</span></li>
+            <li><a href="https://www.trenitalia.com/it/informazioni/lavori-programmati/20260502-lavori-tra-le-stazioni-di-termoli-e-lecce.html" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">Trenitalia lavori 2–12 May 2026</a> — Termoli–Lecce</li>
+            <li><a href="https://www.trenitalia.com/content/dam/trenitalia/allegati/info/condizioni-generali-di-trasporto/parte-iii-trasporto-regionale/tariffa-39/Tariffa_39_14_Puglia.pdf" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">Tariffa 39 Puglia (PDF)</a> — official regional fares</li>
+            <li><a href="https://www.trenitalia.com/en/information/digital-regional-ticket.html" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">Digital Regional Ticket</a> — auto-validation rules</li>
+            <li><a href="https://ferrotramviaria.it/en-GB/to-airport" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">ferrotramviaria.it — to airport</a> — FM2, 17 min, 300 m tunnel</li>
+            <li><a href="https://www.ferrotramviaria.it/en-GB/web/guest/-paga-e-via-" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">Pay and Go €5.30</a> — contactless airport fare</li>
+            <li><a href="https://ferrovieappulolucane.it/en/lines/timetables-and-fares/" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">ferrovieappulolucane.it</a> — FAL Bari–Matera. <span class="text-red-600 font-semibold">⚠️ Matera–Altamura bus replacement active</span></li>
+            <li><a href="https://www.fssudest.it/" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">fssudest.it</a> — FSE (Alberobello / Locorotondo)</li>
+            <li><a href="https://www.amtab.it/en/trasporto-pubblico-locale-sub-3/titoli-di-viaggio-e-tariffe-2" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">AMTAB fares</a> — €1 / €1.20 / €2.50</li>
+            <li><a href="https://www.amtab.it/en/app-payment" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">MUVT app</a> — Bari mobile ticketing</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-2xl shadow border border-stone-100 p-6">
+          <h3 class="font-bold text-stone-900 mb-3 flex items-center gap-2"><span>🛂</span> Documents & border</h3>
+          <ul class="text-sm text-stone-600 space-y-2">
+            <li><a href="https://europa.eu/youreurope/citizens/travel/entry-exit/eu-citizen/index_en.htm" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">Your Europe — EU citizen travel</a></li>
+            <li><a href="https://europa.eu/youreurope/citizens/travel/entry-exit/non-eu-nationals/index_en.htm" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">Your Europe — non-EU travel</a></li>
+            <li><a href="https://home-affairs.ec.europa.eu/news/entryexit-system-ees-fully-operational-2026-04-10_en" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">EES fully operational from 10 Apr 2026</a></li>
+            <li><a href="https://home-affairs.ec.europa.eu/news/main-differences-between-ees-and-etias-what-travellers-need-know-2026-04-28_en" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">EES vs ETIAS — what travellers need to know</a></li>
+            <li><a href="https://travel-europe.europa.eu/en/etias/about-etias/what-is-etias" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">ETIAS — not yet active (expected Q4 2026)</a></li>
+            <li><a href="https://www.gov.pl/web/wlochy/informacje-dla-podrozujacych-do-wloch" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">gov.pl/web/wlochy</a> — Polish MFA travel info</li>
+            <li><a href="https://www.gov.pl/web/wlochy/idp" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">Polish MFA — mObywatel NOT accepted at IT border</a></li>
+            <li><a href="https://digital-strategy.ec.europa.eu/en/policies/112" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">112 — EU emergency number</a></li>
+            <li><a href="https://vistoperitalia.esteri.it/" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">vistoperitalia.esteri.it</a> — Italian visa portal</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-2xl shadow border border-stone-100 p-6">
+          <h3 class="font-bold text-stone-900 mb-3 flex items-center gap-2"><span>🏛️</span> Cities & info points</h3>
+          <ul class="text-sm text-stone-600 space-y-2">
+            <li><a href="https://www.italia.it/en/puglia/bari/bari-vecchia" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">italia.it — Bari Vecchia</a></li>
+            <li><a href="https://www.italia.it/it/puglia/cosa-fare/cosa-vedere-in-un-giorno-a-polignano-a-mare" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">italia.it — Polignano in one day</a></li>
+            <li><a href="https://www.italia.it/en/puglia/trani" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">italia.it — Trani</a></li>
+            <li><a href="https://monopolitourism.com/" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">monopolitourism.com</a></li>
+            <li><a href="https://monopolitourism.com/en/tour/the-port-of-monopoli/" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">Monopoli — the port</a></li>
+            <li><a href="https://monopolitourism.com/en/info-point/" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">Monopoli info point</a> — Piazza Garibaldi 24</li>
+            <li><a href="https://monopolitourism.com/en/bike-sharing-monopoli/" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">Monopoli e-bike sharing</a> — 45 stations, 200 bikes</li>
+            <li><a href="https://viaggiareinpuglia.it/it/dettaglio-infopoint/info-point-bari" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">Info point Bari</a></li>
+            <li><a href="https://mobile.viaggiareinpuglia.it/en/dettaglio-infopoint/info-point-polignano-mare" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">Info point Polignano</a></li>
+            <li><a href="https://mobile.viaggiareinpuglia.it/en/dettaglio-infopoint/info-point-trani" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">Info point Trani</a> — Piazza Trieste 8</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-2xl shadow border border-stone-100 p-6">
+          <h3 class="font-bold text-stone-900 mb-3 flex items-center gap-2"><span>🏨</span> Accommodation (verified)</h3>
+          <ul class="text-sm text-stone-600 space-y-2">
+            <li><a href="https://jr-hotels.com/en/collection/jr-hotels-oriente-bari" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">JR Hotels Oriente Bari</a> — 4★, near old town</li>
+            <li><a href="https://www.thenicolaushotel.com/en" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">The Nicolaus Hotel</a> — 4★, free shuttle + bikes</li>
+            <li><a href="https://jr-hotels.com/en/collection/jr-hotels-grande-albergo-delle-nazioni-bari" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">JR Hotels Grande Albergo delle Nazioni</a> — 5★ seafront</li>
+            <li><a href="https://www.bariseaview.com/" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">Bari Sea View</a> — apartment-style</li>
+            <li><a href="https://baristay.com/" target="_blank" rel="noopener" class="text-sea-700 underline hover:no-underline">Bari Stay</a> — apartment-style</li>
+          </ul>
+          <p class="text-stone-500 text-xs mt-4">⚠️ Restaurant hours: check Google Maps + the restaurant's Instagram the day before. Many Bari restaurants close Mondays.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="compact" class="py-16">
+      <h2 class="font-display text-3xl font-bold text-stone-900 mb-2">📱 Phone Notes version</h2>
+      <p class="text-stone-500 mb-8">Copy and paste into Notes. Done.</p>
+      <div class="bg-stone-900 text-stone-100 rounded-2xl p-6 sm:p-8 font-mono text-sm leading-relaxed overflow-x-auto shadow-xl">
+<pre class="whitespace-pre-wrap">
+<strong class="text-sea-400">MON · BARI VECCHIA + MURAT</strong>
+🥐 Caffè Borghese · 🏃 Lungomare 6km (alt: Parco 2 Giugno 3–5km) · 🚶 walk
+San Nicola → Cathedral → Castello Svevo → Muraglia
+🍝 Le Travi or Panificio Fiore focaccia
+🍷 Enoteca Vinarius (Primitivo)
+🍽️ Vini e Cucina (no reservations, 19:30)
+
+<strong class="text-terra-400">TUE · POLIGNANO A MARE</strong>
+🚆 Trenitalia 25min €3.20 · 🏃 cliff path south 5km (alt: north to San Vito 5km)
+🥐 Super Mago del Gelo (caffè speciale)
+Lama Monachile → old town → Terrazza → sea caves by boat
+🍝 Pescaria panini OR Mint
+🍷 Il Bastione
+🍽️ Bari · Al Pescatore (reservation)
+🎒 swimsuit, cash, hat
+
+<strong class="text-olive-400">WED · MONOPOLI</strong>
+🚆 Trenitalia 35–45min €3.80 · 🏃 Lungomare 4km (alt: south to Capitolo 5–6km)
+🥐 Lula Caffè
+Castello Carlo V → cathedral → Porto Vecchio → Cala Porta Vecchia
+🍝 Osteria Perricci (reservation)
+🍷 Mezza Pinta (Negroamaro)
+🍽️ ★ SPLURGE: La Bul in Bari (book 1–2 weeks ahead)
+🎒 swimsuit
+
+<strong class="text-wine-400">THU · TRANI</strong>
+🚆 Trenitalia 35–45min ~€4 · 🏃 harbor 4km (alt: south to Bisceglie 5km)
+🥐 base café
+Cathedral by the sea → Castello Svevo → Giudecca
+🍝 Corteinfiore OR Frangipane
+🍷 Le Lampare al Fortino (Moscato di Trani)
+🍽️ Quintessenza (Trani, reservation) OR Bari
+
+<strong class="text-violet-400">THU · MATERA (alternative to Trani)</strong>
+🚆 FAL ~1h45–2h (⚠️ check day before!) · 🏃 Bari Lungomare 3–4km pre-train
+⚠️ FAL disruption Matera Sud–Altamura, bus replacement active
+Belvedere Guerricchio → Sasso Barisano → Casa Grotta → Sasso Caveoso
+🍝 local trattoria (cavatelli, peperoni cruschi, pane di Matera)
+🍷 Enoteca dai Tosi (Aglianico del Vulture, cave wine bar)
+🍽️ Baccanti (cave restaurant, book) OR Dimora Ulmo OR back to Bari simple
+🎒 grippy shoes, water, power bank
+
+<strong class="text-stone-400">FRI · BARI → ✈️</strong>
+🏃 3km Lungomare (alt: Parco 2 Giugno 3km)
+🥐 Panificio Fiore (extra slice for the road)
+🚆 leave 08:45 · Centrale · FM2 → BRI 15min €5
+Backup: Tempesta bus or Bolt
+</pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-stone-900 text-stone-400 text-sm py-12 mt-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 gap-8">
+        <div>
+          <h4 class="text-stone-200 font-semibold mb-3">Verify before departure</h4>
+          <ul class="space-y-1.5">
+            <li>🚆 <a href="https://www.trenitalia.com" target="_blank" rel="noopener" class="underline hover:text-white">trenitalia.com</a> — regional trains — ⚠️ check morning of travel for track work / bus replacements</li>
+            <li>🚆 <a href="https://ferrovienordbarese.it" target="_blank" rel="noopener" class="underline hover:text-white">ferrovienordbarese.it</a> — FM2 airport line — Pay and Go €5.30, station inside BRI via 300 m tunnel</li>
+            <li>🚆 <a href="https://ferrovieappulolucane.it" target="_blank" rel="noopener" class="underline hover:text-white">ferrovieappulolucane.it</a> — FAL (Matera alternative) — ⚠️ disruption Matera Sud–Altamura, bus replacement active</li>
+            <li>🚌 <a href="https://www.amtab.it" target="_blank" rel="noopener" class="underline hover:text-white">amtab.it</a> — Bari city buses — app: MUVT</li>
+            <li>🇵🇱 <a href="https://www.gov.pl/web/wlochy" target="_blank" rel="noopener" class="underline hover:text-white">gov.pl/web/wlochy</a> — entry requirements, mObywatel warning, EKUZ</li>
+            <li>🍴 Restaurants: Google Maps + Instagram are often more current than websites</li>
+            <li>⚠️ Mondays: many restaurants close — re-check Monday picks the day before</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-stone-200 font-semibold mb-3">Possible next iteration</h4>
+          <ul class="space-y-1.5">
+            <li>🔄 Swap <strong>Trani</strong> for <strong>Matera</strong> — see Thu alternative above. ~1h45–2h transit, check FAL day before.</li>
+            <li>🍇 Add a winery visit in the Castel del Monte area?</li>
+            <li>🏖️ More beach focus instead of one town?</li>
+            <li>🍝 Add a pasta-making class in Bari Vecchia?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-stone-800 mt-8 pt-8 text-center text-stone-500">Bari & Puglia · Mon–Fri · Built with ❤️</div>
+    </div>
+  </footer>
+
+  <script>
+    const locations = [
+      { name: "🏠 Base — 33 Strada Nuccia Serra", lat: 41.1171, lng: 16.8719, color: "#1e293b", desc: "Starting point. About 10 min to Bari Centrale and 12 min to Bari Vecchia." },
+      { name: "🏛️ MON — Bari Vecchia", lat: 41.1264, lng: 16.8708, color: "#0284c7", desc: "Basilica di San Nicola, Castello Svevo, Strada Arco Basso, Panificio Fiore, Vini e Cucina." },
+      { name: "🌊 TUE — Polignano a Mare", lat: 40.9942, lng: 17.2217, color: "#df721f", desc: "Lama Monachile, cliffs, Pescaria, caffè speciale, sea caves by boat. 🚆 25 min €3.20." },
+      { name: "⛵ WED — Monopoli", lat: 40.9512, lng: 17.3030, color: "#717b2f", desc: "Castello Carlo V, Porto Vecchio, Cala Porta Vecchia, Osteria Perricci. 🚆 35–45 min €3.80." },
+      { name: "⛪ THU — Trani", lat: 41.2758, lng: 16.4169, color: "#b41847", desc: "Cathedral by the sea, Giudecca, Moscato di Trani, Quintessenza. 🚆 35–45 min ~€4." },
+      { name: "🏛️ THU ALT — Matera", lat: 40.6664, lng: 16.6043, color: "#7c3aed", desc: "Alternative to Trani. Sassi, caves, sunset, wine. FAL ~1h45–2h. Romantic stretch day." },
+      { name: "✈️ FRI — BRI Airport", lat: 41.1389, lng: 16.7606, color: "#57534e", desc: "Ferrotramviaria FM2 from Bari Centrale, 15 min, €5." },
+    ];
+
+    const map = L.map('trip-map', { scrollWheelZoom: false }).setView([41.10, 16.95], 10);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
+
+    function createIcon(color, emoji) {
+      return L.divIcon({
+        className: 'custom-marker',
+        html: `<div style="background:${color};width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,.3);cursor:pointer;">${emoji}</div>`,
+        iconSize: [36, 36],
+        iconAnchor: [18, 18],
+        popupAnchor: [0, -20]
+      });
+    }
+
+    const emojis = ['🏠', '🏛️', '🌊', '⛵', '⛪', '🏛️', '✈️'];
+    const markers = [];
+    locations.forEach((loc, i) => {
+      const marker = L.marker([loc.lat, loc.lng], { icon: createIcon(loc.color, emojis[i]) }).addTo(map);
+      marker.bindPopup(`<div style="min-width:200px"><strong style="font-size:14px; color:${loc.color}">${loc.name}</strong><p style="margin:6px 0 0; font-size:13px; color:#555; line-height:1.4">${loc.desc}</p></div>`);
+      markers.push(marker);
+    });
+
+    const routeCoords = [
+      [41.1171, 16.8719],
+      [41.1264, 16.8708],
+      [41.1171, 16.8719],
+      [40.9942, 17.2217],
+      [41.1171, 16.8719],
+      [40.9512, 17.3030],
+      [41.1171, 16.8719],
+      [41.2758, 16.4169],
+      [41.1171, 16.8719],
+      [41.1389, 16.7606],
+    ];
+
+    L.polyline(routeCoords, {
+      color: '#0ea5e9',
+      weight: 3,
+      opacity: 0.6,
+      dashArray: '8 6',
+      smoothFactor: 1.5
+    }).addTo(map);
+
+    // Matera alternative route (violet dashed)
+    L.polyline([[41.1171, 16.8719], [40.6664, 16.6043]], {
+      color: '#7c3aed',
+      weight: 2.5,
+      opacity: 0.5,
+      dashArray: '4 8',
+      smoothFactor: 1.5
+    }).addTo(map);
+
+    const group = L.featureGroup(markers);
+    map.fitBounds(group.getBounds().pad(0.15));
+  </script>
+</body>
+</html>
